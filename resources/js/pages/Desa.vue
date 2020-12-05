@@ -1,0 +1,726 @@
+<template>
+  <div class="bg-gray-100 font-family-karla flex">
+    <sidebar-component></sidebar-component>
+
+    <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
+      <header-component></header-component>
+
+      <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+        <main class="w-full flex-grow p-6 bg-white">
+          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Data UMKM Desa {{ namaDesa }}</h1>
+          <!-- loader spin-->
+          <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
+            <svg class="w-12 absolute text-green-500" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <circle cx="15" cy="15" r="15">
+                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
+                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
+              </circle>
+              <circle cx="60" cy="15" r="9" fill-opacity="0.3">
+                <animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite" />
+                <animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite" />
+              </circle>
+              <circle cx="105" cy="15" r="15">
+                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
+                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
+              </circle>
+            </svg>
+          </div>
+
+          <div class="w-full mt-2">
+            <div class="bg-white overflow-auto">
+              <vue-good-table
+                mode="pages"
+                @on-page-change="onPageChange"
+                @on-sort-change="onSortChange"
+                @on-column-filter="onColumnFilter"
+                @on-per-page-change="onPerPageChange"
+                paginate="true"
+                :lineNumbers="false"
+                :totalRows="totalRecords"
+                :isLoading.sync="isLoading"
+                :pagination-options="{
+                  enabled: true,
+                  nextLabel: 'next',
+                  prevLabel: 'prev',
+                  setCurrentPage: 1,
+                  perPage: 15,
+                  perPageDropdown: [15, 30, 45, 60],
+                  dropdownAllowAll: true,
+                  rowsPerPageLabel: 'per halaman',
+                  allLabel: 'Semua',
+                  ofLabel: 'dari',
+                }"
+                :rows="rows"
+                :columns="columns"
+                max-height="300px"
+              >
+                <div slot="table-actions">
+                  <button @click="exportExcel" class="bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1">Download Excel</button>
+                </div>
+              </vue-good-table>
+            </div>
+          </div>
+        </main>
+
+        <footer-component></footer-component>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import _ from "lodash";
+export default {
+  props: ["id"],
+  data() {
+    return {
+      loading: true,
+      unduhData: false,
+      isLoggedIn: "false",
+      desa_id: "",
+      isLoading: false,
+      namaDesa: "",
+      columns: [
+        {
+          label: "nama_usaha",
+          field: "nama_usaha",
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            // filterValue: "",
+            // filterDropdownItems: [],
+            // filterFn: function(data, filterString) {
+            //     return data === filterString;
+            // },
+            trigger: "enter",
+          },
+        },
+        {
+          label: "kelembagaan",
+          field: "kelembagaan",
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            // filterValue: "",
+            filterDropdownItems: ["PT", "CV", "Koperasi", "FA", "UD", "P. Perseorangan Lainnya", "Non Badan Hukum"],
+            // filterFn: function(data, filterString) {
+            //     return data === filterString;
+            // },
+            trigger: "keyup",
+          },
+        },
+        {
+          label: "nama_pemilik",
+          field: "nama_pemilik",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "nik",
+          field: "nik",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "jenis_kelamin",
+          field: "jenis_kelamin",
+          width: "300px",
+          sortable: true,
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "disabilitas",
+          field: "disabilitas",
+          width: "300px",
+          sortable: true,
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "siu",
+          field: "siu",
+          sortable: true,
+          width: "150px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "npwp",
+          field: "npwp",
+          sortable: true,
+          width: "150px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "tahun mulai usaha",
+          field: "tmu",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "alamat",
+          field: "alamat",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        { label: "desa", field: "desa", sortable: false, width: "200px", filterable: false },
+
+        {
+          label: "no.tlp",
+          field: "tlp",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "email",
+          field: "email",
+          sortable: true,
+          width: "200px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "makanan olahan/industri pertanian",
+          field: "up1",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "kerajinan/industri non pertanian",
+          field: "up2",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "jasa swasta",
+          field: "up3",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "perdagangan",
+          field: "up4",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "usaha lainnya",
+          field: "up5",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pertanian, peternakan, kehutanan, perikanan",
+          field: "up6",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pertambangan dan penggalian",
+          field: "up7",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "industri pengolahan",
+          field: "up8",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "listrik, gas dan air",
+          field: "up9",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "bangunan",
+          field: "up10",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "perdagangan, hotel dan restoran",
+          field: "up11",
+          sortable: true,
+          filterable: true,
+          width: "300px",
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "bahan baku",
+          field: "bahan_baku",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "tenaga kerja L (2016)",
+          field: "tk1_l",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "tenaga kerja P (2016)",
+          field: "tk1_p",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "tenaga kerja L (2017)",
+          field: "tk2_l",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "tenaga kerja P (2017)",
+          field: "tk2_p",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "kapasitas produksi/bulan(2016)",
+          field: "kp1",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "kapasitas produksi/bulan(2017)",
+          field: "kp2",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "omset /tahun (2016)",
+          field: "omset1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "omset /tahun (2017)",
+          field: "omset2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "modal sendiri (2016)",
+          field: "ms1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "modal sendiri (2017)",
+          field: "ms2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "bantuan pemerintah (2016)",
+          field: "bp1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "bantuan pemerintah (2017)",
+          field: "bp2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman koperasi (2016)",
+          field: "pk1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman koperasi (2017)",
+          field: "pk2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman perorangan (2016)",
+          field: "pp1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman perorangan (2017)",
+          field: "pp2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman bank (2016)",
+          field: "pb1",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "pinjaman bank (2017)",
+          field: "pb2",
+          type: "number",
+          sortable: true,
+          width: "300px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            trigger: "enter",
+          },
+        },
+        {
+          label: "kriteria",
+          field: "kriteria",
+          sortable: true,
+          width: "150px",
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: "Filter",
+            filterDropdownItems: ["Usaha Mikro", "Undefined", "Usaha Kecil", "Usaha Menengah"],
+            trigger: "keyup",
+          },
+        },
+      ],
+      rows: [],
+      totalRecords: 0,
+      serverParams: {
+        columnFilters: {},
+        sort: {
+          field: "",
+          type: "desc",
+        },
+        page: 1,
+        perPage: 15,
+      },
+    };
+  },
+
+  mounted() {
+    this.isLoggedIn = localStorage.getItem("isLoggedIn");
+    this.desa_id = localStorage.getItem("desa_id");
+    this.getRecords();
+  },
+
+  methods: {
+    goToAddData() {
+      this.$router.push({
+        name: "add-page",
+        params: {
+          id: this.desa_id,
+        },
+      });
+    },
+    exportExcel() {
+      this.unduhData = true;
+      this.loading = true;
+      axios
+        .get("/api/export-umkm-desa/" + this.desa_id, {
+          responseType: "blob",
+        })
+        .then((response) => {
+          this.unduhData = false;
+          this.loading = false;
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "umkm-desa-" + this.desa_id + ".xlsx");
+          document.body.appendChild(link);
+          link.click();
+          console.log(response.data);
+          console.log("success download excel");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    updateParams(newProps) {
+      this.serverParams = Object.assign({}, this.serverParams, newProps);
+    },
+    onPageChange(params) {
+      this.updateParams({ page: params.currentPage });
+      this.getRecords();
+    },
+    onPerPageChange(params) {
+      this.updateParams({ perPage: params.currentPerPage });
+      this.getRecords();
+    },
+    onSortChange(params) {
+      this.updateParams({
+        sort: [
+          {
+            field: params[0].field,
+            type: params[0].type,
+          },
+        ],
+      });
+      this.getRecords();
+    },
+    onColumnFilter(params) {
+      // this.$set(this.columns[foundIndex].filterOptions, 'filterValue', value);
+      this.updateParams(params);
+      this.getRecords();
+    },
+    getRecords() {
+      axios
+        .get("/api/ukms/" + this.desa_id, { params: this.serverParams })
+        .then((response) => {
+          this.loading = false;
+          this.namaDesa = response.data.data[0].desa;
+          this.totalRecords = response.data.total;
+          this.rows = response.data.data;
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    // dateFormat(date) {
+    //     return moment(new Date(date)).format('DD/MM/YYYY');
+    // },
+  },
+};
+</script>
+
+<style scoped></style>
