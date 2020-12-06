@@ -59,7 +59,8 @@
                 </div>
                 <template slot="table-row" slot-scope="props">
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-4 py-0 text-white font-semibold mx-2" @click="editData(props.row.id)">Edit</button>
+                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="editData(props.row.id)">Edit</button>
+                    <button class="bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1" @click="deleteData(props.row.id)">Hapus</button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}
@@ -93,6 +94,7 @@ export default {
           label: "Action",
           field: "action",
           sortable: false,
+          width: "130px",
         },
         {
           label: "nama_usaha",
@@ -635,6 +637,12 @@ export default {
             trigger: "keyup",
           },
         },
+        {
+          label: "Action",
+          field: "action",
+          sortable: false,
+          width: "130px",
+        },
       ],
       rows: [],
       totalRecords: 0,
@@ -663,6 +671,33 @@ export default {
         params: {
           id: param,
         },
+      });
+    },
+    deleteData(param) {
+      //alert(param);
+      this.$swal({
+        title: "Anda Yakin?",
+        text: "Data yang dihapus tidak bisa dikembalikan lagi!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, hapus ini!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post("/api/delete-umkm-desa/" + param)
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          this.$swal("Success!", "Data berhasil dihapus.", "success");
+          this.getRecords();
+        } else if (result.isDismissed) {
+          this.$swal("Canceled!", "Request Dibatalkan!", "info");
+        }
       });
     },
     goToAddData() {

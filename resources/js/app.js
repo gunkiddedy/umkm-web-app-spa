@@ -12,6 +12,10 @@ import 'vue-good-table/dist/vue-good-table.css'
 Vue.use(VueGoodTable);
 Vue.use(VueGoodTablePlugin);
 
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+Vue.use(VueSweetalert2);
+
 const router = new VueRouter(routes);
 
 Vue.component('app-component', require('./components/App.vue').default);
