@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Ukm;
 use Illuminate\Http\Request;
 use App\Exports\UmkmDesaExport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UmkmDesaController extends Controller
@@ -24,6 +25,22 @@ class UmkmDesaController extends Controller
         //             ->orWhere([['nik', 'LIKE', '%' . $request->q . '%'],['dfdesa_id', $id]]);
         // })->paginate($request->per_page); //KEMUDIAN LOAD PAGINATIONNYA BERDASARKAN LOAD PER_PAGE YANG DIINGINKAN OLEH USER
         // return response()->json(['status' => 'success', 'data' => $umkms]);
+    }
+
+    public function getDataKecamatanDesa(Request $request, $id)
+    {
+        // $kecDesa = Ukm::where('dfdesa_id', $id)->orderBy('id', 'desc')->paginate();
+
+        $data = DB::table('ukms')
+                     ->select(DB::raw('count(*) as jumlah_umkm, desa, dfdesa_id'))
+                     ->where('dfkecamatan_id', '=', $id)
+                     ->groupBy('dfdesa_id')
+                     ->paginate();
+        
+        $kecamatan = DB::table('dfkecamatan')->where('dfkecamatan_id', $id)->get();
+        
+        return response()->json(['data' => $data, 'kecamatan' => $kecamatan]);
+        // return $data->toArray();
     }
 
     public function getDataUmkmById(Request $request, $id)

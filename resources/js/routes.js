@@ -2,7 +2,7 @@ import Public from './pages/Public'
 import Desa from './pages/Desa'
 import Edit from './pages/Edit'
 import Kecamatan from './pages/Kecamatan'
-import Admin from './pages/Admin'
+import KecamatanDesa from './pages/KecamatanDesa'
 import Download from './pages/Download'
 import Login from './pages/Login'
 import InputData from './pages/InputData'
@@ -38,6 +38,12 @@ export default {
             props: true
         },
         {
+            path: '/kecamatan-desa/:id',
+            component: KecamatanDesa,
+            name: 'kecamatan-desa',
+            props: true
+        },
+        {
             path: '/input/:id',
             component: InputData,
             name: 'input',
@@ -47,11 +53,6 @@ export default {
             path: '/global',
             component: Global,
             name: 'global',
-        },
-        {
-            path: '/admin',
-            component: Admin,
-            name: 'admin',
         },
         {
             path: '/download',

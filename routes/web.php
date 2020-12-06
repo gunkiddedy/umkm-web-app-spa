@@ -10,3 +10,4 @@ Route::get('/{any}', function(){
 })->where('any', '.*');
 
 // Route::get('get-umkm-desa-by-id/{desa_id}', 'UmkmDesaController@getDataUmkmById');
+// Route::get('ukms-kecamatan/{id}', 'UmkmDesaController@getDataKecamatanDesa');

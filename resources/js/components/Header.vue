@@ -70,19 +70,15 @@
           <i class="fas fa-tachometer-alt mr-3"></i>
           Home
         </router-link>
-        <router-link :to="{ name: 'desa', params: { id: desa_id } }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link :to="{ name: 'desa', params: { id: desa_id } }" v-if="role === 'desa' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-sticky-note mr-3"></i>
           UMKM Desa
         </router-link>
-        <router-link :to="{ name: 'kecamatan', params: { id: kecamatan_id } }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link :to="{ name: 'kecamatan', params: { id: kecamatan_id } }" v-if="role === 'kecamatan' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-table mr-3"></i>
           UMKM Kecamatan
         </router-link>
-        <router-link :to="{ name: 'admin' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-          <i class="fas fa-align-left mr-3"></i>
-          Admin
-        </router-link>
-        <router-link :to="{ name: 'global' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link :to="{ name: 'global' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-tablet-alt mr-3"></i>
           Global UMKM
         </router-link>
@@ -109,15 +105,21 @@ export default {
   data() {
     return {
       isOpen: false,
+      isLoggedIn: false,
+      username: "",
       desa_id: 1,
       kecamatan_id: 18,
-      isLoggedIn: false,
+      role: "",
+      isAdmin: false,
     };
   },
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
+    this.username = localStorage.getItem("username");
     this.desa_id = localStorage.getItem("desa_id");
     this.kecamatan_id = localStorage.getItem("kecamatan_id");
+    this.role = localStorage.getItem("role");
+    this.isAdmin = localStorage.getItem("isAdmin");
   },
   methods: {
     logout() {
@@ -127,11 +129,12 @@ export default {
           this.$router.push({
             name: "login",
           });
-          localStorage.setItem("isloggedIn", "false");
+          localStorage.removeItem("isloggedIn");
           localStorage.removeItem("username");
           localStorage.removeItem("desa_id");
           localStorage.removeItem("kecamatan_id");
-          localStorage.removeItem("user_role");
+          localStorage.removeItem("role");
+          localStorage.removeItem("isAdmin");
           this.isloggedIn = "false";
         })
         .catch((err) => {
