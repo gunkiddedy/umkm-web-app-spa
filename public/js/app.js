@@ -2926,7 +2926,15 @@ __webpack_require__.r(__webpack_exports__);
     getRecords: function getRecords() {
       var _this3 = this;
 
-      axios.get("/api/ukms/" + this.id, {
+      var param;
+
+      if (this.role === "desa") {
+        param = this.desa_id;
+      } else {
+        param = this.id;
+      }
+
+      axios.get("/api/ukms/" + param, {
         params: this.serverParams
       }).then(function (response) {
         _this3.loading = false;
@@ -45217,7 +45225,14 @@ var render = function() {
                 _c(
                   "h1",
                   { staticClass: "text-lg text-gray-500 pb-1 font-semibold" },
-                  [_vm._v("Data UMKM Desa " + _vm._s(_vm.namaDesa))]
+                  [
+                    _vm._v(
+                      "Data UMKM Desa " +
+                        _vm._s(_vm.namaDesa) +
+                        " " +
+                        _vm._s(_vm.role)
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _vm.loading

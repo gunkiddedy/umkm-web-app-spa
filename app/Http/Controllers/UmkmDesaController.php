@@ -11,7 +11,7 @@ class UmkmDesaController extends Controller
 {
     public function index(Request $request, $id)
     {   
-        $ukm_desa = Ukm::where('dfdesa_id', $id)->paginate(8);
+        $ukm_desa = Ukm::where('dfdesa_id', $id)->paginate(10);
         
         return response()->json($ukm_desa);
         //ORDER BY NYA BERDASARKAN PARAMETER YANG DIKIRIM DARI VUEJS
@@ -35,7 +35,7 @@ class UmkmDesaController extends Controller
                      ->select(DB::raw('count(*) as jumlah_umkm, desa, dfdesa_id'))
                      ->where('dfkecamatan_id', '=', $id)
                      ->groupBy('dfdesa_id')
-                     ->paginate(8);
+                     ->paginate(10);
         
         $kecamatan = DB::table('dfkecamatan')->where('dfkecamatan_id', $id)->get();
         

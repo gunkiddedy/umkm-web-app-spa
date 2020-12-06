@@ -7,7 +7,7 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
-          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Data UMKM Desa {{ namaDesa }}</h1>
+          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Data UMKM Desa {{ namaDesa }} {{ role }}</h1>
           <!-- loader spin-->
           <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
             <svg class="w-12 absolute text-green-500" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
@@ -759,8 +759,14 @@ export default {
       this.getRecords();
     },
     getRecords() {
+      let param;
+      if (this.role === "desa") {
+        param = this.desa_id;
+      } else {
+        param = this.id;
+      }
       axios
-        .get("/api/ukms/" + this.id, { params: this.serverParams })
+        .get("/api/ukms/" + param, { params: this.serverParams })
         .then((response) => {
           this.loading = false;
           this.namaDesa = response.data.data[0].desa;
