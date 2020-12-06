@@ -26,6 +26,22 @@ class UmkmDesaController extends Controller
         // return response()->json(['status' => 'success', 'data' => $umkms]);
     }
 
+    public function getDataUmkmById(Request $request, $id)
+    {
+        $ukm_desa = Ukm::find($id);
+        
+        return response()->json($ukm_desa);
+    }
+
+    public function updateDataUmkmById(Request $request, $id)
+    {
+        $umkm = Ukm::find($id);
+        $umkm->nama_pemilik = $request->get('nama_pemilik');
+        $umkm->save();
+        
+        return response()->json('data successfuly updated');
+    }
+
     // public function getRecords( Request $request, $id) 
     // {
     //     $search_nama_usaha = $request->searchTerm;

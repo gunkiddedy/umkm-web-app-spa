@@ -9,6 +9,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products', 'Api\ProductController@index');
 
 Route::get('ukms/{desa_id}', 'UmkmDesaController@index');
+Route::get('get-umkm-desa-by-id/{id}', 'UmkmDesaController@getDataUmkmById');
+Route::post('update-umkm-desa/{id}', 'UmkmDesaController@updateDataUmkmById');
 Route::get('export-umkm-desa/{desa_id}', 'UmkmDesaController@export');
 
 Route::post('add-product', 'Api\ProductController@addProduct');

@@ -1932,6 +1932,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1945,6 +1947,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2297,6 +2302,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
@@ -2309,6 +2322,10 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: false,
       namaDesa: "",
       columns: [{
+        label: "Action",
+        field: "action",
+        sortable: false
+      }, {
         label: "nama_usaha",
         field: "nama_usaha",
         width: "300px",
@@ -2830,6 +2847,14 @@ __webpack_require__.r(__webpack_exports__);
     this.getRecords();
   },
   methods: {
+    editData: function editData(param) {
+      this.$router.push({
+        name: "edit",
+        params: {
+          id: param
+        }
+      });
+    },
     goToAddData: function goToAddData() {
       this.$router.push({
         name: "add-page",
@@ -2943,6 +2968,412 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Edit.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Edit.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["id"],
+  data: function data() {
+    return {
+      desa_id: "",
+      loading: true,
+      isUpdating: false,
+      nama_usaha: "",
+      kelembagaan: "",
+      nama_pemilik: "",
+      nik: "",
+      jenis_kelamin: "",
+      siu: "",
+      npwp: "",
+      tmu: "",
+      alamat: "",
+      desa: "",
+      tlp: "",
+      email: "",
+      up1: "",
+      up2: "",
+      up3: "",
+      up4: "",
+      up5: "",
+      up6: "",
+      up7: "",
+      up8: "",
+      up9: "",
+      up10: "",
+      up11: "",
+      bahan_baku: "",
+      tk1_l: "",
+      tk1_p: "",
+      tk2_l: "",
+      tk2_p: "",
+      kp1: "",
+      kp2: "",
+      omset1: "",
+      omset2: "",
+      ms1: "",
+      ms2: "",
+      bp1: "",
+      bp2: "",
+      pk1: "",
+      pk2: "",
+      pp1: "",
+      pp2: "",
+      pb1: "",
+      pb2: ""
+    };
+  },
+  created: function created() {
+    this.getDataDesaById(this.id);
+  },
+  mounted: function mounted() {
+    this.desa_id = localStorage.getItem("desa_id");
+  },
+  methods: {
+    getDataDesaById: function getDataDesaById(param) {
+      var _this = this;
+
+      axios.get("/api/get-umkm-desa-by-id/" + param).then(function (response) {
+        _this.loading = false;
+        _this.nama_usaha = response.data.nama_usaha;
+        _this.kelembagaan = response.data.kelembagaan;
+        _this.nama_pemilik = response.data.nama_pemilik;
+        _this.nik = response.data.nik;
+        _this.jenis_kelamin = response.data.jenis_kelamin;
+        _this.siu = response.data.siu;
+        _this.npwp = response.data.npwp;
+        _this.tmu = response.data.tmu;
+        _this.alamat = response.data.alamat;
+        _this.desa = response.data.desa;
+        _this.tlp = response.data.tlp;
+        _this.email = response.data.email;
+        _this.up1 = response.data.up1;
+        _this.up2 = response.data.up2;
+        _this.up3 = response.data.up3;
+        _this.up4 = response.data.up4;
+        _this.up5 = response.data.up5;
+        _this.up6 = response.data.up6;
+        _this.up7 = response.data.up7;
+        _this.up8 = response.data.up8;
+        _this.up9 = response.data.up9;
+        _this.up10 = response.data.up10;
+        _this.up11 = response.data.up11;
+        _this.bahan_baku = response.data.bahan_baku;
+        _this.tk1_l = response.data.tk1_l;
+        _this.tk1_p = response.data.tk1_p;
+        _this.tk2_l = response.data.tk2_l;
+        _this.tk2_p = response.data.tk2_p;
+        _this.kp1 = response.data.kp1;
+        _this.kp2 = response.data.kp2;
+        _this.omset1 = response.data.omset1;
+        _this.omset2 = response.data.omset2;
+        _this.ms1 = response.data.ms1;
+        _this.ms2 = response.data.ms2;
+        _this.bp1 = response.data.bp1;
+        _this.bp2 = response.data.bp2;
+        _this.pk1 = response.data.pk1;
+        _this.pk2 = response.data.pk2;
+        _this.pp1 = response.data.pp1;
+        _this.pp2 = response.data.pp2;
+        _this.pb1 = response.data.pb1;
+        _this.pb2 = response.data.pb2; //console.log(response.data);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    updateDataUmkmById: function updateDataUmkmById(param) {
+      var _this2 = this;
+
+      this.isUpdating = true;
+      axios.post("/api/update-umkm-desa/" + param, {
+        nama_pemilik: this.nama_pemilik //nama_usaha: this.nama_usaha,
+        //kelembagaan: this.kelembagaan,
+        //nik: this.nik,
+        //jenis_kelamin: this.jenis_kelamin,
+        //siu: this.siu,
+        //npwp: this.npwp,
+        //tmu: this.tmu,
+        //alamat: this.alamat,
+        //desa: this.desa,
+        //tlp: this.tlp,
+        //email: this.email,
+        //up1: this.up1,
+        //up2: this.up2,
+        //up3: this.up3,
+        //up4: this.up4,
+        //up5: this.up5,
+        //up6: this.up6,
+        //up7: this.up7,
+        //up8: this.up8,
+        //up9: this.up9,
+        //up10: this.up10,
+        //up11: this.up11,
+        //bahan_baku: this.bahan_baku,
+        //tk1_l: this.tk1_l,
+        //tk1_p: this.tk1_p,
+        //tk2_l: this.tk2_l,
+        //tk2_p: this.tk2_p,
+        //kp1: this.kp1,
+        //kp2: this.kp2,
+        //omset1: this.omset1,
+        //omset2: this.omset2,
+        //ms1: this.ms1,
+        //ms2: this.ms2,
+        //bp1: this.bp1,
+        //bp2: this.bp2,
+        //pk1: this.pk1,
+        //pk2: this.pk2,
+        //pp1: this.pp1,
+        //pp2: this.pp2,
+        //pb1: this.pb1,
+        //pb2: this.pb2,
+
+      }).then(function (response) {
+        _this2.isUpdating = false;
+
+        _this2.$router.go(-1); //this.$router.push({
+        //name: "desa",
+        //params: {
+        //id: this.desa_id,
+        //},
+        //});
+
+
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -3335,7 +3766,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".router-link-active[data-v-81fbb27e],\r\n.router-link-exact-active[data-v-81fbb27e] {\n  background-color: #1947ee;\n  color: #e2e8f0;\n  cursor: pointer;\n  border-radius: 0.5rem;\n}\r\n", ""]);
+exports.push([module.i, ".router-link-active[data-v-81fbb27e],\r\n.router-link-exact-active[data-v-81fbb27e] {\n  background-color: #1947ee;\n  color: #ffffff;\n  cursor: pointer;\n  /*border-radius: 0.5rem;*/\n}\r\n", ""]);
 
 // exports
 
@@ -36922,19 +37353,19 @@ var staticRenderFns = [
       _c(
         "footer",
         {
-          staticClass: "w-full bg-white border-t border-gray-200 text-right p-4"
+          staticClass:
+            "w-full bg-white border-t border-gray-200 text-right py-4 px-6"
         },
         [
-          _vm._v("Built by "),
           _c(
             "a",
             {
-              staticClass: "underline",
-              attrs: { target: "_blank", href: "https://davidgrzyb.com" }
+              staticClass:
+                "underline text-xs text-gray-400 hover:text-gray-500",
+              attrs: { href: "#" }
             },
             [_vm._v("UMKM GUNUNGKIDUL 2020")]
-          ),
-          _vm._v(".")
+          )
         ]
       )
     ])
@@ -36980,80 +37411,8 @@ var render = function() {
           [
             _c(
               "button",
-              {
-                staticClass:
-                  "realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none",
-                on: {
-                  click: function($event) {
-                    _vm.isOpen = !_vm.isOpen
-                  }
-                }
-              },
-              [_c("img", { attrs: { src: "/img/cantik.jpg" } })]
-            ),
-            _vm._v(" "),
-            _c("button", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isOpen,
-                  expression: "isOpen"
-                }
-              ],
-              staticClass: "h-full w-full fixed inset-0 cursor-default",
-              on: {
-                click: function($event) {
-                  _vm.isOpen = false
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.isOpen,
-                    expression: "isOpen"
-                  }
-                ],
-                staticClass:
-                  "z-10 absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16"
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "block px-4 py-2 account-link hover:text-white",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Account")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "block px-4 py-2 account-link hover:text-white",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Support")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "block px-4 py-2 account-link hover:text-white",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Sign Out")]
-                )
-              ]
+              { staticClass: "realtive", on: { click: _vm.logout } },
+              [_c("i", { staticClass: "fas fa-sign-out-alt mr-3" })]
             )
           ]
         )
@@ -37704,7 +38063,45 @@ var render = function() {
                             "update:is-loading": function($event) {
                               _vm.isLoading = $event
                             }
-                          }
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "table-row",
+                              fn: function(props) {
+                                return [
+                                  props.column.field == "action"
+                                    ? _c("span", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-4 py-0 text-white font-semibold mx-2",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editData(
+                                                  props.row.id
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        )
+                                      ])
+                                    : _c("span", [
+                                        _vm._v(
+                                          "\n                  " +
+                                            _vm._s(
+                                              props.formattedRow[
+                                                props.column.field
+                                              ]
+                                            ) +
+                                            "\n                "
+                                        )
+                                      ])
+                                ]
+                              }
+                            }
+                          ])
                         },
                         [
                           _c(
@@ -37790,6 +38187,1874 @@ var render = function() {
             [
               _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
                 _vm._v("\n        GLobal\n      ")
+              ]),
+              _vm._v(" "),
+              _c("footer-component")
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "bg-gray-100 font-family-karla flex" },
+    [
+      _c("sidebar-component"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "relative w-full flex flex-col h-screen overflow-y-hidden"
+        },
+        [
+          _c("header-component"),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full h-screen overflow-x-hidden border-t flex flex-col"
+            },
+            [
+              _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
+                _vm.loading
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "z-30 flex justify-around relative opacity-75 bg-black inset-0"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "w-12 absolute text-blue-500",
+                            attrs: {
+                              viewBox: "0 0 120 30",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              fill: "currentColor"
+                            }
+                          },
+                          [
+                            _c(
+                              "circle",
+                              { attrs: { cx: "15", cy: "15", r: "15" } },
+                              [
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "r",
+                                    from: "15",
+                                    to: "15",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: "15;9;15",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "fill-opacity",
+                                    from: "1",
+                                    to: "1",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: "1;.5;1",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "circle",
+                              {
+                                attrs: {
+                                  cx: "60",
+                                  cy: "15",
+                                  r: "9",
+                                  "fill-opacity": "0.3"
+                                }
+                              },
+                              [
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "r",
+                                    from: "9",
+                                    to: "9",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: "9;15;9",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "fill-opacity",
+                                    from: "0.5",
+                                    to: "0.5",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: ".5;1;.5",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "circle",
+                              { attrs: { cx: "105", cy: "15", r: "15" } },
+                              [
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "r",
+                                    from: "15",
+                                    to: "15",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: "15;9;15",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("animate", {
+                                  attrs: {
+                                    attributeName: "fill-opacity",
+                                    from: "1",
+                                    to: "1",
+                                    begin: "0s",
+                                    dur: "0.8s",
+                                    values: "1;.5;1",
+                                    calcMode: "linear",
+                                    repeatCount: "indefinite"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "h1",
+                  { staticClass: "text-lg text-gray-500 pb-1 font-semibold" },
+                  [_vm._v("Edit Data")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-full mt-6 pl-0 lg:pl-2" }, [
+                  _c("div", { staticClass: "leading-loose" }, [
+                    _c(
+                      "div",
+                      { staticClass: "p-10 bg-white rounded shadow-xl" },
+                      [
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "text-lg text-gray-800 font-medium pb-4"
+                          },
+                          [_vm._v("Nama Usaha " + _vm._s(_vm.nama_usaha))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "grid grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2"
+                          },
+                          [
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("nama usaha")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.nama_usaha,
+                                    expression: "nama_usaha"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.nama_usaha },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.nama_usaha = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("kelembagaan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.kelembagaan,
+                                    expression: "kelembagaan"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.kelembagaan },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.kelembagaan = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("nama_pemilik")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.nama_pemilik,
+                                    expression: "nama_pemilik"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.nama_pemilik },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.nama_pemilik = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("nik")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.nik,
+                                    expression: "nik"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.nik },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.nik = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("jenis_kelamin")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.jenis_kelamin,
+                                    expression: "jenis_kelamin"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.jenis_kelamin },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.jenis_kelamin = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("siu")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.siu,
+                                    expression: "siu"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.siu },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.siu = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("npwp")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.npwp,
+                                    expression: "npwp"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.npwp },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.npwp = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("tmu")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tmu,
+                                    expression: "tmu"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.tmu },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tmu = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("alamat")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.alamat,
+                                    expression: "alamat"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.alamat },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.alamat = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("desa")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.desa,
+                                    expression: "desa"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.desa },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.desa = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("tlp")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tlp,
+                                    expression: "tlp"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.tlp },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tlp = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("email")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.email,
+                                    expression: "email"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.email },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.email = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("makanan olahan/industri pertanian")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up1,
+                                    expression: "up1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("kerajinan/industri non pertanian")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up2,
+                                    expression: "up2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.up2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("jasa swasta")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up3,
+                                    expression: "up3"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.up3 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up3 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("perdagangan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up4,
+                                    expression: "up4"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up4 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up4 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("usaha lainnya")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up5,
+                                    expression: "up5"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.up5 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up5 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [
+                                  _vm._v(
+                                    "pertanian, peternakan, kehutanan, perikanan"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up6,
+                                    expression: "up6"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up6 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up6 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("pertambangan dan penggalian")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up7,
+                                    expression: "up7"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up7 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up7 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("industri pengolahan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up8,
+                                    expression: "up8"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up8 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up8 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("listrik, gas dan air")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up9,
+                                    expression: "up9"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up9 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up9 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("bangunan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up10,
+                                    expression: "up10"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up10 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up10 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("perdagangan, hotel dan restoran")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.up11,
+                                    expression: "up11"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.up11 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.up11 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("bahan_baku")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bahan_baku,
+                                    expression: "bahan_baku"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.bahan_baku },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.bahan_baku = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("tenaga kerja L (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tk1_l,
+                                    expression: "tk1_l"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.tk1_l },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tk1_l = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("tenaga kerja P (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tk1_p,
+                                    expression: "tk1_p"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.tk1_p },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tk1_p = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("tenaga kerja L (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tk2_l,
+                                    expression: "tk2_l"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.tk2_l },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tk2_l = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("tenaga kerja P (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.tk2_p,
+                                    expression: "tk2_p"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.tk2_p },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.tk2_p = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("kapasitas produksi/bulan(2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.kp1,
+                                    expression: "kp1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.kp1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.kp1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("kapasitas produksi/bulan(2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.kp2,
+                                    expression: "kp2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.kp2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.kp2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("omset /tahun (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.omset1,
+                                    expression: "omset1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.omset1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.omset1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("omset /tahun (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.omset2,
+                                    expression: "omset2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.omset2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.omset2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("modal sendiri (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.ms1,
+                                    expression: "ms1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.ms1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.ms1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("modal sendiri (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.ms2,
+                                    expression: "ms2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.ms2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.ms2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("bantuan pemerintah (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bp1,
+                                    expression: "bp1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.bp1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.bp1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("bantuan pemerintah (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bp2,
+                                    expression: "bp2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.bp2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.bp2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("pinjaman koperasi (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pk1,
+                                    expression: "pk1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.pk1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pk1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("pinjaman koperasi (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pk2,
+                                    expression: "pk2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.pk2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pk2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("pinjaman perorangan (2016)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pp1,
+                                    expression: "pp1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.pp1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pp1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_name" }
+                                },
+                                [_vm._v("pinjaman perorangan (2017)")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pp2,
+                                    expression: "pp2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_name",
+                                  type: "text",
+                                  "aria-label": "Name"
+                                },
+                                domProps: { value: _vm.pp2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pp2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("Pinjaman Bank 2016")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pb1,
+                                    expression: "pb1"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "Country",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.pb1 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pb1 = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "px-1 my-2" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block text-sm text-gray-600",
+                                  attrs: { for: "cus_email" }
+                                },
+                                [_vm._v("Pinjaman Bank 2017")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pb2,
+                                    expression: "pb2"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-full px-2 py-1 text-gray-700 bg-gray-200 rounded",
+                                attrs: {
+                                  id: "cus_email",
+                                  type: "text",
+                                  placeholder: "SIU",
+                                  "aria-label": "Email"
+                                },
+                                domProps: { value: _vm.pb2 },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.pb2 = $event.target.value
+                                  }
+                                }
+                              })
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mt-6" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded",
+                              on: {
+                                click: function($event) {
+                                  return _vm.updateDataUmkmById(_vm.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(
+                                    _vm.isUpdating == true
+                                      ? "Updating..."
+                                      : "Update"
+                                  ) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c("footer-component")
@@ -54410,6 +56675,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Edit.vue":
+/*!*************************************!*\
+  !*** ./resources/js/pages/Edit.vue ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=22950413&scoped=true& */ "./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/pages/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "22950413",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Edit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Edit.vue?vue&type=script&lang=js&":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/Edit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=22950413&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Edit.vue?vue&type=template&id=22950413&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_22950413_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/Global.vue":
 /*!***************************************!*\
   !*** ./resources/js/pages/Global.vue ***!
@@ -54871,13 +57205,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Public__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/Public */ "./resources/js/pages/Public.vue");
 /* harmony import */ var _pages_Desa__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Desa */ "./resources/js/pages/Desa.vue");
-/* harmony import */ var _pages_Kecamatan__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Kecamatan */ "./resources/js/pages/Kecamatan.vue");
-/* harmony import */ var _pages_Admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Admin */ "./resources/js/pages/Admin.vue");
-/* harmony import */ var _pages_Download__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Download */ "./resources/js/pages/Download.vue");
-/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Login */ "./resources/js/pages/Login.vue");
-/* harmony import */ var _pages_InputData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/InputData */ "./resources/js/pages/InputData.vue");
-/* harmony import */ var _pages_Global__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Global */ "./resources/js/pages/Global.vue");
-/* harmony import */ var _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/PageNotFound */ "./resources/js/pages/PageNotFound.vue");
+/* harmony import */ var _pages_Edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Edit */ "./resources/js/pages/Edit.vue");
+/* harmony import */ var _pages_Kecamatan__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Kecamatan */ "./resources/js/pages/Kecamatan.vue");
+/* harmony import */ var _pages_Admin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Admin */ "./resources/js/pages/Admin.vue");
+/* harmony import */ var _pages_Download__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Download */ "./resources/js/pages/Download.vue");
+/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Login */ "./resources/js/pages/Login.vue");
+/* harmony import */ var _pages_InputData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/InputData */ "./resources/js/pages/InputData.vue");
+/* harmony import */ var _pages_Global__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/Global */ "./resources/js/pages/Global.vue");
+/* harmony import */ var _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/PageNotFound */ "./resources/js/pages/PageNotFound.vue");
+
 
 
 
@@ -54900,34 +57236,39 @@ __webpack_require__.r(__webpack_exports__);
     name: 'desa',
     props: true
   }, {
+    path: '/edit/:id',
+    component: _pages_Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: 'edit',
+    props: true
+  }, {
     path: '/kecamatan/:id',
-    component: _pages_Kecamatan__WEBPACK_IMPORTED_MODULE_2__["default"],
+    component: _pages_Kecamatan__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'kecamatan',
     props: true
   }, {
     path: '/input/:id',
-    component: _pages_InputData__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _pages_InputData__WEBPACK_IMPORTED_MODULE_7__["default"],
     name: 'input',
     props: true
   }, {
     path: '/global',
-    component: _pages_Global__WEBPACK_IMPORTED_MODULE_7__["default"],
+    component: _pages_Global__WEBPACK_IMPORTED_MODULE_8__["default"],
     name: 'global'
   }, {
     path: '/admin',
-    component: _pages_Admin__WEBPACK_IMPORTED_MODULE_3__["default"],
+    component: _pages_Admin__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'admin'
   }, {
     path: '/download',
-    component: _pages_Download__WEBPACK_IMPORTED_MODULE_4__["default"],
+    component: _pages_Download__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'download'
   }, {
     path: '/login',
-    component: _pages_Login__WEBPACK_IMPORTED_MODULE_5__["default"],
+    component: _pages_Login__WEBPACK_IMPORTED_MODULE_6__["default"],
     name: 'login'
   }, {
     path: '*',
-    component: _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_8__["default"],
+    component: _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_9__["default"],
     name: 'page-not-found'
   }]
 });

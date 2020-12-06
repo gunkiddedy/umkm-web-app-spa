@@ -57,6 +57,14 @@
                 <div slot="table-actions">
                   <button @click="exportExcel" class="bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1">Download Excel</button>
                 </div>
+                <template slot="table-row" slot-scope="props">
+                  <span v-if="props.column.field == 'action'">
+                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-4 py-0 text-white font-semibold mx-2" @click="editData(props.row.id)">Edit</button>
+                  </span>
+                  <span v-else>
+                    {{ props.formattedRow[props.column.field] }}
+                  </span>
+                </template>
               </vue-good-table>
             </div>
           </div>
@@ -81,6 +89,11 @@ export default {
       isLoading: false,
       namaDesa: "",
       columns: [
+        {
+          label: "Action",
+          field: "action",
+          sortable: false,
+        },
         {
           label: "nama_usaha",
           field: "nama_usaha",
@@ -644,6 +657,14 @@ export default {
   },
 
   methods: {
+    editData(param) {
+      this.$router.push({
+        name: "edit",
+        params: {
+          id: param,
+        },
+      });
+    },
     goToAddData() {
       this.$router.push({
         name: "add-page",

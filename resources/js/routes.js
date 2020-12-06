@@ -1,5 +1,6 @@
 import Public from './pages/Public'
 import Desa from './pages/Desa'
+import Edit from './pages/Edit'
 import Kecamatan from './pages/Kecamatan'
 import Admin from './pages/Admin'
 import Download from './pages/Download'
@@ -22,6 +23,12 @@ export default {
             path: '/desa/:id',
             component: Desa,
             name: 'desa',
+            props: true
+        },
+        {
+            path: '/edit/:id',
+            component: Edit,
+            name: 'edit',
             props: true
         },
         {

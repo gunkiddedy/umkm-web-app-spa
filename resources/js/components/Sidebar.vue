@@ -87,8 +87,8 @@ export default {
 .router-link-active,
 .router-link-exact-active {
   background-color: #1947ee;
-  color: #e2e8f0;
+  color: #ffffff;
   cursor: pointer;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
 }
 </style>
