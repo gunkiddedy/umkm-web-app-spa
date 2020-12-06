@@ -34,30 +34,28 @@
                 @on-sort-change="onSortChange"
                 @on-column-filter="onColumnFilter"
                 @on-per-page-change="onPerPageChange"
-                paginate="true"
                 :lineNumbers="false"
                 :totalRows="totalRecords"
                 :isLoading.sync="isLoading"
                 :pagination-options="{
                   enabled: true,
+                  perPageDropdown: [10],
                   nextLabel: 'next',
                   prevLabel: 'prev',
                   setCurrentPage: 1,
-                  perPage: 15,
-                  perPageDropdown: [15, 30, 45, 60],
-                  dropdownAllowAll: true,
+                  perPage: 10,
+                  dropdownAllowAll: false,
                   rowsPerPageLabel: 'per halaman',
                   allLabel: 'Semua',
                   ofLabel: 'dari',
                 }"
                 :rows="rows"
                 :columns="columns"
-                max-height="300px"
               >
                 <div slot="table-actions">
-                  <button @click="exportExcel" class="bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1">Download Excel</button>
+                  <button @click="exportExcel(id)" class="bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1">Download Excel</button>
                 </div>
-                <template slot="table-row" slot-scope="props">
+                <template slot="table-row" slot-scope="props" v-if="role === 'desa' || role === 'admin'">
                   <span v-if="props.column.field == 'action'">
                     <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="editData(props.row.id)">Edit</button>
                     <button class="bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1" @click="deleteData(props.row.id)">Hapus</button>
@@ -89,6 +87,7 @@ export default {
       desa_id: "",
       isLoading: false,
       namaDesa: "",
+      role: "",
       columns: [
         {
           label: "Action",
@@ -653,7 +652,7 @@ export default {
           type: "desc",
         },
         page: 1,
-        perPage: 15,
+        perPage: 10,
       },
     };
   },
@@ -661,6 +660,7 @@ export default {
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.desa_id = localStorage.getItem("desa_id");
+    this.role = localStorage.getItem("role");
     this.getRecords();
   },
 
@@ -704,15 +704,15 @@ export default {
       this.$router.push({
         name: "add-page",
         params: {
-          id: this.desa_id,
+          id: this.id,
         },
       });
     },
-    exportExcel() {
+    exportExcel(param) {
       this.unduhData = true;
       this.loading = true;
       axios
-        .get("/api/export-umkm-desa/" + this.desa_id, {
+        .get("/api/export-umkm-desa/" + param, {
           responseType: "blob",
         })
         .then((response) => {
@@ -721,7 +721,7 @@ export default {
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", "umkm-desa-" + this.desa_id + ".xlsx");
+          link.setAttribute("download", "umkm-desa-" + param + ".xlsx");
           document.body.appendChild(link);
           link.click();
           console.log(response.data);
@@ -760,7 +760,7 @@ export default {
     },
     getRecords() {
       axios
-        .get("/api/ukms/" + this.desa_id, { params: this.serverParams })
+        .get("/api/ukms/" + this.id, { params: this.serverParams })
         .then((response) => {
           this.loading = false;
           this.namaDesa = response.data.data[0].desa;

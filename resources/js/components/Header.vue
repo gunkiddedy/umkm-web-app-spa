@@ -6,7 +6,7 @@
         <!--<button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
           <img src="/img/cantik.jpg" />
         </button>-->
-        <button @click="logout" class="realtive">
+        <button @click="logout" class="realtive w-12 h-12">
           <i class="fas fa-sign-out-alt mr-3"></i>
         </button>
         <!--<button v-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>

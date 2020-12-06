@@ -34,17 +34,17 @@
                 @on-sort-change="onSortChange"
                 @on-column-filter="onColumnFilter"
                 @on-per-page-change="onPerPageChange"
-                paginate="true"
                 :lineNumbers="false"
                 :totalRows="totalRecords"
                 :isLoading.sync="isLoading"
                 :pagination-options="{
                   enabled: true,
+                  perPageDropdown: [10],
                   nextLabel: 'next',
                   prevLabel: 'prev',
                   setCurrentPage: 1,
-                  perPage: 15,
-                  dropdownAllowAll: true,
+                  perPage: 10,
+                  dropdownAllowAll: false,
                   rowsPerPageLabel: 'per halaman',
                   allLabel: 'Semua',
                   ofLabel: 'dari',
@@ -86,6 +86,12 @@ export default {
       namaKecamatan: "",
       columns: [
         {
+          label: "Action",
+          field: "action",
+          sortable: false,
+          width: "100px",
+        },
+        {
           label: "Nama Desa",
           field: "desa",
           sortable: true,
@@ -103,12 +109,6 @@ export default {
           sortable: true,
           width: "auto",
         },
-        {
-          label: "Action",
-          field: "action",
-          sortable: false,
-          width: "100px",
-        },
       ],
       rows: [],
       totalRecords: 0,
@@ -119,7 +119,7 @@ export default {
           type: "desc",
         },
         page: 1,
-        perPage: 15,
+        perPage: 10,
       },
     };
   },
@@ -132,13 +132,13 @@ export default {
 
   methods: {
     viewData(param) {
-      alert(param);
-      //this.$router.push({
-      //name: "kecamatan-desa",
-      //params: {
-      //id: param,
-      //},
-      //});
+      //alert(param);
+      this.$router.push({
+        name: "desa",
+        params: {
+          id: param,
+        },
+      });
     },
     updateParams(newProps) {
       this.serverParams = Object.assign({}, this.serverParams, newProps);

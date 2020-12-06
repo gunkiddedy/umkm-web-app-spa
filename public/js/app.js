@@ -2283,8 +2283,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
@@ -2296,6 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
       desa_id: "",
       isLoading: false,
       namaDesa: "",
+      role: "",
       columns: [{
         label: "Action",
         field: "action",
@@ -2818,13 +2817,14 @@ __webpack_require__.r(__webpack_exports__);
           type: "desc"
         },
         page: 1,
-        perPage: 15
+        perPage: 10
       }
     };
   },
   mounted: function mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.desa_id = localStorage.getItem("desa_id");
+    this.role = localStorage.getItem("role");
     this.getRecords();
   },
   methods: {
@@ -2868,16 +2868,16 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         name: "add-page",
         params: {
-          id: this.desa_id
+          id: this.id
         }
       });
     },
-    exportExcel: function exportExcel() {
+    exportExcel: function exportExcel(param) {
       var _this2 = this;
 
       this.unduhData = true;
       this.loading = true;
-      axios.get("/api/export-umkm-desa/" + this.desa_id, {
+      axios.get("/api/export-umkm-desa/" + param, {
         responseType: "blob"
       }).then(function (response) {
         _this2.unduhData = false;
@@ -2885,7 +2885,7 @@ __webpack_require__.r(__webpack_exports__);
         var url = window.URL.createObjectURL(new Blob([response.data]));
         var link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "umkm-desa-" + _this2.desa_id + ".xlsx");
+        link.setAttribute("download", "umkm-desa-" + param + ".xlsx");
         document.body.appendChild(link);
         link.click();
         console.log(response.data);
@@ -2926,7 +2926,7 @@ __webpack_require__.r(__webpack_exports__);
     getRecords: function getRecords() {
       var _this3 = this;
 
-      axios.get("/api/ukms/" + this.desa_id, {
+      axios.get("/api/ukms/" + this.id, {
         params: this.serverParams
       }).then(function (response) {
         _this3.loading = false;
@@ -3557,6 +3557,11 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: false,
       namaKecamatan: "",
       columns: [{
+        label: "Action",
+        field: "action",
+        sortable: false,
+        width: "100px"
+      }, {
         label: "Nama Desa",
         field: "desa",
         sortable: true,
@@ -3572,11 +3577,6 @@ __webpack_require__.r(__webpack_exports__);
         field: "jumlah_umkm",
         sortable: true,
         width: "auto"
-      }, {
-        label: "Action",
-        field: "action",
-        sortable: false,
-        width: "100px"
       }],
       rows: [],
       totalRecords: 0,
@@ -3587,7 +3587,7 @@ __webpack_require__.r(__webpack_exports__);
           type: "desc"
         },
         page: 1,
-        perPage: 15
+        perPage: 10
       }
     };
   },
@@ -3598,12 +3598,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     viewData: function viewData(param) {
-      alert(param); //this.$router.push({
-      //name: "kecamatan-desa",
-      //params: {
-      //id: param,
-      //},
-      //});
+      //alert(param);
+      this.$router.push({
+        name: "desa",
+        params: {
+          id: param
+        }
+      });
     },
     updateParams: function updateParams(newProps) {
       this.serverParams = Object.assign({}, this.serverParams, newProps);
@@ -44801,7 +44802,7 @@ var render = function() {
           [
             _c(
               "button",
-              { staticClass: "realtive", on: { click: _vm.logout } },
+              { staticClass: "realtive w-12 h-12", on: { click: _vm.logout } },
               [_c("i", { staticClass: "fas fa-sign-out-alt mr-3" })]
             )
           ]
@@ -45356,25 +45357,23 @@ var render = function() {
                         {
                           attrs: {
                             mode: "pages",
-                            paginate: "true",
                             lineNumbers: false,
                             totalRows: _vm.totalRecords,
                             isLoading: _vm.isLoading,
                             "pagination-options": {
                               enabled: true,
+                              perPageDropdown: [10],
                               nextLabel: "next",
                               prevLabel: "prev",
                               setCurrentPage: 1,
-                              perPage: 15,
-                              perPageDropdown: [15, 30, 45, 60],
-                              dropdownAllowAll: true,
+                              perPage: 10,
+                              dropdownAllowAll: false,
                               rowsPerPageLabel: "per halaman",
                               allLabel: "Semua",
                               ofLabel: "dari"
                             },
                             rows: _vm.rows,
-                            columns: _vm.columns,
-                            "max-height": "300px"
+                            columns: _vm.columns
                           },
                           on: {
                             "on-page-change": _vm.onPageChange,
@@ -45388,60 +45387,67 @@ var render = function() {
                               _vm.isLoading = $event
                             }
                           },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "table-row",
-                              fn: function(props) {
-                                return [
-                                  props.column.field == "action"
-                                    ? _c("span", [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.editData(
-                                                  props.row.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Edit")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.deleteData(
-                                                  props.row.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Hapus")]
-                                        )
-                                      ])
-                                    : _c("span", [
-                                        _vm._v(
-                                          "\n                  " +
-                                            _vm._s(
-                                              props.formattedRow[
-                                                props.column.field
-                                              ]
-                                            ) +
-                                            "\n                "
-                                        )
-                                      ])
-                                ]
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "table-row",
+                                fn: function(props) {
+                                  return _vm.role === "desa" ||
+                                    _vm.role === "admin"
+                                    ? [
+                                        props.column.field == "action"
+                                          ? _c("span", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.editData(
+                                                        props.row.id
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Edit")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.deleteData(
+                                                        props.row.id
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Hapus")]
+                                              )
+                                            ])
+                                          : _c("span", [
+                                              _vm._v(
+                                                "\n                  " +
+                                                  _vm._s(
+                                                    props.formattedRow[
+                                                      props.column.field
+                                                    ]
+                                                  ) +
+                                                  "\n                "
+                                              )
+                                            ])
+                                      ]
+                                    : undefined
+                                }
                               }
-                            }
-                          ])
+                            ],
+                            null,
+                            true
+                          )
                         },
                         [
                           _c(
@@ -45456,7 +45462,11 @@ var render = function() {
                                 {
                                   staticClass:
                                     "bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1",
-                                  on: { click: _vm.exportExcel }
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.exportExcel(_vm.id)
+                                    }
+                                  }
                                 },
                                 [_vm._v("Download Excel")]
                               )
@@ -47712,17 +47722,17 @@ var render = function() {
                       _c("vue-good-table", {
                         attrs: {
                           mode: "pages",
-                          paginate: "true",
                           lineNumbers: false,
                           totalRows: _vm.totalRecords,
                           isLoading: _vm.isLoading,
                           "pagination-options": {
                             enabled: true,
+                            perPageDropdown: [10],
                             nextLabel: "next",
                             prevLabel: "prev",
                             setCurrentPage: 1,
-                            perPage: 15,
-                            dropdownAllowAll: true,
+                            perPage: 10,
+                            dropdownAllowAll: false,
                             rowsPerPageLabel: "per halaman",
                             allLabel: "Semua",
                             ofLabel: "dari"
