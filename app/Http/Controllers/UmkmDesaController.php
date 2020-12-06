@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UmkmDesaController extends Controller
 {
-    public function index(Request $request, $id)
+    public function getUmkmDesa(Request $request, $id)
     {   
         $ukm_desa = Ukm::where('dfdesa_id', $id)->paginate(10);
         
@@ -41,6 +41,16 @@ class UmkmDesaController extends Controller
         
         return response()->json(['data' => $data, 'kecamatan' => $kecamatan]);
         // return $data->toArray();
+    }
+
+    public function getDataKecamatan()
+    {
+        $kcmtn = DB::select('SELECT ukms.dfkecamatan_id,dfkecamatan.dfkecamatan_nama 
+            AS nama_kecamatan ,COUNT(*) AS jumlah_umkm FROM ukms 
+            JOIN dfkecamatan ON dfkecamatan.dfkecamatan_id=ukms.dfkecamatan_id
+            GROUP BY ukms.dfkecamatan_id');
+
+        return response()->json(['data' => $kcmtn]);
     }
 
     public function getDataUmkmById(Request $request, $id)

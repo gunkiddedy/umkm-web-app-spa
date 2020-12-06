@@ -112,7 +112,7 @@ export default {
           } else if (response.data.user.role === "admin") {
             localStorage.setItem("isAdmin", "true");
             this.$router.push({
-              name: "admin",
+              name: "global",
             });
           }
           this.isLoging = false;

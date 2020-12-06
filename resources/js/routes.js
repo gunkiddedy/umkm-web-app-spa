@@ -2,7 +2,6 @@ import Public from './pages/Public'
 import Desa from './pages/Desa'
 import Edit from './pages/Edit'
 import Kecamatan from './pages/Kecamatan'
-import KecamatanDesa from './pages/KecamatanDesa'
 import Download from './pages/Download'
 import Login from './pages/Login'
 import InputData from './pages/InputData'
@@ -35,12 +34,6 @@ export default {
             path: '/kecamatan/:id',
             component: Kecamatan,
             name: 'kecamatan',
-            props: true
-        },
-        {
-            path: '/kecamatan-desa/:id',
-            component: KecamatanDesa,
-            name: 'kecamatan-desa',
             props: true
         },
         {

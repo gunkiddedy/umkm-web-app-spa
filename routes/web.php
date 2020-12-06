@@ -11,3 +11,4 @@ Route::get('/{any}', function(){
 
 // Route::get('get-umkm-desa-by-id/{desa_id}', 'UmkmDesaController@getDataUmkmById');
 // Route::get('ukms-kecamatan/{id}', 'UmkmDesaController@getDataKecamatanDesa');
+// Route::get('kecamatans', 'UmkmDesaController@getDataKecamatan');

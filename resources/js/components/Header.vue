@@ -21,7 +21,7 @@
     <!-- Mobile Header & Nav -->
     <header :data="isOpen" class="w-full bg-sidebar py-5 px-6 sm:hidden">
       <div class="flex items-center justify-between">
-        <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">UMKM GK</a>
+        <a href="/public" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">UMKM GK</a>
         <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
           <i v-show="!isOpen" class="fas fa-bars"></i>
           <i v-show="isOpen" class="fas fa-times"></i>
@@ -66,21 +66,21 @@
           <i class="fas fa-sign-out-alt mr-3"></i>
           Sign Out
         </a>-->
-        <router-link :to="{ name: 'public' }" class="flex items-center text-white py-4 pl-6 nav-item">
+        <!--<router-link :to="{ name: 'public' }" class="flex items-center text-white py-4 pl-6 nav-item">
           <i class="fas fa-tachometer-alt mr-3"></i>
           Home
-        </router-link>
+        </router-link>-->
         <router-link :to="{ name: 'desa', params: { id: desa_id } }" v-if="role === 'desa' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-sticky-note mr-3"></i>
-          UMKM Desa
+          Home
         </router-link>
         <router-link :to="{ name: 'kecamatan', params: { id: kecamatan_id } }" v-if="role === 'kecamatan' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-table mr-3"></i>
-          UMKM Kecamatan
+          Home
         </router-link>
         <router-link :to="{ name: 'global' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-tablet-alt mr-3"></i>
-          Global UMKM
+          Home
         </router-link>
         <router-link :to="{ name: 'download' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
           <i class="fas fa-calendar mr-3"></i>

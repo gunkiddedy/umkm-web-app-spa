@@ -82,6 +82,7 @@ export default {
       unduhData: false,
       isLoggedIn: "false",
       kecamatan_id: "",
+      role: "",
       isLoading: false,
       namaKecamatan: "",
       columns: [
@@ -106,7 +107,7 @@ export default {
         {
           label: "Jumlah UMKM",
           field: "jumlah_umkm",
-          sortable: true,
+          sortable: false,
           width: "auto",
         },
       ],
@@ -127,6 +128,7 @@ export default {
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.kecamatan_id = localStorage.getItem("kecamatan_id");
+    this.role = localStorage.getItem("role");
     this.getRecords();
   },
 
@@ -168,8 +170,16 @@ export default {
       this.getRecords();
     },
     getRecords() {
+      let param;
+      if (this.role === "kecamatan") {
+        param = this.kecamatan_id;
+      } else if (this.role === "admin") {
+        param = this.id;
+      } else {
+        param = this.role;
+      }
       axios
-        .get("/api/ukms-kecamatan/" + this.kecamatan_id, { params: this.serverParams })
+        .get("/api/ukms-kecamatan/" + param, { params: this.serverParams })
         .then((response) => {
           this.loading = false;
           this.namaKecamatan = response.data.kecamatan[0].dfkecamatan_nama;
