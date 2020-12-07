@@ -8,7 +8,7 @@
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
           <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">UMKM Desa {{ namaDesa }}</h1>
-          <button class="bg-gray-500 px-3 py-1 text-white text-xs rounded-full" v-if="role === 'admin'" @click="$router.go(-1)"><i class="fas fa-arrow-circle-left mr-3"></i> Back</button>
+          <button class="bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full" v-if="role === 'admin'" @click="$router.go(-1)"><i class="fas fa-arrow-circle-left mr-3"></i> Back</button>
           <!-- loader spin-->
           <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
             <loader />
@@ -41,7 +41,7 @@
                 :columns="columns"
               >
                 <div slot="table-actions">
-                  <button @click="exportExcel(id)" class="bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1">Download Excel</button>
+                  <button @click="exportExcel(id)" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2"><i class="fas fa-arrow-circle-down mr-3"></i>Download</button>
                 </div>
                 <template slot="table-row" slot-scope="props" v-if="role === 'desa' || role === 'admin'">
                   <span v-if="props.column.field == 'action'">
@@ -56,7 +56,7 @@
             </div>
           </div>
         </main>
-
+        <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <footer-component></footer-component>
       </div>
     </div>
@@ -684,7 +684,7 @@ export default {
           this.$swal("Success!", "Data berhasil dihapus.", "success");
           this.getRecords();
         } else if (result.isDismissed) {
-          this.$swal("Canceled!", "Request Dibatalkan!", "info");
+          this.$swal("Canceled!", "Proses Dibatalkan!", "info");
         }
       });
     },

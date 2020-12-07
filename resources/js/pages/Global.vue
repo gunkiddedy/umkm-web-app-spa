@@ -51,7 +51,7 @@
             </div>
           </div>
         </main>
-
+        <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <footer-component></footer-component>
       </div>
     </div>

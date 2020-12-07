@@ -13,7 +13,7 @@ class AdminExport implements FromView,WithStyles
     public function view(): View
     {
         return view('exports.admin-export', [
-            'data' => Ukm::limit(10)->get();
+            'data' => Ukm::limit(10)->get()
         ]);
     }
 

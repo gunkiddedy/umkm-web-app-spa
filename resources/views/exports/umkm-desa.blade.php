@@ -1,4 +1,4 @@
-<table style="border:1px dashed #cccc">
+<table style="border:1px dashed black" border="1" width="100%">
     <thead class="header">
         <tr>
             <th colspan="45" class="judul">DATA UMKM KABUPATEN GUNUNGKIDUL</th>
@@ -14,15 +14,15 @@
             <td>Usaha Mikro</td>
         </tr>
         <tr>
-            <th rowspan="4" style="border: black 1px solid">No.</th>
-            <th rowspan="4" style="border: black 1px solid">Nama Usaha.</th>
-            <th rowspan="4" style="border: black 1px solid">Kelembagaan</th>
-            <th rowspan="4" style="border: black 1px solid">Nama Pemilik</th>
-            <th rowspan="4" style="border: black 1px solid">NIK</th>
-            <th rowspan="4" style="border: black 1px solid">Jenis Kelamin</th>
-            <th rowspan="4" style="border: black 1px solid">Disabilitas</th>
-            <th rowspan="4" style="border: black 1px solid">SIU</th>
-            <th rowspan="4" style="border: black 1px solid">NPWP</th>
+            <th rowspan="4">No.</th>
+            <th rowspan="4">Nama Usaha.</th>
+            <th rowspan="4">Kelembagaan</th>
+            <th rowspan="4">Nama Pemilik</th>
+            <th rowspan="4">NIK</th>
+            <th rowspan="4">Jenis Kelamin</th>
+            <th rowspan="4">Disabilitas</th>
+            <th rowspan="4">SIU</th>
+            <th rowspan="4">NPWP</th>
 
             <th rowspan="4">Tahun Usaha</th>
 
@@ -94,14 +94,14 @@
 
         </tr>
     </thead>
-    <tbody style="align-items: center;justify-items: center;">
+    <tbody>
         {{ $no = 1 }}
         @foreach ($umkms as $umkm)
         <tr>
-            <td>{{ $no }}</td>
-            <td>{{ $umkm->nama_usaha }}</td>
-            <td>{{ $umkm->kelembagaan }}</td>
-            <td>{{ $umkm->nama_pemilik }}</td>
+            <td style="border: 1px dashed #000">{{ $no }}</td>
+            <td style="border: 1px dashed #000">{{ $umkm->nama_usaha }}</td>
+            <td style="border: 1px dashed #000">{{ $umkm->kelembagaan }}</td>
+            <td style="border: 1px dashed #000">{{ $umkm->nama_pemilik }}</td>
             <td>{{ $umkm->nik }}</td>
             <td>{{ $umkm->jenis_kelamin }}</td>
             <td>{{ $umkm->disabilitas }}</td>
@@ -146,7 +146,7 @@
         </tr>
         {{ $no++ }}
         @endforeach
-        <tr class="jumlah" style="background-color: #f2f2f2;">
+        <tr class="jumlah" style="background-color: #df1313;">
             <td></td>
             <td>JUMLAH</td>
             <td></td>

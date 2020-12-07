@@ -2925,7 +2925,7 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.getRecords();
         } else if (result.isDismissed) {
-          _this.$swal("Canceled!", "Request Dibatalkan!", "info");
+          _this.$swal("Canceled!", "Proses Dibatalkan!", "info");
         }
       });
     },
@@ -45811,7 +45811,7 @@ var render = function() {
                       "button",
                       {
                         staticClass:
-                          "bg-gray-500 px-3 py-1 text-white text-xs rounded-full",
+                          "bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full",
                         on: {
                           click: function($event) {
                             return _vm.$router.go(-1)
@@ -45965,14 +45965,19 @@ var render = function() {
                                 "button",
                                 {
                                   staticClass:
-                                    "bg-gray-300 border border-gray-400 hover:bg-gray-400 px-4 py-1 text-gray-100 font-semibold mr-1",
+                                    "bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2",
                                   on: {
                                     click: function($event) {
                                       return _vm.exportExcel(_vm.id)
                                     }
                                   }
                                 },
-                                [_vm._v("Download Excel")]
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-arrow-circle-down mr-3"
+                                  }),
+                                  _vm._v("Download")
+                                ]
                               )
                             ]
                           )
@@ -45983,6 +45988,12 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _vm.loading
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
               _vm._v(" "),
               _c("footer-component")
             ],
@@ -48353,6 +48364,12 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _vm.loading
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
+              _vm._v(" "),
               _c("footer-component")
             ],
             1
@@ -48518,6 +48535,12 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _vm.loading
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
+              _vm._v(" "),
               _c("footer-component")
             ],
             1
@@ -48647,7 +48670,7 @@ var render = function() {
                       "button",
                       {
                         staticClass:
-                          "bg-gray-500 px-3 py-1 text-white text-xs rounded-full",
+                          "bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full",
                         on: {
                           click: function($event) {
                             return _vm.$router.go(-1)
@@ -48763,6 +48786,12 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _vm.loading
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
               _vm._v(" "),
               _c("footer-component")
             ],
