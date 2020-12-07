@@ -7,6 +7,9 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
+          <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
+            <loader />
+          </div>
           <!-- Content goes here! 😁 -->
           <!--<h1 class="text-lg text-gray-500 pb-1 font-semibold">Download berdasarkan parameter</h1>-->
           <!-- This example requires Tailwind CSS v2.0+ -->
@@ -41,6 +44,10 @@
             <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex">
               <div class="leading-loose lg:w-1/3 sm:w-1/2">
                 <div class="p-10 bg-white rounded-lg shadow-xl">
+                  <div v-if="loadingExcel" class="z-50 flex justify-around relative opacity-75 bg-black inset-0">
+                    <loader />
+                  </div>
+                  <div>{{ messageFromExcel }}</div>
                   <div class="py-2 my-1">
                     <label class="block text-sm text-gray-600" for="name">Kecamatan</label>
                     <select name="dfkecamatan_id" id="dfkecamatan_id" v-model="select_kecamatan" @change="loadDesa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
@@ -79,7 +86,7 @@
                   </div>
                   <div class="mt-6 flex items-center justify-end">
                     <button @click="toggleModal" class="px-3 py-1 text-sm text-white bg-red-600 rounded-full"><i class="fas fa-times mr-2"></i> Close</button>
-                    <button @click="toggleModal" class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"><i class="fas fa-arrow-circle-down mr-2"></i> Download</button>
+                    <button @click="exportExcel(select_kecamatan, select_desa, select_kriteria)" class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"><i class="fas fa-arrow-circle-down mr-2"></i> Download</button>
                   </div>
                 </div>
               </div>
@@ -88,7 +95,7 @@
         </main>
 
         <div v-if="showModal" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
-
+        <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <footer-component></footer-component>
       </div>
     </div>
@@ -99,6 +106,9 @@
 export default {
   data() {
     return {
+      loadingExcel: false,
+      loading: true,
+      messageFromExcel: "",
       showModal: false,
       kecamatans: [],
       desas: [],
@@ -115,7 +125,46 @@ export default {
     this.loadKriteria();
     this.loadUsaha();
   },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 700);
+  },
   methods: {
+    exportExcel(param1, param2, param3) {
+      this.unduhData = true;
+      this.loadingExcel = true;
+      this.checkExcelData(param1, param2, param3);
+      axios
+        .get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3, {
+          responseType: "blob",
+        })
+        .then((response) => {
+          this.unduhData = false;
+          this.loadingExcel = false;
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "umkm-admin-" + param1 + ".xlsx");
+          document.body.appendChild(link);
+          link.click();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    checkExcelData(param1, param2, param3) {
+      axios
+        .get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3)
+        .then((response) => {
+          this.messageFromExcel = response.data.msg;
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     toggleModal() {
       this.showModal = !this.showModal;
     },

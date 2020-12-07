@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Ukm;
 use Illuminate\Http\Request;
-use App\Exports\UmkmDesaExport;
+// use App\Exports\UmkmDesaExport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -181,11 +181,6 @@ class UmkmDesaController extends Controller
      
     //     return response()->json($ukm_desa);
     // }
-
-    public function export(Request $request, $id)
-    {
-        return Excel::download(new UmkmDesaExport($id), 'umkm-desa-'.$id.'.xlsx');
-    }
 
     public function getUsahaPokok()
     {

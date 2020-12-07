@@ -3125,9 +3125,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      loadingExcel: false,
+      loading: true,
+      messageFromExcel: "",
       showModal: false,
       kecamatans: [],
       desas: [],
@@ -3144,46 +3154,85 @@ __webpack_require__.r(__webpack_exports__);
     this.loadKriteria();
     this.loadUsaha();
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.loading = false;
+    }, 700);
+  },
   methods: {
+    exportExcel: function exportExcel(param1, param2, param3) {
+      var _this2 = this;
+
+      this.unduhData = true;
+      this.loadingExcel = true;
+      this.checkExcelData(param1, param2, param3);
+      axios.get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3, {
+        responseType: "blob"
+      }).then(function (response) {
+        _this2.unduhData = false;
+        _this2.loadingExcel = false;
+        var url = window.URL.createObjectURL(new Blob([response.data]));
+        var link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "umkm-admin-" + param1 + ".xlsx");
+        document.body.appendChild(link);
+        link.click();
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    checkExcelData: function checkExcelData(param1, param2, param3) {
+      var _this3 = this;
+
+      axios.get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3).then(function (response) {
+        _this3.messageFromExcel = response.data.msg;
+        console.log(response.data);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
     toggleModal: function toggleModal() {
       this.showModal = !this.showModal;
     },
     loadUsaha: function loadUsaha() {
-      var _this = this;
+      var _this4 = this;
 
       axios.get("/api/get-usaha-pokok").then(function (response) {
-        _this.usahas = response.data;
+        _this4.usahas = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadKriteria: function loadKriteria() {
-      var _this2 = this;
+      var _this5 = this;
 
       axios.get("/api/get-kriteria").then(function (response) {
-        _this2.kriterias = response.data;
+        _this5.kriterias = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadKecamatan: function loadKecamatan() {
-      var _this3 = this;
+      var _this6 = this;
 
       axios.get("/api/get-kecamatans").then(function (response) {
-        _this3.kecamatans = response.data;
+        _this6.kecamatans = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadDesa: function loadDesa() {
-      var _this4 = this;
+      var _this7 = this;
 
       axios.get("/api/get-desa-by-kecamatan-id", {
         params: {
           dfkecamatan_id: this.select_kecamatan
         }
       }).then(function (response) {
-        _this4.desas = response.data;
+        _this7.desas = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -45711,8 +45760,8 @@ var render = function() {
               attrs: { to: { name: "download" } }
             },
             [
-              _c("i", { staticClass: "fas fa-arrow-circle-down mr-3" }),
-              _vm._v("\n      Download Data\n    ")
+              _c("i", { staticClass: "fas fa-filter mr-3" }),
+              _vm._v("\n      Filter Data\n    ")
             ]
           )
         ],
@@ -46051,6 +46100,18 @@ var render = function() {
             },
             [
               _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
+                _vm.loading
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "z-30 flex justify-around relative opacity-75 bg-black inset-0"
+                      },
+                      [_c("loader")],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
@@ -46125,6 +46186,22 @@ var render = function() {
                                       "p-10 bg-white rounded-lg shadow-xl"
                                   },
                                   [
+                                    _vm.loadingExcel
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "z-50 flex justify-around relative opacity-75 bg-black inset-0"
+                                          },
+                                          [_c("loader")],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(_vm._s(_vm.messageFromExcel))
+                                    ]),
+                                    _vm._v(" "),
                                     _c("div", { staticClass: "py-2 my-1" }, [
                                       _c(
                                         "label",
@@ -46505,7 +46582,15 @@ var render = function() {
                                           {
                                             staticClass:
                                               "ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full",
-                                            on: { click: _vm.toggleModal }
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.exportExcel(
+                                                  _vm.select_kecamatan,
+                                                  _vm.select_desa,
+                                                  _vm.select_kriteria
+                                                )
+                                              }
+                                            }
                                           },
                                           [
                                             _c("i", {
@@ -46529,6 +46614,12 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.showModal
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.loading
                 ? _c("div", {
                     staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
                   })

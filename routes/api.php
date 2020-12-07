@@ -14,7 +14,9 @@ Route::get('global-umkm', 'UmkmDesaController@getGlobalDataUmkm');
 Route::get('get-umkm-desa-by-id/{id}', 'UmkmDesaController@getDataUmkmById');
 Route::post('update-umkm-desa/{id}', 'UmkmDesaController@updateDataUmkmById');
 Route::post('delete-umkm-desa/{id}', 'UmkmDesaController@deleteDataUmkmById');
-Route::get('export-umkm-desa/{desa_id}', 'UmkmDesaController@export');
+
+Route::get('export-umkm-desa/{desa_id}', 'ExportController@exportDesa');
+Route::get('export-umkm-admin/{kcmtn}/{desa}/{kriteria}', 'ExportController@exportAdmin');
 
 Route::post('add-product', 'Api\ProductController@addProduct');
 Route::post('logout', 'AuthController@logout');

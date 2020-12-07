@@ -37,8 +37,8 @@
       <router-link :to="{ name: 'upload-produk' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"> <i class="fas fa-arrow-circle-up mr-3"></i> Upload Produk </router-link>
 
       <router-link :to="{ name: 'download' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-        <i class="fas fa-arrow-circle-down mr-3"></i>
-        Download Data
+        <i class="fas fa-filter mr-3"></i>
+        Filter Data
       </router-link>
     </nav>
     <router-link :to="{ name: 'login' }" class="absolute w-full upgrade-btn bottom-0 text-white flex items-center justify-center py-4" v-if="isLoggedIn == 'false'">
