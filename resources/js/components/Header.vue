@@ -6,7 +6,7 @@
         <!--<button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
           <img src="/img/cantik.jpg" />
         </button>-->
-        <button @click="logout" class="realtive w-12 h-12">
+        <button @click="logout" class="relative w-12 h-12">
           <i class="fas fa-sign-out-alt mr-3"></i>
         </button>
         <!--<button v-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
@@ -71,25 +71,34 @@
           Home
         </router-link>-->
         <router-link :to="{ name: 'desa', params: { id: desa_id } }" v-if="role === 'desa' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-          <i class="fas fa-sticky-note mr-3"></i>
+          <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
+
         <router-link :to="{ name: 'kecamatan', params: { id: kecamatan_id } }" v-if="role === 'kecamatan' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-          <i class="fas fa-table mr-3"></i>
+          <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
+
         <router-link :to="{ name: 'global' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-          <i class="fas fa-tablet-alt mr-3"></i>
+          <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
+
+        <router-link :to="{ name: 'input', params: { id: 1 } }" v-if="role === 'desa' || role === 'admin'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"> <i class="fas fa-plus mr-3"></i> Add Data</router-link>
+
+        <router-link :to="{ name: 'upload-produk' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"> <i class="fas fa-arrow-circle-up mr-3"></i> Upload Produk </router-link>
+
         <router-link :to="{ name: 'download' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-          <i class="fas fa-calendar mr-3"></i>
+          <i class="fas fa-arrow-circle-down mr-3"></i>
           Download Data
         </router-link>
+
         <router-link :to="{ name: 'login' }" class="absolute w-full upgrade-btn bottom-0 text-white flex items-center justify-center py-4" v-if="isLoggedIn == 'false'">
           <i class="fas fa-sign-in-alt mr-3"></i>
           Login
         </router-link>
+
         <button @click="logout" class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center" v-if="isLoggedIn == 'true'">
           <i class="fas fa-sign-out-alt mr-3"></i>
           Logout
@@ -123,23 +132,38 @@ export default {
   },
   methods: {
     logout() {
-      axios
-        .post("/api/logout")
-        .then((res) => {
-          this.$router.push({
-            name: "login",
-          });
-          localStorage.removeItem("isloggedIn");
-          localStorage.removeItem("username");
-          localStorage.removeItem("desa_id");
-          localStorage.removeItem("kecamatan_id");
-          localStorage.removeItem("role");
-          localStorage.removeItem("isAdmin");
-          this.isloggedIn = "false";
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.$swal({
+        title: "Oops...!",
+        text: "Anda yakin akan logout?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, logout!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post("/api/logout")
+            .then((res) => {
+              this.$router.push({
+                name: "login",
+              });
+              localStorage.removeItem("isloggedIn");
+              localStorage.removeItem("username");
+              localStorage.removeItem("desa_id");
+              localStorage.removeItem("kecamatan_id");
+              localStorage.removeItem("role");
+              localStorage.removeItem("isAdmin");
+              this.isloggedIn = "false";
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          this.$swal("Success!", "Anda berhasil logout", "success");
+        } else if (result.isDismissed) {
+          this.$swal("Canceled!", "Logout Dibatalkan!", "info");
+        }
+      });
     },
   },
 };

@@ -8,6 +8,7 @@
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
           <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">UMKM Desa {{ namaDesa }}</h1>
+          <button class="bg-gray-500 px-3 py-1 text-white text-xs rounded-full" v-if="role === 'admin'" @click="$router.go(-1)"><i class="fas fa-arrow-circle-left mr-3"></i> Back</button>
           <!-- loader spin-->
           <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
             <loader />

@@ -5,6 +5,7 @@ import Kecamatan from './pages/Kecamatan'
 import Download from './pages/Download'
 import Login from './pages/Login'
 import InputData from './pages/InputData'
+import UploadProduk from './pages/UploadProduk'
 import Global from './pages/Global'
 import PageNotFound from './pages/PageNotFound'
 // import Template from './components/Template'
@@ -41,6 +42,11 @@ export default {
             component: InputData,
             name: 'input',
             props: true
+        },
+        {
+            path: '/upload-produk',
+            component: UploadProduk,
+            name: 'upload-produk',
         },
         {
             path: '/global-umkm',
