@@ -9,8 +9,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products', 'Api\ProductController@index');
 
 Route::get('ukms/{desa_id}', 'UmkmDesaController@getUmkmDesa');
-Route::get('ukms-kecamatan/{id}', 'UmkmDesaController@getDataKecamatanDesa');
-Route::get('kecamatans', 'UmkmDesaController@getDataKecamatan');
+Route::get('global-kecamatan/{id}', 'UmkmDesaController@getGlobalDataUmkmKecamatan');
+Route::get('global-umkm', 'UmkmDesaController@getGlobalDataUmkm');
 Route::get('get-umkm-desa-by-id/{id}', 'UmkmDesaController@getDataUmkmById');
 Route::post('update-umkm-desa/{id}', 'UmkmDesaController@updateDataUmkmById');
 Route::post('delete-umkm-desa/{id}', 'UmkmDesaController@deleteDataUmkmById');

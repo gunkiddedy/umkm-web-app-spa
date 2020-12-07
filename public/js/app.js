@@ -2094,6 +2094,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Loader.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sidebar.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sidebar.vue?vue&type=script&lang=js& ***!
@@ -2205,19 +2235,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2981,6 +2998,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2998,19 +3022,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3466,27 +3477,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
   data: function data() {
     return {
       loading: true,
-      unduhData: false,
       isLoggedIn: false,
       username: "",
       desa_id: "",
@@ -3500,13 +3496,59 @@ __webpack_require__.r(__webpack_exports__);
         sortable: false,
         width: "100px"
       }, {
-        label: "Nama Kecamatan",
-        field: "nama_kecamatan",
+        label: "No.",
+        field: "id_kec",
         sortable: false,
         width: "auto"
       }, {
-        label: "Jumlah UMKM",
-        field: "jumlah_umkm",
+        label: "Kecamatan",
+        field: "kecamatan",
+        sortable: false,
+        width: "auto",
+        filterable: true,
+        filterOptions: {
+          enabled: true,
+          placeholder: "Filter",
+          trigger: "enter"
+        }
+      }, {
+        label: "Total UMKM",
+        field: "total_umkm",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Mikro",
+        field: "u_mikro",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Kecil",
+        field: "u_kecil",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Menengah",
+        field: "u_menengah",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "T.Kerja L",
+        field: "tkl",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "T.Kerja P",
+        field: "tkp",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Modal",
+        field: "modal",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Omset",
+        field: "omset",
         sortable: false,
         width: "auto"
       }],
@@ -3574,7 +3616,7 @@ __webpack_require__.r(__webpack_exports__);
     getRecords: function getRecords() {
       var _this = this;
 
-      axios.get("/api/kecamatans/", {
+      axios.get("/api/global-umkm/", {
         params: this.serverParams
       }).then(function (response) {
         _this.loading = false;
@@ -3698,19 +3740,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
@@ -3729,7 +3758,12 @@ __webpack_require__.r(__webpack_exports__);
         sortable: false,
         width: "100px"
       }, {
-        label: "Nama Desa",
+        label: "ID",
+        field: "id_des",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Desa",
         field: "desa",
         sortable: true,
         width: "auto",
@@ -3740,8 +3774,43 @@ __webpack_require__.r(__webpack_exports__);
           trigger: "enter"
         }
       }, {
-        label: "Jumlah UMKM",
-        field: "jumlah_umkm",
+        label: "Total UMKM",
+        field: "total_umkm",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Mikro",
+        field: "u_mikro",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Kecil",
+        field: "u_kecil",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Menengah",
+        field: "u_menengah",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "T.Kerja L",
+        field: "tkl",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "T.Kerja P",
+        field: "tkp",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Modal",
+        field: "modal",
+        sortable: false,
+        width: "auto"
+      }, {
+        label: "Omset",
+        field: "omset",
         sortable: false,
         width: "auto"
       }],
@@ -3816,13 +3885,13 @@ __webpack_require__.r(__webpack_exports__);
         param = this.role;
       }
 
-      axios.get("/api/ukms-kecamatan/" + param, {
+      axios.get("/api/global-kecamatan/" + param, {
         params: this.serverParams
       }).then(function (response) {
         _this.loading = false;
-        _this.namaKecamatan = response.data.kecamatan[0].dfkecamatan_nama;
-        _this.totalRecords = response.data.data.total;
-        _this.rows = response.data.data.data;
+        _this.namaKecamatan = response.data.data[0].kecamatan;
+        _this.totalRecords = response.data.length;
+        _this.rows = response.data.data;
         console.log(response.data);
       })["catch"](function (err) {
         console.log(err);
@@ -3842,19 +3911,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -45142,6 +45198,129 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "svg",
+    {
+      staticClass: "w-12 absolute text-blue-500",
+      attrs: {
+        viewBox: "0 0 120 30",
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "currentColor"
+      }
+    },
+    [
+      _c("circle", { attrs: { cx: "15", cy: "15", r: "15" } }, [
+        _c("animate", {
+          attrs: {
+            attributeName: "r",
+            from: "15",
+            to: "15",
+            begin: "0s",
+            dur: "0.8s",
+            values: "15;9;15",
+            calcMode: "linear",
+            repeatCount: "indefinite"
+          }
+        }),
+        _vm._v(" "),
+        _c("animate", {
+          attrs: {
+            attributeName: "fill-opacity",
+            from: "1",
+            to: "1",
+            begin: "0s",
+            dur: "0.8s",
+            values: "1;.5;1",
+            calcMode: "linear",
+            repeatCount: "indefinite"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "circle",
+        { attrs: { cx: "60", cy: "15", r: "9", "fill-opacity": "0.3" } },
+        [
+          _c("animate", {
+            attrs: {
+              attributeName: "r",
+              from: "9",
+              to: "9",
+              begin: "0s",
+              dur: "0.8s",
+              values: "9;15;9",
+              calcMode: "linear",
+              repeatCount: "indefinite"
+            }
+          }),
+          _vm._v(" "),
+          _c("animate", {
+            attrs: {
+              attributeName: "fill-opacity",
+              from: "0.5",
+              to: "0.5",
+              begin: "0s",
+              dur: "0.8s",
+              values: ".5;1;.5",
+              calcMode: "linear",
+              repeatCount: "indefinite"
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("circle", { attrs: { cx: "105", cy: "15", r: "15" } }, [
+        _c("animate", {
+          attrs: {
+            attributeName: "r",
+            from: "15",
+            to: "15",
+            begin: "0s",
+            dur: "0.8s",
+            values: "15;9;15",
+            calcMode: "linear",
+            repeatCount: "indefinite"
+          }
+        }),
+        _vm._v(" "),
+        _c("animate", {
+          attrs: {
+            attributeName: "fill-opacity",
+            from: "1",
+            to: "1",
+            begin: "0s",
+            dur: "0.8s",
+            values: "1;.5;1",
+            calcMode: "linear",
+            repeatCount: "indefinite"
+          }
+        })
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sidebar.vue?vue&type=template&id=81fbb27e&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sidebar.vue?vue&type=template&id=81fbb27e&scoped=true& ***!
@@ -45363,15 +45542,11 @@ var render = function() {
               _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
                 _c(
                   "h1",
-                  { staticClass: "text-lg text-gray-500 pb-1 font-semibold" },
-                  [
-                    _vm._v(
-                      "Data UMKM Desa " +
-                        _vm._s(_vm.namaDesa) +
-                        " " +
-                        _vm._s(_vm.role)
-                    )
-                  ]
+                  {
+                    staticClass:
+                      "text-lg text-indigo-400 pb-1 font-semibold uppercase"
+                  },
+                  [_vm._v("UMKM Desa " + _vm._s(_vm.namaDesa))]
                 ),
                 _vm._v(" "),
                 _vm.loading
@@ -45381,123 +45556,8 @@ var render = function() {
                         staticClass:
                           "z-30 flex justify-around relative opacity-75 bg-black inset-0"
                       },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-12 absolute text-green-500",
-                            attrs: {
-                              viewBox: "0 0 120 30",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              fill: "currentColor"
-                            }
-                          },
-                          [
-                            _c(
-                              "circle",
-                              { attrs: { cx: "15", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              {
-                                attrs: {
-                                  cx: "60",
-                                  cy: "15",
-                                  r: "9",
-                                  "fill-opacity": "0.3"
-                                }
-                              },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "9",
-                                    to: "9",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "9;15;9",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "0.5",
-                                    to: "0.5",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: ".5;1;.5",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              { attrs: { cx: "105", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
+                      [_c("loader")],
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -45688,13 +45748,7 @@ var render = function() {
               staticClass:
                 "w-full h-screen overflow-x-hidden border-t flex flex-col"
             },
-            [
-              _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
-                _vm._v("\n        GLobal\n      ")
-              ]),
-              _vm._v(" "),
-              _c("footer-component")
-            ],
+            [_vm._m(0), _vm._v(" "), _c("footer-component")],
             1
           )
         ],
@@ -45704,7 +45758,26 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
+      _c("h1", { staticClass: "text-lg text-gray-500 pb-1 font-semibold" }, [
+        _vm._v("Download berdasarkan parameter")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-full mt-2" }, [
+        _c("div", { staticClass: "bg-gray-100" }, [
+          _vm._v(
+            "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus ligula at condimentum sagittis. Maecenas velit libero, fermentum a leo quis, pretium egestas risus. Proin tempus sem magna, vitae convallis purus rhoncus non. Aenean tristique congue metus in lobortis. Nullam nisi leo, luctus in sapien\n            eget, accumsan mattis leo. Morbi magna dolor, dapibus ut ligula eget, commodo venenatis risus. Nunc quis dignissim velit. Donec nec dapibus ligula. Etiam quis libero ultrices, semper arcu id, suscipit purus. Phasellus eu arcu tincidunt dui pellentesque feugiat et at risus. In hendrerit laoreet ante ac\n            imperdiet. Nam tortor urna, laoreet in malesuada quis, pretium cursus dolor.\n          "
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -45756,123 +45829,8 @@ var render = function() {
                         staticClass:
                           "z-30 flex justify-around relative opacity-75 bg-black inset-0"
                       },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-12 absolute text-blue-500",
-                            attrs: {
-                              viewBox: "0 0 120 30",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              fill: "currentColor"
-                            }
-                          },
-                          [
-                            _c(
-                              "circle",
-                              { attrs: { cx: "15", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              {
-                                attrs: {
-                                  cx: "60",
-                                  cy: "15",
-                                  r: "9",
-                                  "fill-opacity": "0.3"
-                                }
-                              },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "9",
-                                    to: "9",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "9;15;9",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "0.5",
-                                    to: "0.5",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: ".5;1;.5",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              { attrs: { cx: "105", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
+                      [_c("loader")],
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -47619,8 +47577,11 @@ var render = function() {
               _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
                 _c(
                   "h1",
-                  { staticClass: "text-lg text-gray-500 pb-1 font-semibold" },
-                  [_vm._v("Data UMKM Gunungkidul")]
+                  {
+                    staticClass:
+                      "text-lg pb-1 font-semibold text-indigo-400 uppercase"
+                  },
+                  [_vm._v("UMKM Gunungkidul")]
                 ),
                 _vm._v(" "),
                 _vm.loading
@@ -47630,123 +47591,8 @@ var render = function() {
                         staticClass:
                           "z-30 flex justify-around relative opacity-75 bg-black inset-0"
                       },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-12 absolute text-green-500",
-                            attrs: {
-                              viewBox: "0 0 120 30",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              fill: "currentColor"
-                            }
-                          },
-                          [
-                            _c(
-                              "circle",
-                              { attrs: { cx: "15", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              {
-                                attrs: {
-                                  cx: "60",
-                                  cy: "15",
-                                  r: "9",
-                                  "fill-opacity": "0.3"
-                                }
-                              },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "9",
-                                    to: "9",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "9;15;9",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "0.5",
-                                    to: "0.5",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: ".5;1;.5",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              { attrs: { cx: "105", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
+                      [_c("loader")],
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -47774,8 +47620,7 @@ var render = function() {
                             ofLabel: "dari"
                           },
                           rows: _vm.rows,
-                          columns: _vm.columns,
-                          "line-numbers": true
+                          columns: _vm.columns
                         },
                         on: {
                           "on-page-change": _vm.onPageChange,
@@ -47804,7 +47649,7 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               return _vm.viewData(
-                                                props.row.dfkecamatan_id
+                                                props.row.id_kec
                                               )
                                             }
                                           }
@@ -47951,8 +47796,11 @@ var render = function() {
               _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
                 _c(
                   "h1",
-                  { staticClass: "text-lg text-gray-500 pb-1 font-semibold" },
-                  [_vm._v("Data UMKM Kecamatan " + _vm._s(_vm.namaKecamatan))]
+                  {
+                    staticClass:
+                      "text-lg text-indigo-400 pb-1 font-semibold uppercase"
+                  },
+                  [_vm._v("UMKM Kecamatan " + _vm._s(_vm.namaKecamatan))]
                 ),
                 _vm._v(" "),
                 _vm.loading
@@ -47962,123 +47810,8 @@ var render = function() {
                         staticClass:
                           "z-30 flex justify-around relative opacity-75 bg-black inset-0"
                       },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-12 absolute text-green-500",
-                            attrs: {
-                              viewBox: "0 0 120 30",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              fill: "currentColor"
-                            }
-                          },
-                          [
-                            _c(
-                              "circle",
-                              { attrs: { cx: "15", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              {
-                                attrs: {
-                                  cx: "60",
-                                  cy: "15",
-                                  r: "9",
-                                  "fill-opacity": "0.3"
-                                }
-                              },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "9",
-                                    to: "9",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "9;15;9",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "0.5",
-                                    to: "0.5",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: ".5;1;.5",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "circle",
-                              { attrs: { cx: "105", cy: "15", r: "15" } },
-                              [
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "r",
-                                    from: "15",
-                                    to: "15",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "15;9;15",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("animate", {
-                                  attrs: {
-                                    attributeName: "fill-opacity",
-                                    from: "1",
-                                    to: "1",
-                                    begin: "0s",
-                                    dur: "0.8s",
-                                    values: "1;.5;1",
-                                    calcMode: "linear",
-                                    repeatCount: "indefinite"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
+                      [_c("loader")],
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -48136,7 +47869,7 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               return _vm.viewData(
-                                                props.row.dfdesa_id
+                                                props.row.id_des
                                               )
                                             }
                                           }
@@ -48390,115 +48123,8 @@ var render = function() {
           _c(
             "div",
             { staticClass: "flex justify-center items-center w-full" },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "w-12",
-                  attrs: {
-                    viewBox: "0 0 120 30",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    fill: "currentColor"
-                  }
-                },
-                [
-                  _c("circle", { attrs: { cx: "15", cy: "15", r: "15" } }, [
-                    _c("animate", {
-                      attrs: {
-                        attributeName: "r",
-                        from: "15",
-                        to: "15",
-                        begin: "0s",
-                        dur: "0.8s",
-                        values: "15;9;15",
-                        calcMode: "linear",
-                        repeatCount: "indefinite"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("animate", {
-                      attrs: {
-                        attributeName: "fill-opacity",
-                        from: "1",
-                        to: "1",
-                        begin: "0s",
-                        dur: "0.8s",
-                        values: "1;.5;1",
-                        calcMode: "linear",
-                        repeatCount: "indefinite"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "circle",
-                    {
-                      attrs: {
-                        cx: "60",
-                        cy: "15",
-                        r: "9",
-                        "fill-opacity": "0.3"
-                      }
-                    },
-                    [
-                      _c("animate", {
-                        attrs: {
-                          attributeName: "r",
-                          from: "9",
-                          to: "9",
-                          begin: "0s",
-                          dur: "0.8s",
-                          values: "9;15;9",
-                          calcMode: "linear",
-                          repeatCount: "indefinite"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("animate", {
-                        attrs: {
-                          attributeName: "fill-opacity",
-                          from: "0.5",
-                          to: "0.5",
-                          begin: "0s",
-                          dur: "0.8s",
-                          values: ".5;1;.5",
-                          calcMode: "linear",
-                          repeatCount: "indefinite"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("circle", { attrs: { cx: "105", cy: "15", r: "15" } }, [
-                    _c("animate", {
-                      attrs: {
-                        attributeName: "r",
-                        from: "15",
-                        to: "15",
-                        begin: "0s",
-                        dur: "0.8s",
-                        values: "15;9;15",
-                        calcMode: "linear",
-                        repeatCount: "indefinite"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("animate", {
-                      attrs: {
-                        attributeName: "fill-opacity",
-                        from: "1",
-                        to: "1",
-                        begin: "0s",
-                        dur: "0.8s",
-                        values: "1;.5;1",
-                        calcMode: "linear",
-                        repeatCount: "indefinite"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ]
+            [_c("loader")],
+            1
           )
         ])
       : _vm._e()
@@ -64161,6 +63787,7 @@ Vue.component('app-component', __webpack_require__(/*! ./components/App.vue */ "
 Vue.component('sidebar-component', __webpack_require__(/*! ./components/Sidebar.vue */ "./resources/js/components/Sidebar.vue")["default"]);
 Vue.component('header-component', __webpack_require__(/*! ./components/Header.vue */ "./resources/js/components/Header.vue")["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
+Vue.component('loader', __webpack_require__(/*! ./components/Loader.vue */ "./resources/js/components/Loader.vue")["default"]);
 var app = new Vue({
   el: '#app',
   router: router
@@ -64383,6 +64010,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_1f42fb90___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_1f42fb90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Loader.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Loader.vue?vue&type=template&id=e79ec684& */ "./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&");
+/* harmony import */ var _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Loader.vue?vue&type=script&lang=js& */ "./resources/js/components/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Loader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Loader.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Loader.vue?vue&type=template&id=e79ec684& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=template&id=e79ec684& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -65187,7 +64883,7 @@ __webpack_require__.r(__webpack_exports__);
     name: 'input',
     props: true
   }, {
-    path: '/global',
+    path: '/global-umkm',
     component: _pages_Global__WEBPACK_IMPORTED_MODULE_7__["default"],
     name: 'global'
   }, {

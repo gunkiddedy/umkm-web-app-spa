@@ -43,7 +43,7 @@ export default {
             props: true
         },
         {
-            path: '/global',
+            path: '/global-umkm',
             component: Global,
             name: 'global',
         },

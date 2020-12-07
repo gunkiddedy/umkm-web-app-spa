@@ -22,6 +22,7 @@ Vue.component('app-component', require('./components/App.vue').default);
 Vue.component('sidebar-component', require('./components/Sidebar.vue').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
+Vue.component('loader', require('./components/Loader.vue').default);
 
 const app = new Vue({
     el: '#app',

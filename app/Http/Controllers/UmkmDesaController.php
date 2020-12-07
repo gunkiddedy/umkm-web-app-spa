@@ -43,14 +43,46 @@ class UmkmDesaController extends Controller
         // return $data->toArray();
     }
 
-    public function getDataKecamatan()
+    public function getGlobalDataUmkmKecamatan(Request $request, $id)
     {
-        $kcmtn = DB::select('SELECT ukms.dfkecamatan_id,dfkecamatan.dfkecamatan_nama 
-            AS nama_kecamatan ,COUNT(*) AS jumlah_umkm FROM ukms 
-            JOIN dfkecamatan ON dfkecamatan.dfkecamatan_id=ukms.dfkecamatan_id
-            GROUP BY ukms.dfkecamatan_id');
+        $global = DB::select("SELECT d.dfdesa_id id_des, 
+            d.dfdesa_nama desa, 
+            k.dfkecamatan_nama kecamatan,
+            count(u.id) total_umkm,
+            sum(if(u.kriteria='Usaha Mikro',1,0))u_mikro,
+            sum(if(u.kriteria='Usaha Kecil',1,0))u_kecil,
+            sum(if(u.kriteria='Usaha Menengah',1,0))u_menengah,
+            sum(if(u.kriteria='Undefined',1,0))u_undef,
+            sum(if(u.tk2_l='l',1,0))tkl,
+            sum(if(u.tk2_p='p',1,0))tkp,
+            sum(u.ms2)modal,
+            SUM(u.omset2)omset
+            from dfdesa d 
+            left join ukms u on(u.dfdesa_id = d.dfdesa_id and u.tahun = 2018)
+            left join dfkecamatan k ON d.dfkecamatan_id=k.dfkecamatan_id
+            WHERE u.dfkecamatan_id=$id
+            group by desa");
 
-        return response()->json(['data' => $kcmtn]);
+        return response()->json(['data' => $global]);
+    }
+
+    public function getGlobalDataUmkm()
+    {
+        $global = DB::select("SELECT k.dfkecamatan_id id_kec, k.dfkecamatan_nama kecamatan,
+            count(u.id) total_umkm,
+            sum(if(u.kriteria='Usaha Mikro',1,0))u_mikro,
+            sum(if(u.kriteria='Usaha Kecil',1,0))u_kecil,
+            sum(if(u.kriteria='Usaha Menengah',1,0))u_menengah,
+            sum(if(u.kriteria='Undefined',1,0))u_undef,
+            sum(if(u.tk2_l='l',1,0))tkl,
+            sum(if(u.tk2_p='p',1,0))tkp,
+            sum(u.ms2)modal,
+            SUM(u.omset2)omset
+            from dfkecamatan k 
+            left join ukms u on(u.dfkecamatan_id = k.dfkecamatan_id and u.tahun = 2018) 
+            group by kecamatan");
+
+        return response()->json(['data' => $global]);
     }
 
     public function getDataUmkmById(Request $request, $id)

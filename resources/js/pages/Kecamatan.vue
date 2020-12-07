@@ -7,23 +7,10 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
-          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Data UMKM Kecamatan {{ namaKecamatan }}</h1>
+          <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">UMKM Kecamatan {{ namaKecamatan }}</h1>
           <!-- loader spin-->
           <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
-            <svg class="w-12 absolute text-green-500" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <circle cx="15" cy="15" r="15">
-                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-              <circle cx="60" cy="15" r="9" fill-opacity="0.3">
-                <animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-              <circle cx="105" cy="15" r="15">
-                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-            </svg>
+            <loader />
           </div>
 
           <div class="w-full mt-2">
@@ -55,7 +42,7 @@
               >
                 <template slot="table-row" slot-scope="props">
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="viewData(props.row.dfdesa_id)">View Data</button>
+                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="viewData(props.row.id_des)">View Data</button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}
@@ -93,7 +80,13 @@ export default {
           width: "100px",
         },
         {
-          label: "Nama Desa",
+          label: "ID",
+          field: "id_des",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Desa",
           field: "desa",
           sortable: true,
           width: "auto",
@@ -105,8 +98,50 @@ export default {
           },
         },
         {
-          label: "Jumlah UMKM",
-          field: "jumlah_umkm",
+          label: "Total UMKM",
+          field: "total_umkm",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Mikro",
+          field: "u_mikro",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Kecil",
+          field: "u_kecil",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Menengah",
+          field: "u_menengah",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "T.Kerja L",
+          field: "tkl",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "T.Kerja P",
+          field: "tkp",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Modal",
+          field: "modal",
+          sortable: false,
+          width: "auto",
+        },
+        {
+          label: "Omset",
+          field: "omset",
           sortable: false,
           width: "auto",
         },
@@ -179,12 +214,12 @@ export default {
         param = this.role;
       }
       axios
-        .get("/api/ukms-kecamatan/" + param, { params: this.serverParams })
+        .get("/api/global-kecamatan/" + param, { params: this.serverParams })
         .then((response) => {
           this.loading = false;
-          this.namaKecamatan = response.data.kecamatan[0].dfkecamatan_nama;
-          this.totalRecords = response.data.data.total;
-          this.rows = response.data.data.data;
+          this.namaKecamatan = response.data.data[0].kecamatan;
+          this.totalRecords = response.data.length;
+          this.rows = response.data.data;
           console.log(response.data);
         })
         .catch((err) => {

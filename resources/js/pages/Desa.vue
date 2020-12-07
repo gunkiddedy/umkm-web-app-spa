@@ -7,23 +7,10 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
-          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Data UMKM Desa {{ namaDesa }} {{ role }}</h1>
+          <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">UMKM Desa {{ namaDesa }}</h1>
           <!-- loader spin-->
           <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
-            <svg class="w-12 absolute text-green-500" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <circle cx="15" cy="15" r="15">
-                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-              <circle cx="60" cy="15" r="9" fill-opacity="0.3">
-                <animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-              <circle cx="105" cy="15" r="15">
-                <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" />
-                <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" />
-              </circle>
-            </svg>
+            <loader />
           </div>
 
           <div class="w-full mt-2">
