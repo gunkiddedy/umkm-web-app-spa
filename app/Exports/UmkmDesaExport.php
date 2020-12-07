@@ -5,8 +5,11 @@ namespace App\Exports;
 use App\Ukm;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class UmkmDesaExport implements FromView
+class UmkmDesaExport implements FromView, WithEvents, ShouldAutoSize
 {
     private $id;
 
@@ -100,6 +103,32 @@ class UmkmDesaExport implements FromView
             'umkms' => $umkm,
             'totals' => $totals
         ]);
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            // BeforeExport::class  => function(BeforeExport $event) {
+            //     $event->writer->setCreator('Patrick');
+            // },
+            AfterSheet::class => function(AfterSheet $event) {
+                $cellRange = 'A4:AS4'; //header
+                $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(12);
+                $to = $event->sheet->getDelegate()->getHighestRowAndColumn();
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+                $event->sheet->styleCells(
+                    'A4:'.$to['column'].$to['row'],
+                    [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '000'],
+                            ]
+                        ]
+                    ]
+                );
+            },
+        ];
     }
 
     public function total(Request $request, $id)

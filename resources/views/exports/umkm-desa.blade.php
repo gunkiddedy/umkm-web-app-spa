@@ -1,4 +1,4 @@
-<table style="border:1px dashed black" border="1" width="100%">
+<table>
     <thead class="header">
         <tr>
             <th colspan="45" class="judul">DATA UMKM KABUPATEN GUNUNGKIDUL</th>
@@ -98,10 +98,10 @@
         {{ $no = 1 }}
         @foreach ($umkms as $umkm)
         <tr>
-            <td style="border: 1px dashed #000">{{ $no }}</td>
-            <td style="border: 1px dashed #000">{{ $umkm->nama_usaha }}</td>
-            <td style="border: 1px dashed #000">{{ $umkm->kelembagaan }}</td>
-            <td style="border: 1px dashed #000">{{ $umkm->nama_pemilik }}</td>
+            <td>{{ $no }}</td>
+            <td>{{ $umkm->nama_usaha }}</td>
+            <td>{{ $umkm->kelembagaan }}</td>
+            <td>{{ $umkm->nama_pemilik }}</td>
             <td>{{ $umkm->nik }}</td>
             <td>{{ $umkm->jenis_kelamin }}</td>
             <td>{{ $umkm->disabilitas }}</td>
@@ -146,7 +146,7 @@
         </tr>
         {{ $no++ }}
         @endforeach
-        <tr class="jumlah" style="background-color: #df1313;">
+        <tr>
             <td></td>
             <td>JUMLAH</td>
             <td></td>
@@ -177,8 +177,8 @@
             <td>{{ $totals['total_tk1_p'] }}</td>
             <td>{{ $totals['total_tk2_l'] }}</td>
             <td>{{ $totals['total_tk2_p'] }}</td>
-            <td>NAN</td>
-            <td>NAN</td>
+            <td>-</td>
+            <td>-</td>
             <td>{{ $totals['total_omset1'] }}</td>
             <td>{{ $totals['total_omset2'] }}</td>
             <td>{{ $totals['total_ms1'] }}</td>
@@ -195,24 +195,3 @@
         </tr>
     </tbody>
 </table>
-
-<style>
-    table{
-        align-items: center;
-        justify-content: center;
-        justify-items: center;
-        text-align: center;
-    }
-    table th, td{
-        align-items: center;
-        justify-items: center;
-    }
-    .jumlah{
-        background-color: #f2f2f2;
-    }
-    .judul{
-        font-weight: bold;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
