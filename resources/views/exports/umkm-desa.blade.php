@@ -1,96 +1,94 @@
 <table>
     <thead class="header">
         <tr>
-            <th colspan="45" class="judul">DATA UMKM KABUPATEN GUNUNGKIDUL</th>
+            <th colspan="45" class="judul"><strong>DATA UMKM KABUPATEN GUNUNGKIDUL</strong></th>
         </tr>
         <tr>
-            <td colspan="2">Periode</td>
-            <td>:</td>
-            <td>2020</td>
+            <td><b>Periode</b></td>
+            <td><b>2020</b></td>
         </tr>
         <tr>
-            <td colspan="2">Kriteria</td>
-            <td>:</td>
-            <td>Usaha Mikro</td>
+            <td><b>Kriteria</b></td>
+            <td><b>Desa</b></td>
         </tr>
         <tr>
-            <th rowspan="4">No.</th>
-            <th rowspan="4">Nama Usaha.</th>
-            <th rowspan="4">Kelembagaan</th>
-            <th rowspan="4">Nama Pemilik</th>
-            <th rowspan="4">NIK</th>
-            <th rowspan="4">Jenis Kelamin</th>
-            <th rowspan="4">Disabilitas</th>
-            <th rowspan="4">SIU</th>
-            <th rowspan="4">NPWP</th>
+            <th rowspan="4"><b>No.</b></th>
+            <th rowspan="4"><b>Nama Usaha.</b></th>
+            <th rowspan="4"><b>Kelembagaan</b></th>
+            <th rowspan="4"><b>Nama Pemilik</b></th>
+            <th rowspan="4"><b>NIK</b></th>
+            <th rowspan="4"><b>Jenis Kelamin</b></th>
+            <th rowspan="4"><b>Disabilitas</b></th>
+            <th rowspan="4"><b>SIU</b></th>
+            <th rowspan="4"><b>NPWP</b></th>
 
-            <th rowspan="4">Tahun Usaha</th>
+            <th rowspan="4"><b>Tahun Usaha</b></th>
 
-            <th colspan="2">Alamat Usaha</th>
+            <th colspan="2"><b>Alamat Usaha</b></th>
             
             
-            <th rowspan="4">No.Telp</th>
-            <th rowspan="4">Email</th>
+            <th rowspan="4"><b>No.Telp</b></th>
+            <th rowspan="4"><b>Email</b></th>
 
-            <th colspan="11">Usaha Pokok</th>
+            <th colspan="11"><b>Usaha Pokok</b></th>
 
-            <th rowspan="4">Jenis bahan baku jika kerajinan/makanan olahan</th>
+            <th rowspan="4"><b>Jenis bahan baku jika kerajinan/makanan olahan</b></th>
 
-            <th colspan="4">Indikator</th>
+            <th colspan="4"><b>Indikator</b></th>
 
-            <th colspan="14">Indikator Usaha</th>
-            <th rowspan="4">kriteria</th>
+            <th colspan="14"><b>Indikator Usaha</b></th>
+            <th rowspan="4"><b>kriteria</b></th>
 
         </tr>
         <tr>
-            <td rowspan="3">Jalan, rt/rw</td>
-            <td rowspan="3">Kelurahan Desa</td>
-            <td rowspan="3">Makanan Olahan/Industri Pertanian</td>
-            <td rowspan="3">Kerajinan/Industri non Pertanian</td>
-            <td rowspan="3">Jasa Swasta</td>
-            <td rowspan="3">Perdagangan</td>
-            <td rowspan="3">Usaha Lainnya/Aneka Usaha</td>
-            <td rowspan="3">Pertanian, Peternakan, Kehutanan, Perikanan</td>
-            <td rowspan="3">Pertambangan dan Penggalian</td>
-            <td rowspan="3">Industri Pengolahan</td>
-            <td rowspan="3">Listrik, Gas dan Air Bersih</td>
-            <td rowspan="3">Bangunan</td>
-            <td rowspan="3">Perdagangan, Hotel dan Restoran/WM</td>
-            <td colspan="4">Tenaga Kerja</td>
-            <td colspan="2" rowspan="2">Kapasitas produksi/bulan</td>
-            <td colspan="2" rowspan="2">Omset/tahun</td>
-            <td colspan="10">Aset</td>
+            <td rowspan="3"><b>Jalan, rt/rw</b></td>
+            <td rowspan="3"><b>Kelurahan Desa</b></td>
+            <td rowspan="3"><b>Makanan Olahan/Industri Pertanian</b></td>
+            <td rowspan="3"><b>Kerajinan/Industri non Pertanian</b></td>
+            <td rowspan="3"><b>Jasa Swasta</b></td>
+            <td rowspan="3"><b>Perdagangan</b></td>
+            <td rowspan="3"><b>Usaha Lainnya/Aneka Usaha</b></td>
+            <td rowspan="3"><b>Pertanian, Peternakan, Kehutanan, Perikanan</b></td>
+            <td rowspan="3"><b>Pertambangan dan Penggalian</b></td>
+            <td rowspan="3"><b>Industri Pengolahan</b></td>
+            <td rowspan="3"><b>Listrik, Gas dan Air Bersih</b></td>
+            <td rowspan="3"><b>Bangunan</b></td>
+            <td rowspan="3"><b>Perdagangan, Hotel dan Restoran/WM</b></td>
+            <td colspan="4"><b>Tenaga Kerja</b></td>
+            <td colspan="2" rowspan="2"><b>Kapasitas produksi/bulan</b></td>
+            <td colspan="2" rowspan="2"><b>Omset/tahun</b></td>
+            <td colspan="10"><b>Aset</b></td>
         </tr>
         <tr>
-            <td colspan="2">2016</td>
-            <td colspan="2">2017</td>
-            <td colspan="2">Modal Sendiri</td>
-            <td colspan="2">Bantuan Pemerintah</td>
-            <td colspan="2">Pinjaman Koperasi</td>
-            <td colspan="2">Pinjaman Perorangan</td>
-            <td colspan="2">Pinjaman Bank</td>
+            <td colspan="2"><b>2016</b></td>
+            <td colspan="2"><b>2017</b></td>
+            <td colspan="2"><b>Modal Sendiri</b></td>
+            <td colspan="2"><b>Bantuan Pemerintah</b></td>
+            <td colspan="2"><b>Pinjaman Koperasi</b></td>
+            <td colspan="2"><b>Pinjaman Perorangan</b></td>
+            <td colspan="2"><b>Pinjaman Bank</b></td>
         </tr>
         <tr>
-            <td>P</td>
-            <td>L</td>
-            <td>P</td>
-            <td>L</td>
+            <td><b>P</b></td>
+            <td><b>L</b></td>
+            <td><b>P</b></td>
+            <td><b>L</b></td>
 
-            <td>2016</td>
-            <td>2017</td>
-            <td>2016</td>
-            <td>2017</td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
 
-            <td>2016</td>
-            <td>2017</td>
-            <td>2016</td>
-            <td>2017</td>
-            <td>2016</td>
-            <td>2017</td>
-            <td>2016</td>
-            <td>2017</td>
-            <td>2016</td>
-            <td>2017</td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
+            <td><b>2016</b></td>
+            <td><b>2017</b></td>
 
         </tr>
     </thead>
@@ -148,7 +146,7 @@
         @endforeach
         <tr>
             <td></td>
-            <td>JUMLAH</td>
+            <td><b>JUMLAH</b></td>
             <td></td>
             <td></td>
             <td></td>
@@ -173,24 +171,24 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>{{ $totals['total_tk1_l'] }}</td>
-            <td>{{ $totals['total_tk1_p'] }}</td>
-            <td>{{ $totals['total_tk2_l'] }}</td>
-            <td>{{ $totals['total_tk2_p'] }}</td>
+            <td><b> {{ $totals['total_tk1_l'] }} </b></td>
+            <td><b> {{ $totals['total_tk1_p'] }} </b></td>
+            <td><b> {{ $totals['total_tk2_l'] }} </b></td>
+            <td><b> {{ $totals['total_tk2_p'] }} </b></td>
             <td>-</td>
             <td>-</td>
-            <td>{{ $totals['total_omset1'] }}</td>
-            <td>{{ $totals['total_omset2'] }}</td>
-            <td>{{ $totals['total_ms1'] }}</td>
-            <td>{{ $totals['total_ms2'] }}</td>
-            <td>{{ $totals['total_bp1'] }}</td>
-            <td>{{ $totals['total_bp2'] }}</td>
-            <td>{{ $totals['total_pk1'] }}</td>
-            <td>{{ $totals['total_pk2'] }}</td>
-            <td>{{ $totals['total_pp1'] }}</td>
-            <td>{{ $totals['total_pp2'] }}</td>
-            <td>{{ $totals['total_pb1'] }}</td>
-            <td>{{ $totals['total_pb2'] }}</td>
+            <td><b> {{ $totals['total_omset1'] }} </b></td>
+            <td><b> {{ $totals['total_omset2'] }} </b></td>
+            <td><b> {{ $totals['total_ms1'] }} </b></td>
+            <td><b> {{ $totals['total_ms2'] }} </b></td>
+            <td><b> {{ $totals['total_bp1'] }} </b></td>
+            <td><b> {{ $totals['total_bp2'] }} </b></td>
+            <td><b> {{ $totals['total_pk1'] }} </b></td>
+            <td><b> {{ $totals['total_pk2'] }} </b></td>
+            <td><b> {{ $totals['total_pp1'] }} </b></td>
+            <td><b> {{ $totals['total_pp2'] }} </b></td>
+            <td><b> {{ $totals['total_pb1'] }} </b></td>
+            <td><b> {{ $totals['total_pb2'] }} </b></td>
             <td></td>
         </tr>
     </tbody>
