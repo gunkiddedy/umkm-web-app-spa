@@ -17,7 +17,7 @@ class UmkmDesaExport implements FromView
     
     public function view(): View
     {
-        $umkm = Ukm::where('dfdesa_id', $this->id)->limit(50)->get();
+        $umkm = Ukm::where('dfdesa_id', $this->id)->limit(10)->get();
         $total_tk1_l = 0;
         $total_tk1_p = 0;
         $total_tk2_l = 0;

@@ -45,8 +45,8 @@
                 </div>
                 <template slot="table-row" slot-scope="props" v-if="role === 'desa' || role === 'admin'">
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="editData(props.row.id)">Edit</button>
-                    <button class="bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1" @click="deleteData(props.row.id)">Hapus</button>
+                    <button class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="editData(props.row.id)"><i class="fas fa-pen mr-2"></i>Edit</button>
+                    <button class="bg-gray-500 rounded border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1" @click="deleteData(props.row.id)"><i class="fas fa-times mr-2"></i>Hapus</button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}
@@ -81,7 +81,7 @@ export default {
           label: "Action",
           field: "action",
           sortable: false,
-          width: "130px",
+          width: "160px",
         },
         {
           label: "nama_usaha",
@@ -628,7 +628,7 @@ export default {
           label: "Action",
           field: "action",
           sortable: false,
-          width: "130px",
+          width: "160px",
         },
       ],
       rows: [],

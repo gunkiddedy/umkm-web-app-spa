@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Providers\PHPExcelMacroServiceProvider::class,
 
         /*
          * Application Service Providers...

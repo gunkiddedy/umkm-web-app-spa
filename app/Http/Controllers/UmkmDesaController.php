@@ -187,6 +187,30 @@ class UmkmDesaController extends Controller
         return Excel::download(new UmkmDesaExport($id), 'umkm-desa-'.$id.'.xlsx');
     }
 
+    public function getUsahaPokok()
+    {
+        $usaha = DB::table("usaha_pokok")->get();
+        return response()->json($usaha);
+    }
+
+    public function getKriteria()
+    {
+        $kriteria = DB::select("SELECT DISTINCT kriteria FROM ukms WHERE kriteria <> 'Undefined' LIMIT 3");
+        return response()->json($kriteria);
+    }
+
+    public function getKecamatan()
+    {
+        $kcmtns = DB::table('dfkecamatan')->get();
+        return response()->json($kcmtns);
+    }
+
+    public function getDesa(Request $request)
+    {
+        $desas = DB::table('dfdesa')->where('dfkecamatan_id', $request->dfkecamatan_id)->get();
+        return response()->json($desas);
+    }
+
     public function testtable()
     {       
         return view('exports.test-table');

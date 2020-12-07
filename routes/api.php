@@ -19,3 +19,9 @@ Route::get('export-umkm-desa/{desa_id}', 'UmkmDesaController@export');
 Route::post('add-product', 'Api\ProductController@addProduct');
 Route::post('logout', 'AuthController@logout');
 Route::post('login', 'AuthController@login')->name('login');
+
+// get kecamatan and desa (dependent dropdown)
+Route::get('get-usaha-pokok', 'UmkmDesaController@getUsahaPokok');
+Route::get('get-kriteria', 'UmkmDesaController@getKriteria');
+Route::get('get-kecamatans', 'UmkmDesaController@getKecamatan');
+Route::get('get-desa-by-kecamatan-id', 'UmkmDesaController@getDesa');

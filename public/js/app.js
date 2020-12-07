@@ -2364,7 +2364,7 @@ __webpack_require__.r(__webpack_exports__);
         label: "Action",
         field: "action",
         sortable: false,
-        width: "130px"
+        width: "160px"
       }, {
         label: "nama_usaha",
         field: "nama_usaha",
@@ -2871,7 +2871,7 @@ __webpack_require__.r(__webpack_exports__);
         label: "Action",
         field: "action",
         sortable: false,
-        width: "130px"
+        width: "160px"
       }],
       rows: [],
       totalRecords: 0,
@@ -3076,9 +3076,118 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      showModal: false,
+      kecamatans: [],
+      desas: [],
+      kriterias: [],
+      usahas: [],
+      select_kecamatan: "",
+      select_desa: "",
+      select_kriteria: "",
+      select_usaha_pokok: ""
+    };
+  },
+  created: function created() {
+    this.loadKecamatan();
+    this.loadKriteria();
+    this.loadUsaha();
+  },
+  methods: {
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    loadUsaha: function loadUsaha() {
+      var _this = this;
+
+      axios.get("/api/get-usaha-pokok").then(function (response) {
+        _this.usahas = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadKriteria: function loadKriteria() {
+      var _this2 = this;
+
+      axios.get("/api/get-kriteria").then(function (response) {
+        _this2.kriterias = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadKecamatan: function loadKecamatan() {
+      var _this3 = this;
+
+      axios.get("/api/get-kecamatans").then(function (response) {
+        _this3.kecamatans = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadDesa: function loadDesa() {
+      var _this4 = this;
+
+      axios.get("/api/get-desa-by-kecamatan-id", {
+        params: {
+          dfkecamatan_id: this.select_kecamatan
+        }
+      }).then(function (response) {
+        _this4.desas = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -45784,7 +45893,7 @@ var render = function() {
                                                 "button",
                                                 {
                                                   staticClass:
-                                                    "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
+                                                    "bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
                                                   on: {
                                                     click: function($event) {
                                                       return _vm.editData(
@@ -45793,14 +45902,20 @@ var render = function() {
                                                     }
                                                   }
                                                 },
-                                                [_vm._v("Edit")]
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-pen mr-2"
+                                                  }),
+                                                  _vm._v("Edit")
+                                                ]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "button",
                                                 {
                                                   staticClass:
-                                                    "bg-gray-500 rounded-full border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1",
+                                                    "bg-gray-500 rounded border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1",
                                                   on: {
                                                     click: function($event) {
                                                       return _vm.deleteData(
@@ -45809,7 +45924,13 @@ var render = function() {
                                                     }
                                                   }
                                                 },
-                                                [_vm._v("Hapus")]
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-times mr-2"
+                                                  }),
+                                                  _vm._v("Hapus")
+                                                ]
                                               )
                                             ])
                                           : _c("span", [
@@ -45917,7 +46038,493 @@ var render = function() {
               staticClass:
                 "w-full h-screen overflow-x-hidden border-t flex flex-col"
             },
-            [_vm._m(0), _vm._v(" "), _c("footer-component")],
+            [
+              _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white shadow overflow-hidden sm:rounded-lg sm:w-full lg:w-2/3 mx-auto"
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "border-t border-gray-200" }, [
+                      _c("dl", [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+                          },
+                          [
+                            _c(
+                              "dt",
+                              {
+                                staticClass: "text-sm font-medium text-gray-500"
+                              },
+                              [_vm._v("Berdasarkan Kriteria")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "dd",
+                              {
+                                staticClass:
+                                  "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "bg-indigo-500 rounded-full text-white px-4 py-1",
+                                    on: { click: _vm.toggleModal }
+                                  },
+                                  [_vm._v("Download")]
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _vm._m(2)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.showModal
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "leading-loose lg:w-1/3 sm:w-1/2"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "p-10 bg-white rounded-lg shadow-xl"
+                                  },
+                                  [
+                                    _c("div", { staticClass: "py-2 my-1" }, [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "name" }
+                                        },
+                                        [_vm._v("Kecamatan")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.select_kecamatan,
+                                              expression: "select_kecamatan"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none",
+                                          attrs: {
+                                            name: "dfkecamatan_id",
+                                            id: "dfkecamatan_id"
+                                          },
+                                          on: {
+                                            change: [
+                                              function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.select_kecamatan = $event
+                                                  .target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              },
+                                              _vm.loadDesa
+                                            ]
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              staticClass: "text-gray-700",
+                                              attrs: {
+                                                value: "",
+                                                selected: "selected"
+                                              }
+                                            },
+                                            [_vm._v("-Select Kecamatan-")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.kecamatans, function(
+                                            kec,
+                                            i
+                                          ) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                key: i,
+                                                staticClass: "text-gray-700",
+                                                domProps: {
+                                                  value: kec.dfkecamatan_id
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      " +
+                                                    _vm._s(
+                                                      kec.dfkecamatan_nama
+                                                    ) +
+                                                    "\n                    "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "py-2 my-1" }, [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "name" }
+                                        },
+                                        [_vm._v("Desa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.select_desa,
+                                              expression: "select_desa"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none",
+                                          attrs: {
+                                            name: "dfdesa_id",
+                                            id: "dfdesa_id"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.select_desa = $event.target
+                                                .multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              staticClass: "text-gray-700",
+                                              attrs: {
+                                                value: "",
+                                                selected: "selected"
+                                              }
+                                            },
+                                            [_vm._v("-Select Desa-")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.desas, function(desa, i) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                key: i,
+                                                staticClass: "text-gray-700",
+                                                domProps: {
+                                                  value: desa.dfdesa_id
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      " +
+                                                    _vm._s(desa.dfdesa_nama) +
+                                                    "\n                    "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "py-2 my-1" }, [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "name" }
+                                        },
+                                        [_vm._v("Kriteria")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.select_kriteria,
+                                              expression: "select_kriteria"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none",
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.select_kriteria = $event
+                                                .target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              staticClass: "text-gray-700",
+                                              attrs: {
+                                                value: "",
+                                                selected: "selected"
+                                              }
+                                            },
+                                            [_vm._v("-Select Kriteria-")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.kriterias, function(
+                                            krit,
+                                            i
+                                          ) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                key: i,
+                                                staticClass: "text-gray-700",
+                                                domProps: {
+                                                  value: krit.kriteria
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      " +
+                                                    _vm._s(krit.kriteria) +
+                                                    "\n                    "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "py-2 my-1" }, [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "name" }
+                                        },
+                                        [_vm._v("Usaha Pokok")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.select_usaha_pokok,
+                                              expression: "select_usaha_pokok"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none",
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.select_usaha_pokok = $event
+                                                .target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              staticClass: "text-gray-700",
+                                              attrs: {
+                                                value: "",
+                                                selected: "selected"
+                                              }
+                                            },
+                                            [_vm._v("-Select Usaha Pokok-")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.usahas, function(up, i) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                key: i,
+                                                staticClass: "text-gray-700",
+                                                domProps: { value: up.field }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      " +
+                                                    _vm._s(up.usaha) +
+                                                    "\n                    "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "mt-6 flex items-center justify-end"
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "px-3 py-1 text-sm text-white bg-red-600 rounded-full",
+                                            on: { click: _vm.toggleModal }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-times mr-2"
+                                            }),
+                                            _vm._v(" Close")
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full",
+                                            on: { click: _vm.toggleModal }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass:
+                                                "fas fa-arrow-circle-down mr-2"
+                                            }),
+                                            _vm._v(" Download")
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm.showModal
+                ? _c("div", {
+                    staticClass: "opacity-25 fixed inset-0 z-30 bg-black"
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("footer-component")
+            ],
             1
           )
         ],
@@ -45932,131 +46539,77 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "w-full flex-grow p-6 bg-white" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "bg-white shadow overflow-hidden sm:rounded-lg w-1/2 mx-auto"
-        },
-        [
-          _c("div", { staticClass: "px-4 py-5 sm:px-6" }, [
-            _c(
-              "h3",
-              { staticClass: "text-lg leading-6 font-medium text-gray-900" },
-              [_vm._v("Form Download")]
-            ),
-            _vm._v(" "),
-            _c("p", { staticClass: "mt-1 max-w-2xl text-sm text-gray-500" }, [
-              _vm._v("Download berdasarkan parameter.")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "border-t border-gray-200" }, [
-            _c("dl", [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                },
-                [
-                  _c(
-                    "dt",
-                    { staticClass: "text-sm font-medium text-gray-500" },
-                    [_vm._v("Berdasarkan Kriteria")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "dd",
-                    {
-                      staticClass:
-                        "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "bg-indigo-500 rounded-full text-white px-4 py-1"
-                        },
-                        [_vm._v("Download")]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                },
-                [
-                  _c(
-                    "dt",
-                    { staticClass: "text-sm font-medium text-gray-500" },
-                    [_vm._v("Berdasarkan Usaha Pokok")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "dd",
-                    {
-                      staticClass:
-                        "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "bg-indigo-500 rounded-full text-white px-4 py-1"
-                        },
-                        [_vm._v("Download")]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                },
-                [
-                  _c(
-                    "dt",
-                    { staticClass: "text-sm font-medium text-gray-500" },
-                    [_vm._v("Berdasarkan Desa")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "dd",
-                    {
-                      staticClass:
-                        "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "bg-indigo-500 rounded-full text-white px-4 py-1"
-                        },
-                        [_vm._v("Download")]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "px-4 py-5 sm:px-6" }, [
+      _c("h3", { staticClass: "text-lg leading-6 font-medium text-gray-900" }, [
+        _vm._v("Form Download")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mt-1 max-w-2xl text-sm text-gray-500" }, [
+        _vm._v("Download berdasarkan parameter.")
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+      },
+      [
+        _c("dt", { staticClass: "text-sm font-medium text-gray-500" }, [
+          _vm._v("Berdasarkan Usaha Pokok")
+        ]),
+        _vm._v(" "),
+        _c(
+          "dd",
+          { staticClass: "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "bg-indigo-500 rounded-full text-white px-4 py-1"
+              },
+              [_vm._v("Download")]
+            )
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+      },
+      [
+        _c("dt", { staticClass: "text-sm font-medium text-gray-500" }, [
+          _vm._v("Berdasarkan Desa")
+        ]),
+        _vm._v(" "),
+        _c(
+          "dd",
+          { staticClass: "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "bg-indigo-500 rounded-full text-white px-4 py-1"
+              },
+              [_vm._v("Download")]
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -47926,7 +48479,7 @@ var render = function() {
                                         "button",
                                         {
                                           staticClass:
-                                            "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
+                                            "bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
                                           on: {
                                             click: function($event) {
                                               return _vm.viewData(
@@ -47935,7 +48488,12 @@ var render = function() {
                                             }
                                           }
                                         },
-                                        [_vm._v("View Data")]
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-eye mr-2"
+                                          }),
+                                          _vm._v("View")
+                                        ]
                                       )
                                     ])
                                   : _c("span", [
@@ -48167,7 +48725,7 @@ var render = function() {
                                         "button",
                                         {
                                           staticClass:
-                                            "bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
+                                            "bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1",
                                           on: {
                                             click: function($event) {
                                               return _vm.viewData(
@@ -48176,7 +48734,12 @@ var render = function() {
                                             }
                                           }
                                         },
-                                        [_vm._v("View Data")]
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-eye mr-2"
+                                          }),
+                                          _vm._v("View")
+                                        ]
                                       )
                                     ])
                                   : _c("span", [

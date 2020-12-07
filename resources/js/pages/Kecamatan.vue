@@ -43,7 +43,7 @@
               >
                 <template slot="table-row" slot-scope="props">
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded-full border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="viewData(props.row.id_des)">View Data</button>
+                    <button class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="viewData(props.row.id_des)"><i class="fas fa-eye mr-2"></i>View</button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}
