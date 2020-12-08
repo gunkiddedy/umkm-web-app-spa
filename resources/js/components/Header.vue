@@ -1,14 +1,22 @@
 <template>
   <div>
     <header class="w-full flex items-center bg-gray-100 py-2 px-6 hidden sm:flex">
-      <div class="w-1/2"></div>
+      <div class="w-1/2">
+        <a href="/public">
+          <span class="text-gray-500 font-semibold text-2xl">UMKM GUNUNGKIDUL</span>
+        </a>
+      </div>
       <div :data="isOpen" class="relative w-1/2 flex justify-end">
         <!--<button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
           <img src="/img/cantik.jpg" />
         </button>-->
-        <button @click="logout" class="relative w-12 h-12">
+        <button @click="logout" class="relative w-12 h-12" v-if="isLoggedIn === 'true'">
           <i class="fas fa-sign-out-alt mr-3"></i>
         </button>
+        <button @click="goToLogin" class="relative w-12 h-12" v-else>
+          <i class="fas fa-sign-in-alt mr-3"></i>
+        </button>
+
         <!--<button v-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
         <div v-show="isOpen" class="z-10 absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
           <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
@@ -131,6 +139,11 @@ export default {
     this.isAdmin = localStorage.getItem("isAdmin");
   },
   methods: {
+    goToLogin() {
+      this.$router.push({
+        name: "login",
+      });
+    },
     logout() {
       this.$swal({
         title: "Oops...!",
@@ -148,18 +161,18 @@ export default {
               this.$router.push({
                 name: "login",
               });
-              localStorage.removeItem("isloggedIn");
+              localStorage.removeItem("isLoggedIn");
               localStorage.removeItem("username");
               localStorage.removeItem("desa_id");
               localStorage.removeItem("kecamatan_id");
               localStorage.removeItem("role");
               localStorage.removeItem("isAdmin");
-              this.isloggedIn = "false";
+              this.isLoggedIn = "false";
             })
             .catch((err) => {
               console.log(err);
             });
-          this.$swal("Success!", "Anda berhasil logout", "success");
+          // this.$swal("Success!", "Anda berhasil logout", "success");
         } else if (result.isDismissed) {
           this.$swal("Canceled!", "Logout Dibatalkan!", "info");
         }

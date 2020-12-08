@@ -16,15 +16,27 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 Vue.use(VueSweetalert2);
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI);
+
+import Vuex from 'vuex'
+import dataStore from './store/index'
+Vue.use(Vuex);
+const store = new Vuex.Store(dataStore);
+
+
 const router = new VueRouter(routes);
 
 Vue.component('app-component', require('./components/App.vue').default);
 Vue.component('sidebar-component', require('./components/Sidebar.vue').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
+Vue.component('pagination', require('./components/Pagination.vue').default);
 Vue.component('loader', require('./components/Loader.vue').default);
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    store:store,
 });

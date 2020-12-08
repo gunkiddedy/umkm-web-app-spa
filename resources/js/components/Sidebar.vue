@@ -1,5 +1,5 @@
 <template>
-  <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+  <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl" v-if="isLoggedIn === 'true'">
     <div class="p-4">
       <!--<a href="/public" class="text-white text-lg block font-semibold uppercase hover:text-gray-300 mx-auto">UMKM GK</a>-->
       <div class="realtive w-20 h-20 rounded-full overflow-hidden border-2 border-gray-100 hover:border-gray-200 focus:border-gray-200 focus:outline-none mb-1 mx-auto">

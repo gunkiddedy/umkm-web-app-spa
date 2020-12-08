@@ -1,4 +1,5 @@
 import Public from './pages/Public'
+import ProductDetail from './pages/ProductDetail'
 import Desa from './pages/Desa'
 import Edit from './pages/Edit'
 import Kecamatan from './pages/Kecamatan'
@@ -18,6 +19,12 @@ export default {
             path: '/public',
             component: Public,
             name: 'public'
+        },
+        {
+            path: '/product-detail/:id',
+            component: ProductDetail,
+            name: 'product-detail',
+            props: true
         },
         {
             path: '/desa/:id',

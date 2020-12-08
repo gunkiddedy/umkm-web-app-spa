@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Exports\AdminExport;
 use Illuminate\Http\Request;
-use App\Exports\UmkmDesaExport;
+use App\Exports\DesaExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
     public function exportDesa(Request $request, $id)
     {
-        return Excel::download(new UmkmDesaExport($id), 'umkm-desa-'.$id.'.xlsx');
+        return Excel::download(new DesaExport($id), 'umkm-desa-'.$id.'.xlsx');
     }
 
     /*

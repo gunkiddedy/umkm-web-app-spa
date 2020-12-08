@@ -36,7 +36,7 @@
               </div>
             </form>
             <div class="text-center pt-12 pb-12">
-              <p>Don't have an account? <a href="#" class="underline font-semibold">Register here.</a></p>
+              <p>Don't have an account? <a href="/public" class="underline font-semibold">Go to publik page!</a></p>
             </div>
           </div>
         </div>

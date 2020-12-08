@@ -11,38 +11,35 @@
             <loader />
           </div>
           <!-- Content goes here! 😁 -->
+          <h1 class="text-lg mb-4 font-semibold">Filter Data UMKM</h1>
+          <button class="bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full" @click="$router.go(-1)"><i class="fas fa-arrow-circle-left mr-3"></i> Back</button>
+
           <!--<h1 class="text-lg text-gray-500 pb-1 font-semibold">Download berdasarkan parameter</h1>-->
           <!-- This example requires Tailwind CSS v2.0+ -->
-          <div class="bg-white shadow overflow-hidden sm:rounded-lg sm:w-full lg:w-2/3 mx-auto">
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg sm:w-full lg:w-1/2 mx-auto">
             <div class="px-4 py-5 sm:px-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">Form Download</h3>
               <p class="mt-1 max-w-2xl text-sm text-gray-500">Download berdasarkan parameter.</p>
             </div>
             <div class="border-t border-gray-200">
               <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Berdasarkan Kriteria</dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button @click="toggleModal" class="bg-indigo-500 rounded-full text-white px-4 py-1">Download</button>
+                    <button @click="toggleModalKriteria" class="bg-indigo-500 rounded-full text-white px-4 py-1">Filter</button>
                   </dd>
                 </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Berdasarkan Usaha Pokok</dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button class="bg-indigo-500 rounded-full text-white px-4 py-1">Download</button>
-                  </dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-500">Berdasarkan Desa</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button class="bg-indigo-500 rounded-full text-white px-4 py-1">Download</button>
+                    <button class="bg-indigo-500 rounded-full text-white px-4 py-1">Filter</button>
                   </dd>
                 </div>
               </dl>
             </div>
             <!-- modal-->
-            <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex">
-              <div class="leading-loose lg:w-1/3 sm:w-1/2">
+            <div v-if="showModalKriteria" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex">
+              <div class="leading-loose lg:w-1/3 sm:w-1/3">
                 <div class="p-10 bg-white rounded-lg shadow-xl">
                   <div v-if="loadingExcel" class="z-50 flex justify-around relative opacity-75 bg-black inset-0">
                     <loader />
@@ -75,7 +72,7 @@
                       </option>
                     </select>
                   </div>
-                  <div class="py-2 my-1">
+                  <!--<div class="py-2 my-1">
                     <label class="block text-sm text-gray-600" for="name">Usaha Pokok</label>
                     <select v-model="select_usaha_pokok" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
                       <option class="text-gray-700" value="" selected="selected">-Select Usaha Pokok-</option>
@@ -83,10 +80,10 @@
                         {{ up.usaha }}
                       </option>
                     </select>
-                  </div>
+                  </div>-->
                   <div class="mt-6 flex items-center justify-end">
-                    <button @click="toggleModal" class="px-3 py-1 text-sm text-white bg-red-600 rounded-full"><i class="fas fa-times mr-2"></i> Close</button>
-                    <button @click="exportExcel(select_kecamatan, select_desa, select_kriteria)" class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"><i class="fas fa-arrow-circle-down mr-2"></i> Download</button>
+                    <button @click="toggleModalKriteria" class="px-3 py-1 text-sm text-white bg-red-600 rounded-full"><i class="fas fa-times mr-2"></i> Close</button>
+                    <button @click="exportExcel(select_kecamatan, select_desa, select_kriteria)" class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"><i class="fas fa-arrow-circle-down mr-2"></i> {{ unduhData ? "Mengunduh data..." : "Download" }}</button>
                   </div>
                 </div>
               </div>
@@ -94,7 +91,7 @@
           </div>
         </main>
 
-        <div v-if="showModal" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
+        <div v-if="showModalKriteria" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <footer-component></footer-component>
       </div>
@@ -106,10 +103,11 @@
 export default {
   data() {
     return {
+      unduhData: false,
       loadingExcel: false,
       loading: true,
       messageFromExcel: "",
-      showModal: false,
+      showModalKriteria: false,
       kecamatans: [],
       desas: [],
       kriterias: [],
@@ -165,8 +163,8 @@ export default {
           console.log(err);
         });
     },
-    toggleModal() {
-      this.showModal = !this.showModal;
+    toggleModalKriteria() {
+      this.showModalKriteria = !this.showModalKriteria;
     },
     loadUsaha() {
       axios
