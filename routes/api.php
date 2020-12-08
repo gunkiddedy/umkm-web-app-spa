@@ -25,7 +25,12 @@ Route::post('login', 'AuthController@login')->name('login');
 
 // ADMIN
 Route::post('upload-photo-product', 'AdminController@uploadProduct');
-Route::get('export-umkm-admin/{kcmtn}/{desa}/{kriteria}', 'ExportController@exportAdmin');
+Route::get('export-umkm-admin-k-d-k/{kcmtn}/{desa}/{kriteria}', 'ExportController@exportAdminKriteria');
+Route::get('export-umkm-admin-k/{kcmtn}', 'ExportController@exportAdminKecamatan');
+Route::get('export-umkm-admin-k-d-u/{kcmtn}/{desa}/{up}', 'ExportController@exportAdminUsahaPokok');
+Route::get('export-umkm-admin-k-k/{kcmtn}/{kriteria}', 'ExportController@exportAdminUsahaPokok');
+Route::get('export-umkm-admin-k-u/{kcmtn}/{up}', 'ExportController@exportAdminUsahaPokok');
+// Route::get('export-umkm-admin/{name?}', 'ExportController@exportAdmin');
 
 // get kecamatan and desa (dependent dropdown)
 Route::get('get-usaha-pokok', 'DesaController@getUsahaPokok');

@@ -44,10 +44,9 @@
                   <div v-if="loadingExcel" class="z-50 flex justify-around relative opacity-75 bg-black inset-0">
                     <loader />
                   </div>
-                  <div>{{ messageFromExcel }}</div>
                   <div class="py-2 my-1">
                     <label class="block text-sm text-gray-600" for="name">Kecamatan</label>
-                    <select name="dfkecamatan_id" id="dfkecamatan_id" v-model="select_kecamatan" @change="loadDesa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
+                    <select required="required" name="dfkecamatan_id" id="dfkecamatan_id" v-model="select_kecamatan" @change="loadDesa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
                       <option class="text-gray-700" value="" selected="selected">-Select Kecamatan-</option>
                       <option class="text-gray-700" v-for="(kec, i) in kecamatans" :value="kec.dfkecamatan_id" :key="i">
                         {{ kec.dfkecamatan_nama }}
@@ -56,7 +55,7 @@
                   </div>
                   <div class="py-2 my-1">
                     <label class="block text-sm text-gray-600" for="name">Desa</label>
-                    <select name="dfdesa_id" id="dfdesa_id" v-model="select_desa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
+                    <select required="required" name="dfdesa_id" id="dfdesa_id" v-model="select_desa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
                       <option class="text-gray-700" value="" selected="selected">-Select Desa-</option>
                       <option class="text-gray-700" v-for="(desa, i) in desas" :key="i" :value="desa.dfdesa_id">
                         {{ desa.dfdesa_nama }}
@@ -65,7 +64,7 @@
                   </div>
                   <div class="py-2 my-1">
                     <label class="block text-sm text-gray-600" for="name">Kriteria</label>
-                    <select v-model="select_kriteria" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
+                    <select required="required" v-model="select_kriteria" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
                       <option class="text-gray-700" value="" selected="selected">-Select Kriteria-</option>
                       <option class="text-gray-700" v-for="(krit, i) in kriterias" :value="krit.kriteria" :key="i">
                         {{ krit.kriteria }}
@@ -106,7 +105,6 @@ export default {
       unduhData: false,
       loadingExcel: false,
       loading: true,
-      messageFromExcel: "",
       showModalKriteria: false,
       kecamatans: [],
       desas: [],
@@ -132,7 +130,6 @@ export default {
     exportExcel(param1, param2, param3) {
       this.unduhData = true;
       this.loadingExcel = true;
-      this.checkExcelData(param1, param2, param3);
       axios
         .get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3, {
           responseType: "blob",
@@ -150,17 +147,6 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-        });
-    },
-    checkExcelData(param1, param2, param3) {
-      axios
-        .get("/api/export-umkm-admin/" + param1 + "/" + param2 + "/" + param3)
-        .then((response) => {
-          this.messageFromExcel = response.data.msg;
-          console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
         });
     },
     toggleModalKriteria() {

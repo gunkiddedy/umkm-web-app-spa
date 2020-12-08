@@ -8,7 +8,7 @@
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow py-6 bg-white shadow" :class="isLoggedIn == 'true' ? 'px-6' : 'px-32'">
           <!-- SEARCH PRODUCTS-->
-          <div class="w-2/3 relative mx-auto">
+          <div class="w-full relative mx-auto">
             <form @submit.prevent="searchProducts">
               <button type="submit" class="absolute right-0 mt-2 mr-2 text-gray-500">
                 <svg class="w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
@@ -19,18 +19,18 @@
             </form>
           </div>
           <div class="w-full flex items-center justify-end px-6 py-6">
-            <span>Filter by: </span>
+            <span>Filter by : </span>
             <div class="w-auto mr-4">
-              <select name="dfkecamatan_id" id="dfkecamatan_id" v-model="selected.selectedKecamatan" @change="loadDesa" class="block appearance-none w-full border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
-                <option class="text-gray-700">-Select Kecamatan-</option>
+              <select name="dfkecamatan_id" id="dfkecamatan_id" v-model="selected.selectedKecamatan" @change="loadDesa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
+                <option class="text-gray-700" value="" selected="selected">-Select Kecamatan-</option>
                 <option class="text-gray-700" v-for="(kec, i) in kecamatans" :value="kec.dfkecamatan_id" :key="i">
                   {{ kec.dfkecamatan_nama }}
                 </option>
               </select>
             </div>
             <div class="w-auto">
-              <select name="dfdesa_id" id="dfdesa_id" v-model="selected.selectedDesa" class="block appearance-none w-full border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
-                <option class="text-gray-700">-Select Desa-</option>
+              <select name="dfdesa_id" id="dfdesa_id" v-model="selected.selectedDesa" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none">
+                <option class="text-gray-700" value="" selected="selected">-Select Desa-</option>
                 <option class="text-gray-700" v-for="(desa, i) in desas" :key="i" :value="desa.dfdesa_id">
                   {{ desa.dfdesa_nama }}
                 </option>

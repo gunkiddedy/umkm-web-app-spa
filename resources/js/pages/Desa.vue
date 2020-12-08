@@ -41,7 +41,7 @@
                 :columns="columns"
               >
                 <div slot="table-actions">
-                  <button @click="exportExcel(id)" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2"><i class="fas fa-arrow-circle-down mr-3"></i>Download</button>
+                  <button @click="exportExcel()" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2"><i class="fas fa-arrow-circle-down mr-3"></i>Download</button>
                 </div>
                 <template slot="table-row" slot-scope="props" v-if="role === 'desa' || role === 'admin'">
                   <span v-if="props.column.field == 'action'">
@@ -696,9 +696,15 @@ export default {
         },
       });
     },
-    exportExcel(param) {
+    exportExcel() {
       this.unduhData = true;
       this.loading = true;
+      let param;
+      if (this.role === "desa") {
+        param = this.desa_id;
+      } else if (this.role === "admin") {
+        param = this.id;
+      }
       axios
         .get("/api/export-umkm-desa/" + param, {
           responseType: "blob",
