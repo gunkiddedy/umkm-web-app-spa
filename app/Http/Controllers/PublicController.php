@@ -13,7 +13,7 @@ class PublicController extends Controller
     {
         $products = Product::withFilters()
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->paginate(15);
 
         return PublicResource::collection($products);
     }

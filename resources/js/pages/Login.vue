@@ -2,8 +2,12 @@
   <div>
     <div class="bg-white font-family-karla h-screen" v-if="!isloading">
       <div class="w-full flex flex-wrap">
+        <!-- Image Section -->
+        <div class="w-3/5 shadow-2xl">
+          <img class="object-cover w-full h-screen hidden md:block" src="/img/bglogin.jpg" />
+        </div>
         <!-- Login Section -->
-        <div class="w-full md:w-1/2 flex flex-col">
+        <div class="w-full md:w-2/5 flex flex-col">
           <!--<div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
 				<a href="#" class="bg-black text-white font-bold text-xl p-4">Logo</a>
 				</div>-->
@@ -39,11 +43,6 @@
               <p>Don't have an account? <a href="/public" class="underline font-semibold">Go to publik page!</a></p>
             </div>
           </div>
-        </div>
-
-        <!-- Image Section -->
-        <div class="w-1/2 shadow-2xl">
-          <img class="object-cover w-full h-screen hidden md:block" src="/img/bglogin.jpg" />
         </div>
       </div>
     </div>
