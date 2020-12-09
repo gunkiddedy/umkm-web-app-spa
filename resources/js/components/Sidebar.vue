@@ -139,7 +139,7 @@ export default {
               this.$router.push({
                 name: "login",
               });
-              localStorage.removeItem("isloggedIn");
+              localStorage.setItem("isLoggedIn", "false");
               localStorage.removeItem("username");
               localStorage.removeItem("desa_id");
               localStorage.removeItem("kecamatan_id");

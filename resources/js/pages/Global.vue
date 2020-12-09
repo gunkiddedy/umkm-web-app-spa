@@ -170,6 +170,10 @@ export default {
     };
   },
 
+  created() {
+    this.getRecords();
+  },
+
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.username = localStorage.getItem("username");
@@ -177,7 +181,12 @@ export default {
     this.kecamatan_id = localStorage.getItem("kecamatan_id");
     this.role = localStorage.getItem("role");
     this.isAdmin = localStorage.getItem("isAdmin");
-    this.getRecords();
+  },
+
+  beforeMount() {
+    if (this.role !== "admin") {
+      this.$router.push("/public");
+    }
   },
 
   methods: {

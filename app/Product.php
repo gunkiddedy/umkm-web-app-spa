@@ -35,5 +35,14 @@ class Product extends Model
         ->when(request()->input('keywords'), function ($query) {
             $query->where('product_name', 'like', '%'.request()->input('keywords').'%');
         });
+        // return $query->when(request()->input('selectedKecamatan', []), function ($query) {
+        //     $query->whereIn('dfkecamatan_id', request()->input('selectedKecamatan'));
+        // })
+        // ->when(request()->input('selectedDesa', []), function ($query) {
+        //     $query->whereIn('dfdesa_id', request()->input('selectedDesa'));
+        // })
+        // ->when(request()->input('keywords'), function ($query) {
+        //     $query->where('product_name', 'like', '%'.request()->input('keywords').'%');
+        // });
     }
 }

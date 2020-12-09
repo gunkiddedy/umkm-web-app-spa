@@ -7,10 +7,21 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
-          <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">UMKM Desa {{ namaDesa }}</h1>
-          <button class="bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full" v-if="role === 'admin'" @click="$router.go(-1)"><i class="fas fa-arrow-circle-left mr-3"></i> Back</button>
+          <h1 class="text-lg text-indigo-400 pb-1 font-semibold uppercase">
+            UMKM Desa {{ namaDesa }}
+          </h1>
+          <button
+            class="bg-gray-300 hover:bg-gray-400 px-3 py-1 text-white text-xs rounded-full"
+            v-if="role === 'admin'"
+            @click="$router.go(-1)"
+          >
+            <i class="fas fa-arrow-circle-left mr-3"></i> Back
+          </button>
           <!-- loader spin-->
-          <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
+          <div
+            v-if="loading"
+            class="z-30 flex justify-around relative opacity-75 bg-black inset-0"
+          >
             <loader />
           </div>
 
@@ -41,12 +52,31 @@
                 :columns="columns"
               >
                 <div slot="table-actions">
-                  <button @click="exportExcel()" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2"><i class="fas fa-arrow-circle-down mr-3"></i>Download</button>
+                  <button
+                    @click="exportExcel()"
+                    class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 text-white text-xs rounded-full mr-2"
+                  >
+                    <i class="fas fa-arrow-circle-down mr-3"></i>Download
+                  </button>
                 </div>
-                <template slot="table-row" slot-scope="props" v-if="role === 'desa' || role === 'admin'">
+                <template
+                  slot="table-row"
+                  slot-scope="props"
+                  v-if="role === 'desa' || role === 'admin'"
+                >
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="editData(props.row.id)"><i class="fas fa-pen mr-2"></i>Edit</button>
-                    <button class="bg-gray-500 rounded border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1" @click="deleteData(props.row.id)"><i class="fas fa-times mr-2"></i>Hapus</button>
+                    <button
+                      class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1"
+                      @click="editData(props.row.id)"
+                    >
+                      <i class="fas fa-pen mr-2"></i>Edit
+                    </button>
+                    <button
+                      class="bg-gray-500 rounded border border-gray-600 hover:bg-gray-600 px-2 py-0 text-white font-semibold mr-1"
+                      @click="deleteData(props.row.id)"
+                    >
+                      <i class="fas fa-times mr-2"></i>Hapus
+                    </button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}
@@ -106,7 +136,15 @@ export default {
             enabled: true,
             placeholder: "Filter",
             // filterValue: "",
-            filterDropdownItems: ["PT", "CV", "Koperasi", "FA", "UD", "P. Perseorangan Lainnya", "Non Badan Hukum"],
+            filterDropdownItems: [
+              "PT",
+              "CV",
+              "Koperasi",
+              "FA",
+              "UD",
+              "P. Perseorangan Lainnya",
+              "Non Badan Hukum",
+            ],
             // filterFn: function(data, filterString) {
             //     return data === filterString;
             // },
@@ -209,7 +247,13 @@ export default {
             trigger: "enter",
           },
         },
-        { label: "desa", field: "desa", sortable: false, width: "200px", filterable: false },
+        {
+          label: "desa",
+          field: "desa",
+          sortable: false,
+          width: "200px",
+          filterable: false,
+        },
 
         {
           label: "no.tlp",
@@ -620,7 +664,12 @@ export default {
           filterOptions: {
             enabled: true,
             placeholder: "Filter",
-            filterDropdownItems: ["Usaha Mikro", "Undefined", "Usaha Kecil", "Usaha Menengah"],
+            filterDropdownItems: [
+              "Usaha Mikro",
+              "Undefined",
+              "Usaha Kecil",
+              "Usaha Menengah",
+            ],
             trigger: "keyup",
           },
         },
@@ -644,12 +693,17 @@ export default {
       },
     };
   },
-
+  created() {
+    this.getRecords();
+  },
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.desa_id = localStorage.getItem("desa_id");
     this.role = localStorage.getItem("role");
-    this.getRecords();
+    // this.getRecords();
+    if (this.role === "") {
+      this.$router.push("/public");
+    }
   },
 
   methods: {

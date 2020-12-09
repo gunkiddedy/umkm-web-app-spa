@@ -15,14 +15,14 @@
             <loader />
           </div>
           <!-- Content goes here! 😁 -->
-          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Add Data kc-{{kecamatan_id}}-{{desa_id}}</h1>
+          <h1 class="text-lg text-gray-500 pb-1 font-semibold">
+            Add Data kc-{{ kecamatan_id }}-{{ desa_id }}
+          </h1>
           <div class="w-full mt-6 pl-0 lg:pl-2">
             <div class="leading-loose">
               <div class="p-10 bg-white rounded-lg shadow-xl">
                 <form class="my-6">
-                  <div
-                    class="grid lg:grid-cols-3 md:grid-cols-2"
-                  >
+                  <div class="grid lg:grid-cols-3 md:grid-cols-2">
                     <div class="px-1 my-2" v-if="isAdmin === 'true'">
                       <label class="block text-sm text-gray-600" for="cus_name"
                         >Kecamatan</label
@@ -300,24 +300,24 @@
                         >jenis_kelamin</label
                       >
                       <select
-                      required="required"
-                      name="gender"
-                      id="gender"
-                      v-model="select_gender"
-                      class="w-full px-5 py-1 rounded-lg text-gray-500 focus:outline-none focus:shadow-inner border-2 border-gray-200 bg-white appearance-none"
-                    >
-                      <option class="text-gray-700" value="" selected="selected">
-                        -Jenis Kelamin-
-                      </option>
-                      <option
-                        class="text-gray-700"
-                        v-for="(gender, i) in genders"
-                        :value="gender.substring(0,1)"
-                        :key="i"
+                        required="required"
+                        name="gender"
+                        id="gender"
+                        v-model="select_gender"
+                        class="w-full px-5 py-1 rounded-lg text-gray-500 focus:outline-none focus:shadow-inner border-2 border-gray-200 bg-white appearance-none"
                       >
-                        {{ gender }}
-                      </option>
-                    </select>
+                        <option class="text-gray-700" value="" selected="selected">
+                          -Jenis Kelamin-
+                        </option>
+                        <option
+                          class="text-gray-700"
+                          v-for="(gender, i) in genders"
+                          :value="gender.substring(0, 1)"
+                          :key="i"
+                        >
+                          {{ gender }}
+                        </option>
+                      </select>
                       <!--<input
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
@@ -766,8 +766,8 @@ export default {
       usahas: [],
       lembagas: [],
       genders: {
-        1: 'Laki-laki',
-        2: 'Perempuan',
+        1: "Laki-laki",
+        2: "Perempuan",
       },
       select_gender: "",
       select_lembaga: "",
@@ -801,7 +801,7 @@ export default {
     this.role = localStorage.getItem("role");
     this.isAdmin = localStorage.getItem("isAdmin");
 
-    if (this.role !== "desa" || this.role !=='admin') {
+    if (this.role !== "desa" || this.role !== "admin") {
       this.$router.push("/public");
     }
 
@@ -843,9 +843,8 @@ export default {
       if (this.role == "desa") {
         param1 = this.kecamatan_id;
         param2 = this.desa_id;
-      } 
-      else if (this.role == "admin") {
-        if(!this.select_kecamatan || !this.select_desa){
+      } else if (this.role == "admin") {
+        if (!this.select_kecamatan || !this.select_desa) {
           this.status = false;
           this.showNotification("kecamatan atau desa tidak boleh kosong");
           return false;
@@ -979,8 +978,4 @@ export default {
 };
 </script>
 
-<style s]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-</style>
+<style scoped></style>

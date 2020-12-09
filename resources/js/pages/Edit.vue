@@ -8,7 +8,10 @@
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
           <!-- loader spin-->
-          <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
+          <div
+            v-if="loading"
+            class="z-30 flex justify-around relative opacity-75 bg-black inset-0"
+          >
             <loader />
           </div>
           <!-- Content goes here! 😁 -->
@@ -16,181 +19,536 @@
           <div class="w-full mt-6 pl-0 lg:pl-2">
             <div class="leading-loose">
               <div class="p-10 bg-white rounded shadow-xl">
-                <p class="text-lg text-gray-800 font-medium pb-4">Nama Usaha {{ nama_usaha }}</p>
+                <p class="text-lg text-gray-800 font-medium pb-4">
+                  Nama Usaha {{ nama_usaha }}
+                </p>
 
-                <div class="grid grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2">
+                <div
+                  class="grid grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2"
+                >
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">nama usaha</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="nama_usaha" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >nama usaha</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="nama_usaha"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">kelembagaan</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="kelembagaan" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >kelembagaan</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="kelembagaan"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">nama_pemilik</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="nama_pemilik" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >nama_pemilik</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="nama_pemilik"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_name">nik</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="nik" />
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="nik"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">jenis_kelamin</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="jenis_kelamin" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >jenis_kelamin</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="jenis_kelamin"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_email">siu</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="siu" type="text" placeholder="SIU" aria-label="Email" />
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="siu"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_name">npwp</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="npwp" />
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="npwp"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_email">tmu</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="tmu" type="text" placeholder="Country" aria-label="Email" />
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="tmu"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">alamat</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="alamat" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >alamat</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="alamat"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_name">desa</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="desa" />
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="desa"
+                    />
                   </div>
                   <div class="px-1 my-2">
                     <label class="block text-sm text-gray-600" for="cus_email">tlp</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="tlp" type="text" placeholder="Country" aria-label="Email" />
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="tlp"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">email</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="email" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >email</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="email"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">makanan olahan/industri pertanian</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up1" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >makanan olahan/industri pertanian</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up1"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">kerajinan/industri non pertanian</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="up2" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >kerajinan/industri non pertanian</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="up2"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">jasa swasta</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="up3" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >jasa swasta</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="up3"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">perdagangan</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up4" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >perdagangan</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up4"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">usaha lainnya</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="up5" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >usaha lainnya</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="up5"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">pertanian, peternakan, kehutanan, perikanan</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up6" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >pertanian, peternakan, kehutanan, perikanan</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up6"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">pertambangan dan penggalian</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up7" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >pertambangan dan penggalian</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up7"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">industri pengolahan</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up8" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >industri pengolahan</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up8"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">listrik, gas dan air</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up9" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >listrik, gas dan air</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up9"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">bangunan</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up10" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >bangunan</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up10"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">perdagangan, hotel dan restoran</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="up11" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >perdagangan, hotel dan restoran</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="up11"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">bahan_baku</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="bahan_baku" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >bahan_baku</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="bahan_baku"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">tenaga kerja L (2016)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="tk1_l" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >tenaga kerja L (2016)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="tk1_l"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">tenaga kerja P (2016)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="tk1_p" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >tenaga kerja P (2016)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="tk1_p"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">tenaga kerja L (2017)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="tk2_l" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >tenaga kerja L (2017)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="tk2_l"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">tenaga kerja P (2017)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="tk2_p" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >tenaga kerja P (2017)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="tk2_p"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">kapasitas produksi/bulan(2016)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="kp1" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >kapasitas produksi/bulan(2016)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="kp1"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">kapasitas produksi/bulan(2017)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="kp2" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >kapasitas produksi/bulan(2017)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="kp2"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">omset /tahun (2016)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="omset1" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >omset /tahun (2016)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="omset1"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">omset /tahun (2017)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="omset2" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >omset /tahun (2017)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="omset2"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">modal sendiri (2016)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="ms1" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >modal sendiri (2016)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="ms1"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">modal sendiri (2017)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="ms2" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >modal sendiri (2017)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="ms2"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">bantuan pemerintah (2016)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="bp1" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >bantuan pemerintah (2016)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="bp1"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">bantuan pemerintah (2017)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="bp2" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >bantuan pemerintah (2017)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="bp2"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">pinjaman koperasi (2016)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="pk1" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >pinjaman koperasi (2016)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="pk1"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">pinjaman koperasi (2017)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="pk2" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >pinjaman koperasi (2017)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="pk2"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">pinjaman perorangan (2016)</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="pp1" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >pinjaman perorangan (2016)</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="pp1"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_name">pinjaman perorangan (2017)</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" type="text" aria-label="Name" v-model="pp2" />
+                    <label class="block text-sm text-gray-600" for="cus_name"
+                      >pinjaman perorangan (2017)</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_name"
+                      type="text"
+                      aria-label="Name"
+                      v-model="pp2"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">Pinjaman Bank 2016</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="pb1" type="text" placeholder="Country" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >Pinjaman Bank 2016</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="pb1"
+                      type="text"
+                      placeholder="Country"
+                      aria-label="Email"
+                    />
                   </div>
                   <div class="px-1 my-2">
-                    <label class="block text-sm text-gray-600" for="cus_email">Pinjaman Bank 2017</label>
-                    <input class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" v-model="pb2" type="text" placeholder="SIU" aria-label="Email" />
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >Pinjaman Bank 2017</label
+                    >
+                    <input
+                      class="w-full px-2 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_email"
+                      v-model="pb2"
+                      type="text"
+                      placeholder="SIU"
+                      aria-label="Email"
+                    />
                   </div>
                 </div>
 
                 <div class="mt-6">
-                  <button @click="updateDataUmkmById(id)" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded">
+                  <button
+                    @click="updateDataUmkmById(id)"
+                    class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                  >
                     {{ isUpdating == true ? "Updating..." : "Update" }}
                   </button>
                 </div>
@@ -262,6 +620,10 @@ export default {
   },
   mounted() {
     this.desa_id = localStorage.getItem("desa_id");
+
+    if (this.role !== "admin" || this.isLoggedIn === "false") {
+      this.$router.push("/public");
+    }
   },
   methods: {
     getDataDesaById(param) {
