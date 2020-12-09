@@ -156,6 +156,12 @@ class DesaController extends Controller
         return response()->json($usaha);
     }
 
+    public function getKelembagaan()
+    {
+        $data = DB::table("kelembagaan")->get();
+        return response()->json($data);
+    }
+
     public function getKriteria()
     {
         $kriteria = DB::select("SELECT DISTINCT kriteria FROM ukms WHERE kriteria <> 'Undefined' LIMIT 3");

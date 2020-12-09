@@ -7,9 +7,14 @@
 
       <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6 bg-white">
-          <h1 class="text-lg pb-1 font-semibold text-indigo-400 uppercase">UMKM Gunungkidul</h1>
+          <h1 class="text-lg pb-1 font-semibold text-indigo-400 uppercase">
+            UMKM GLOBAL
+          </h1>
           <!-- loader spin-->
-          <div v-if="loading" class="z-30 flex justify-around relative opacity-75 bg-black inset-0">
+          <div
+            v-if="loading"
+            class="z-30 flex justify-around relative opacity-75 bg-black inset-0"
+          >
             <loader />
           </div>
 
@@ -41,7 +46,12 @@
               >
                 <template slot="table-row" slot-scope="props">
                   <span v-if="props.column.field == 'action'">
-                    <button class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1" @click="viewData(props.row.id_kec)"><i class="fas fa-eye mr-2"></i>View</button>
+                    <button
+                      class="bg-indigo-500 rounded border border-indigo-600 hover:bg-indigo-600 px-2 py-0 text-white font-semibold mx-1"
+                      @click="viewData(props.row.id_kec)"
+                    >
+                      <i class="fas fa-eye mr-2"></i>View
+                    </button>
                   </span>
                   <span v-else>
                     {{ props.formattedRow[props.column.field] }}

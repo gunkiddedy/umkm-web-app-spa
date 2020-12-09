@@ -5,7 +5,7 @@ import Edit from './pages/Edit'
 import Kecamatan from './pages/Kecamatan'
 import Download from './pages/Download'
 import Login from './pages/Login'
-import InputData from './pages/InputData'
+import Add from './pages/Add'
 import UploadProduk from './pages/UploadProduk'
 import Global from './pages/Global'
 import PageNotFound from './pages/PageNotFound'
@@ -46,7 +46,7 @@ export default {
         },
         {
             path: '/input/:id',
-            component: InputData,
+            component: Add,
             name: 'input',
             props: true
         },

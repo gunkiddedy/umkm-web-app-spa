@@ -34,60 +34,84 @@
               </p>
             </div>
             <div class="border-t border-gray-200">
-              <div class="bg-gray-50 px-4 py-2 flex items-center justify-between">
-                <div class="text-sm font-medium text-gray-500">Kriteria Per Desa</div>
-                <div class="mt-1 text-sm text-gray-900">
-                  <button
-                    @click="toggleModalKriteria"
-                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
-                  >
-                    Filter
-                  </button>
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
+                  Per Kecamatan
                 </div>
-              </div>
-              <div class="bg-white px-4 py-2 flex items-center justify-between">
-                <div class="text-sm font-medium text-gray-500">Per Kecamatan</div>
                 <div class="mt-1 text-sm text-gray-900">
                   <button
                     @click="toggleModalKecamatan"
-                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
                   >
                     Filter
                   </button>
                 </div>
               </div>
-              <div class="bg-white px-4 py-2 flex items-center justify-between">
-                <div class="text-sm font-medium text-gray-500">
+
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
+                  Kriteria Per Desa
+                </div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalKriteria"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
                   Kriteria Per Kecamatan
                 </div>
                 <div class="mt-1 text-sm text-gray-900">
                   <button
                     @click="toggleModalKecamatanKriteria"
-                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
                   >
                     Filter
                   </button>
                 </div>
               </div>
-              <div class="bg-white px-4 py-2 flex items-center justify-between">
-                <div class="text-sm font-medium text-gray-500">Usaha Pokok Per Desa</div>
+
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
+                  Usaha Pokok Per Desa
+                </div>
                 <div class="mt-1 text-sm text-gray-900">
                   <button
                     @click="toggleModalUPD"
-                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
                   >
                     Filter
                   </button>
                 </div>
               </div>
-              <div class="bg-white px-4 py-2 flex items-center justify-between">
-                <div class="text-sm font-medium text-gray-500">
+
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
                   Usaha Pokok Per Kecamatan
                 </div>
                 <div class="mt-1 text-sm text-gray-900">
                   <button
                     @click="toggleModalUPK"
-                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+
+              <div class="bg-white px-4 py-2 grid grid-cols-2">
+                <div class="mx-2 text-left text-sm font-medium text-gray-500">
+                  UMKM GLOBAL
+                </div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalGlobal"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1 hover:bg-indigo-600"
                   >
                     Filter
                   </button>
@@ -513,6 +537,61 @@
                 </div>
               </div>
             </div>
+            <!-- modal GLOBAL-->
+            <div
+              v-if="showModalGlobal"
+              class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
+            >
+              <div class="leading-loose lg:w-1/2 sm:w-1/2">
+                <div class="p-10 bg-white rounded-lg shadow-xl">
+                  <div
+                    v-if="loadingExcelGlobal"
+                    class="z-50 flex justify-around relative opacity-75 bg-black inset-0"
+                  >
+                    <loader />
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name"
+                      >Tahun - {{ select_tahun }}</label
+                    >
+                    <select
+                      required="required"
+                      name="tahun"
+                      id="tahun"
+                      v-model="select_tahun"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Tahun-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(year, i) in years"
+                        :value="year"
+                        :key="i"
+                      >
+                        {{ year }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="mt-6 flex w-full items-center justify-end">
+                    <button
+                      @click="toggleModalGlobal"
+                      class="px-3 py-1 text-sm text-white bg-gray-500 rounded-full"
+                    >
+                      <i class="fas fa-times mr-2"></i> Close
+                    </button>
+                    <button
+                      @click="exportExcelGlobal(select_tahun)"
+                      class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"
+                    >
+                      <i class="fas fa-arrow-circle-down mr-2"></i>
+                      {{ unduhDataGlobal ? "Loading..." : "Download" }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
 
@@ -528,6 +607,7 @@
           v-if="showModalKecamatanKriteria"
           class="opacity-25 fixed inset-0 z-30 bg-black"
         ></div>
+        <div v-if="showModalGlobal" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <div v-if="showModalUPD" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <div v-if="showModalUPK" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
@@ -546,12 +626,14 @@ export default {
       unduhDataKecamatanKriteria: false,
       unduhDataUPD: false,
       unduhDataUPK: false,
+      unduhDataGlobal: false,
 
       loadingExcel: false,
       loadingExcelKecamatan: false,
       loadingExcelKecamatanKriteria: false,
       loadingExcelUPD: false,
       loadingExcelUPK: false,
+      loadingExcelGlobal: false,
 
       loading: true,
 
@@ -560,15 +642,23 @@ export default {
       showModalKecamatanKriteria: false,
       showModalUPD: false,
       showModalUPK: false,
+      showModalGlobal: false,
 
       kecamatans: [],
       desas: [],
       kriterias: [],
       usahas: [],
+      years: {
+        1: 2018,
+        2: 2019,
+        3: 2020,
+        4: 2021,
+      },
       select_kecamatan: "",
       select_desa: "",
       select_kriteria: "",
       select_usaha_pokok: "",
+      select_tahun: "",
     };
   },
   created() {
@@ -721,6 +811,37 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    exportExcelGlobal(param) {
+      this.unduhDataGlobal = true;
+      this.loadingExcelGlobal = true;
+      if (!param) {
+        alert("tahun harus dipilih");
+        this.unduhDataGlobal = false;
+        this.loadingExcelGlobal = false;
+        return false;
+      }
+      axios
+        .get("/api/admin-export-global/" + param, {
+          responseType: "blob",
+        })
+        .then((response) => {
+          this.unduhDataGlobal = false;
+          this.loadingExcelGlobal = false;
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "umkm-global-tahun" + param + ".xlsx");
+          document.body.appendChild(link);
+          link.click();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    toggleModalGlobal() {
+      this.showModalGlobal = !this.showModalGlobal;
     },
     toggleModalUPK() {
       this.showModalUPK = !this.showModalUPK;
