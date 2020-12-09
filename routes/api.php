@@ -27,12 +27,11 @@ Route::post('login', 'AuthController@login')->name('login');
 Route::post('upload-photo-product', 'AdminController@uploadProduct');
 
 
-Route::get('admin-export-kdk/{kcmtn}/{desa}/{kriteria}', 'ExportController@exportKDK'); //clear
-Route::get('admin-export-k/{kcmtn}', 'ExportController@exportKecamatan'); //clear
-
-Route::get('admin-export-kk/{kcmtn}/{kriteria}', 'ExportController@exportKK');
-Route::get('admin-export-ku/{kcmtn}/{up}', 'ExportController@exportAdminUsahaPokok');
-Route::get('admin-export-kdu/{kcmtn}/{desa}/{up}', 'ExportController@exportAdminUsahaPokok');
+Route::get('admin-export-kdk/{kcmtn}/{desa}/{kriteria}', 'ExportController@exportKDK'); //kriteria per desa --clear
+Route::get('admin-export-upd/{kcmtn}/{desa}/{up}', 'ExportController@exportUPD'); //usaha pokok per desa --clear
+Route::get('admin-export-k/{kcmtn}', 'ExportController@exportKecamatan'); //per kecamatan --clear
+Route::get('admin-export-kk/{kcmtn}/{kriteria}', 'ExportController@exportKK'); //kriteria per kecamatan --clear
+Route::get('admin-export-upk/{kcmtn}/{up}', 'ExportController@exportUPK'); //usaha pokok per kecamatan
 
 // get kecamatan and desa (dependent dropdown)
 Route::get('get-usaha-pokok', 'DesaController@getUsahaPokok');

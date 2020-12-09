@@ -25,7 +25,7 @@
           <!--<h1 class="text-lg text-gray-500 pb-1 font-semibold">Download berdasarkan parameter</h1>-->
           <!-- This example requires Tailwind CSS v2.0+ -->
           <div
-            class="bg-white shadow overflow-hidden sm:rounded-lg sm:w-full lg:w-1/2 mx-auto"
+            class="bg-white shadow overflow-hidden sm:rounded-lg sm:w-full lg:w-1/2 mx-auto mt-6"
           >
             <div class="px-4 py-5 sm:px-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">Form Download</h3>
@@ -34,51 +34,68 @@
               </p>
             </div>
             <div class="border-t border-gray-200">
-              <dl>
-                <div
-                  class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 sm:px-6"
-                >
-                  <dt class="text-sm font-medium text-gray-500">Kriteria Per Desa</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button
-                      @click="toggleModalKriteria"
-                      class="bg-indigo-500 rounded-full text-white px-4 py-1"
-                    >
-                      Filter
-                    </button>
-                  </dd>
+              <div class="bg-gray-50 px-4 py-2 flex items-center justify-between">
+                <div class="text-sm font-medium text-gray-500">Kriteria Per Desa</div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalKriteria"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                  >
+                    Filter
+                  </button>
                 </div>
-                <div
-                  class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 sm:px-6"
-                >
-                  <dt class="text-sm font-medium text-gray-500">Per Kecamatan</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button
-                      @click="toggleModalKecamatan"
-                      class="bg-indigo-500 rounded-full text-white px-4 py-1"
-                    >
-                      Filter
-                    </button>
-                  </dd>
+              </div>
+              <div class="bg-white px-4 py-2 flex items-center justify-between">
+                <div class="text-sm font-medium text-gray-500">Per Kecamatan</div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalKecamatan"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                  >
+                    Filter
+                  </button>
                 </div>
-                <div
-                  class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 sm:px-6"
-                >
-                  <dt class="text-sm font-medium text-gray-500">
-                    Kriteria Per Kecamatan
-                  </dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <button
-                      @click="toggleModalKecamatanKriteria"
-                      class="bg-indigo-500 rounded-full text-white px-4 py-1"
-                    >
-                      Filter
-                    </button>
-                  </dd>
+              </div>
+              <div class="bg-white px-4 py-2 flex items-center justify-between">
+                <div class="text-sm font-medium text-gray-500">
+                  Kriteria Per Kecamatan
                 </div>
-              </dl>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalKecamatanKriteria"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <div class="bg-white px-4 py-2 flex items-center justify-between">
+                <div class="text-sm font-medium text-gray-500">Usaha Pokok Per Desa</div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalUPD"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <div class="bg-white px-4 py-2 flex items-center justify-between">
+                <div class="text-sm font-medium text-gray-500">
+                  Usaha Pokok Per Kecamatan
+                </div>
+                <div class="mt-1 text-sm text-gray-900">
+                  <button
+                    @click="toggleModalUPK"
+                    class="bg-indigo-500 rounded-full text-white px-4 py-1"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
             </div>
-            <!-- modal kecamatan-desa-kriteria-->
+
+            <!-- modal kriteria per desa-->
             <div
               v-if="showModalKriteria"
               class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
@@ -187,7 +204,7 @@
                 </div>
               </div>
             </div>
-            <!-- modal kecamatan-->
+            <!-- modal per kecamatan-->
             <div
               v-if="showModalKecamatan"
               class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
@@ -236,13 +253,13 @@
                       class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"
                     >
                       <i class="fas fa-arrow-circle-down mr-2"></i>
-                      {{ unduhData ? "Loading..." : "Download" }}
+                      {{ unduhDataKecamatan ? "Loading..." : "Download" }}
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- modal kecamatan kriteria-->
+            <!-- modal kriteria per kecamatan-->
             <div
               v-if="showModalKecamatanKriteria"
               class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
@@ -307,11 +324,190 @@
                       <i class="fas fa-times mr-2"></i> Close
                     </button>
                     <button
-                      @click="exportExcelKecamatanKriteria(select_kecamatan)"
+                      @click="
+                        exportExcelKecamatanKriteria(select_kecamatan, select_kriteria)
+                      "
                       class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"
                     >
                       <i class="fas fa-arrow-circle-down mr-2"></i>
-                      {{ unduhData ? "Loading..." : "Download" }}
+                      {{ unduhDataKecamatanKriteria ? "Loading..." : "Download" }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- modal UPD-->
+            <div
+              v-if="showModalUPD"
+              class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
+            >
+              <div class="leading-loose lg:w-1/2 sm:w-1/2">
+                <div class="p-10 bg-white rounded-lg shadow-xl">
+                  <div
+                    v-if="loadingExcelUPD"
+                    class="z-50 flex justify-around relative opacity-75 bg-black inset-0"
+                  >
+                    <loader />
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name"
+                      >Kecamatan</label
+                    >
+                    <select
+                      required="required"
+                      name="dfkecamatan_id"
+                      id="dfkecamatan_id"
+                      v-model="select_kecamatan"
+                      @change="loadDesa"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Kecamatan-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(kec, i) in kecamatans"
+                        :value="kec.dfkecamatan_id"
+                        :key="i"
+                      >
+                        {{ kec.dfkecamatan_nama }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name">Desa</label>
+                    <select
+                      required="required"
+                      name="dfdesa_id"
+                      id="dfdesa_id"
+                      v-model="select_desa"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Desa-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(desa, i) in desas"
+                        :key="i"
+                        :value="desa.dfdesa_id"
+                      >
+                        {{ desa.dfdesa_nama }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name"
+                      >Usaha Pokok</label
+                    >
+                    <select
+                      v-model="select_usaha_pokok"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Usaha Pokok-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(up, i) in usahas"
+                        :value="up.field"
+                        :key="i"
+                      >
+                        {{ up.usaha }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="mt-6 flex w-full items-center justify-end">
+                    <button
+                      @click="toggleModalUPD"
+                      class="px-3 py-1 text-sm text-white bg-gray-500 rounded-full"
+                    >
+                      <i class="fas fa-times mr-2"></i> Close
+                    </button>
+                    <button
+                      @click="
+                        exportExcelUPD(select_kecamatan, select_desa, select_usaha_pokok)
+                      "
+                      class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"
+                    >
+                      <i class="fas fa-arrow-circle-down mr-2"></i>
+                      {{ unduhDataUPD ? "Loading..." : "Download" }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- modal UPK-->
+            <div
+              v-if="showModalUPK"
+              class="overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none justify-center items-center flex"
+            >
+              <div class="leading-loose lg:w-1/2 sm:w-1/2">
+                <div class="p-10 bg-white rounded-lg shadow-xl">
+                  <div
+                    v-if="loadingExcelUPK"
+                    class="z-50 flex justify-around relative opacity-75 bg-black inset-0"
+                  >
+                    <loader />
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name"
+                      >Kecamatan</label
+                    >
+                    <select
+                      required="required"
+                      name="dfkecamatan_id"
+                      id="dfkecamatan_id"
+                      v-model="select_kecamatan"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Kecamatan-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(kec, i) in kecamatans"
+                        :value="kec.dfkecamatan_id"
+                        :key="i"
+                      >
+                        {{ kec.dfkecamatan_nama }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="py-2 my-1">
+                    <label class="block text-sm text-gray-600" for="name"
+                      >Usaha Pokok</label
+                    >
+                    <select
+                      v-model="select_usaha_pokok"
+                      class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-1 pr-8 rounded-lg text-gray-500 leading-tight focus:outline-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Select Usaha Pokok-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(up, i) in usahas"
+                        :value="up.field"
+                        :key="i"
+                      >
+                        {{ up.usaha }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="mt-6 flex w-full items-center justify-end">
+                    <button
+                      @click="toggleModalUPK"
+                      class="px-3 py-1 text-sm text-white bg-gray-500 rounded-full"
+                    >
+                      <i class="fas fa-times mr-2"></i> Close
+                    </button>
+                    <button
+                      @click="exportExcelUPK(select_kecamatan, select_usaha_pokok)"
+                      class="ml-4 px-3 py-1 text-sm text-white bg-indigo-600 rounded-full"
+                    >
+                      <i class="fas fa-arrow-circle-down mr-2"></i>
+                      {{ unduhDataUPK ? "Loading..." : "Download" }}
                     </button>
                   </div>
                 </div>
@@ -332,6 +528,8 @@
           v-if="showModalKecamatanKriteria"
           class="opacity-25 fixed inset-0 z-30 bg-black"
         ></div>
+        <div v-if="showModalUPD" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
+        <div v-if="showModalUPK" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <div v-if="loading" class="opacity-25 fixed inset-0 z-30 bg-black"></div>
         <footer-component></footer-component>
       </div>
@@ -344,15 +542,25 @@ export default {
   data() {
     return {
       unduhData: false,
-      loadingExcel: false,
       unduhDataKecamatan: false,
-      loadingExcelKecamatan: false,
       unduhDataKecamatanKriteria: false,
+      unduhDataUPD: false,
+      unduhDataUPK: false,
+
+      loadingExcel: false,
+      loadingExcelKecamatan: false,
       loadingExcelKecamatanKriteria: false,
+      loadingExcelUPD: false,
+      loadingExcelUPK: false,
+
       loading: true,
+
       showModalKriteria: false,
       showModalKecamatan: false,
       showModalKecamatanKriteria: false,
+      showModalUPD: false,
+      showModalUPK: false,
+
       kecamatans: [],
       desas: [],
       kriterias: [],
@@ -457,6 +665,68 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    exportExcelUPD(param1, param2, param3) {
+      this.unduhDataUPD = true;
+      this.loadingExcelUPD = true;
+      if (!param1 || !param2 || !param3) {
+        alert("semua harus dipilih");
+        this.unduhDataUPD = false;
+        this.loadingExcelUPD = false;
+        return false;
+      }
+      axios
+        .get("/api/admin-export-upd/" + param1 + "/" + param2 + "/" + param3, {
+          responseType: "blob",
+        })
+        .then((response) => {
+          this.unduhDataUPD = false;
+          this.loadingExcelUPD = false;
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "usaha-pokok-per-desa-" + param3 + ".xlsx");
+          document.body.appendChild(link);
+          link.click();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    exportExcelUPK(param1, param2) {
+      this.unduhDataUPK = true;
+      this.loadingExcelUPK = true;
+      if (!param1 || !param2) {
+        alert("semua harus dipilih");
+        this.unduhDataUPK = false;
+        this.loadingExcelUPK = false;
+        return false;
+      }
+      axios
+        .get("/api/admin-export-upk/" + param1 + "/" + param2, {
+          responseType: "blob",
+        })
+        .then((response) => {
+          this.unduhDataUPK = false;
+          this.loadingExcelUPK = false;
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "usaha-pokok-per-kecamatan-" + param2 + ".xlsx");
+          document.body.appendChild(link);
+          link.click();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    toggleModalUPK() {
+      this.showModalUPK = !this.showModalUPK;
+    },
+    toggleModalUPD() {
+      this.showModalUPD = !this.showModalUPD;
     },
     toggleModalKecamatanKriteria() {
       this.showModalKecamatanKriteria = !this.showModalKecamatanKriteria;
