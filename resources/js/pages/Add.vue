@@ -15,13 +15,13 @@
             <loader />
           </div>
           <!-- Content goes here! 😁 -->
-          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Add Data</h1>
+          <h1 class="text-lg text-gray-500 pb-1 font-semibold">Add Data kc-{{kecamatan_id}}-{{desa_id}}</h1>
           <div class="w-full mt-6 pl-0 lg:pl-2">
             <div class="leading-loose">
               <div class="p-10 bg-white rounded-lg shadow-xl">
                 <form class="my-6">
                   <div
-                    class="grid grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2"
+                    class="grid lg:grid-cols-3 md:grid-cols-2"
                   >
                     <div class="px-1 my-2" v-if="isAdmin === 'true'">
                       <label class="block text-sm text-gray-600" for="cus_name"
@@ -72,27 +72,6 @@
                     </div>
                     <div class="px-1 my-2">
                       <label class="block text-sm text-gray-600" for="cus_name"
-                        >Jenis Usaha</label
-                      >
-                      <select
-                        v-model="select_usaha_pokok"
-                        class="w-full px-5 py-1 rounded-lg text-gray-500 focus:outline-none focus:shadow-inner border-2 border-gray-200 bg-white appearance-none"
-                      >
-                        <option class="text-gray-700" value="" selected="selected">
-                          -Select Usaha Pokok-
-                        </option>
-                        <option
-                          class="text-gray-700"
-                          v-for="(up, i) in usahas"
-                          :value="up.field"
-                          :key="i"
-                        >
-                          {{ up.usaha }}
-                        </option>
-                      </select>
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_name"
                         >Kelembagaan</label
                       >
                       <select
@@ -114,164 +93,26 @@
                     </div>
                     <div class="px-1 my-2">
                       <label class="block text-sm text-gray-600" for="cus_name"
-                        >nama usaha</label
+                        >Jenis Usaha</label
                       >
-                      <input
-                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_name"
-                        type="text"
-                        aria-label="Name"
-                        v-model="nama_usaha"
-                      />
+                      <select
+                        v-model="select_usaha_pokok"
+                        class="w-full px-5 py-1 rounded-lg text-gray-500 focus:outline-none focus:shadow-inner border-2 border-gray-200 bg-white appearance-none"
+                      >
+                        <option class="text-gray-700" value="" selected="selected">
+                          -Select Usaha Pokok-
+                        </option>
+                        <option
+                          class="text-gray-700"
+                          v-for="(up, i) in usahas"
+                          :value="up.field"
+                          :key="i"
+                        >
+                          {{ up.usaha }}
+                        </option>
+                      </select>
                     </div>
-                    <!--<div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >kelembagaan</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="kelembagaan"
-                        type="text"
-                        placeholder="Country"
-                        aria-label="Email"
-                      />
-                    </div>-->
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >nama_pemilik</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="nama_pemilik"
-                        type="text"
-                        placeholder="SIU"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_name"
-                        >nik</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_name"
-                        aria-label="Name"
-                        v-model="nik"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >jenis_kelamin</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="jenis_kelamin"
-                        type="text"
-                        placeholder="Country"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >Disabilitas</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="disabilitas"
-                        placeholder="Country"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >siu</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="siu"
-                        placeholder="SIU"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_name"
-                        >npwp</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_name"
-                        aria-label="Name"
-                        v-model="npwp"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >tmu</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="tmu"
-                        type="text"
-                        placeholder="Country"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >alamat</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="alamat"
-                        type="text"
-                        placeholder="SIU"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_name"
-                        >desa</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_name"
-                        type="text"
-                        aria-label="Name"
-                        v-model="desa"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >tlp</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="tlp"
-                        placeholder="Country"
-                        aria-label="Email"
-                      />
-                    </div>
-                    <div class="px-1 my-2">
-                      <label class="block text-sm text-gray-600" for="cus_email"
-                        >email</label
-                      >
-                      <input
-                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
-                        id="cus_email"
-                        v-model="email"
-                        type="email"
-                        placeholder="SIU"
-                        aria-label="Email"
-                      />
-                    </div>
+                    <!-- show up dependent on usaha pokok -->
                     <div class="px-1 my-2" v-if="isUP1 == select_usaha_pokok">
                       <label class="block text-sm text-gray-600" for="cus_name"
                         >makanan olahan/industri pertanian</label
@@ -293,7 +134,6 @@
                         id="cus_email"
                         v-model="up2"
                         type="text"
-                        placeholder="Country"
                         aria-label="Email"
                       />
                     </div>
@@ -306,7 +146,6 @@
                         id="cus_email"
                         v-model="up3"
                         type="text"
-                        placeholder="SIU"
                         aria-label="Email"
                       />
                     </div>
@@ -331,7 +170,6 @@
                         id="cus_email"
                         v-model="up5"
                         type="text"
-                        placeholder="Country"
                         aria-label="Email"
                       />
                     </div>
@@ -407,6 +245,184 @@
                         v-model="up11"
                       />
                     </div>
+                    <!-- -->
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_name"
+                        >nama usaha</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_name"
+                        type="text"
+                        aria-label="Name"
+                        v-model="nama_usaha"
+                      />
+                    </div>
+                    <!--<div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >kelembagaan</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="kelembagaan"
+                        type="text"
+                        aria-label="Email"
+                      />
+                    </div>-->
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >nama_pemilik</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="nama_pemilik"
+                        type="text"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_name"
+                        >nik</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_name"
+                        aria-label="Name"
+                        v-model="nik"
+                        v-int
+                        type="text"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >jenis_kelamin</label
+                      >
+                      <select
+                      required="required"
+                      name="gender"
+                      id="gender"
+                      v-model="select_gender"
+                      class="w-full px-5 py-1 rounded-lg text-gray-500 focus:outline-none focus:shadow-inner border-2 border-gray-200 bg-white appearance-none"
+                    >
+                      <option class="text-gray-700" value="" selected="selected">
+                        -Jenis Kelamin-
+                      </option>
+                      <option
+                        class="text-gray-700"
+                        v-for="(gender, i) in genders"
+                        :value="gender.substring(0,1)"
+                        :key="i"
+                      >
+                        {{ gender }}
+                      </option>
+                    </select>
+                      <!--<input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="jenis_kelamin"
+                        type="text"
+                        aria-label="Email"
+                      />-->
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >Disabilitas</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="disabilitas"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >siu</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="siu"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_name"
+                        >npwp</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_name"
+                        aria-label="Name"
+                        v-model="npwp"
+                        v-int
+                        type="text"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >tmu</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="tmu"
+                        v-int
+                        type="text"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >alamat</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="alamat"
+                        type="text"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_name"
+                        >desa</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-5 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_name"
+                        type="text"
+                        aria-label="Name"
+                        v-model="desa"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >tlp</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="tlp"
+                        v-int
+                        type="text"
+                        aria-label="Email"
+                      />
+                    </div>
+                    <div class="px-1 my-2">
+                      <label class="block text-sm text-gray-600" for="cus_email"
+                        >email</label
+                      >
+                      <input
+                        class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
+                        id="cus_email"
+                        v-model="email"
+                        type="email"
+                        aria-label="Email"
+                      />
+                    </div>
                     <div class="px-1 my-2">
                       <label class="block text-sm text-gray-600" for="cus_email"
                         >bahan_baku</label
@@ -416,7 +432,6 @@
                         id="cus_email"
                         v-model="bahan_baku"
                         type="text"
-                        placeholder="SIU"
                         aria-label="Email"
                       />
                     </div>
@@ -429,6 +444,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="tk1_l"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -439,7 +456,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="tk1_p"
-                        placeholder="Country"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -451,7 +469,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="tk2_l"
-                        placeholder="SIU"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -464,6 +483,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="tk2_p"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -475,7 +496,6 @@
                         id="cus_email"
                         v-model="kp1"
                         type="text"
-                        placeholder="Country"
                         aria-label="Email"
                       />
                     </div>
@@ -488,7 +508,6 @@
                         id="cus_email"
                         v-model="kp2"
                         type="text"
-                        placeholder="SIU"
                         aria-label="Email"
                       />
                     </div>
@@ -501,6 +520,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="omset1"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -511,7 +532,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="omset2"
-                        placeholder="Country"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -523,7 +545,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="ms1"
-                        placeholder="SIU"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -536,6 +559,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="ms2"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -546,7 +571,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="bp1"
-                        placeholder="Country"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -558,7 +584,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="bp2"
-                        placeholder="SIU"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -571,6 +598,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="pk1"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -581,7 +610,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="pk2"
-                        placeholder="Country"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -593,7 +623,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="pp1"
-                        placeholder="SIU"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -606,6 +637,8 @@
                         id="cus_name"
                         aria-label="Name"
                         v-model="pp2"
+                        v-int
+                        type="text"
                       />
                     </div>
                     <div class="px-1 my-2">
@@ -616,7 +649,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="pb1"
-                        placeholder="Country"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                     </div>
@@ -628,7 +662,8 @@
                         class="rounded-lg w-full px-2 py-1 text-gray-700 focus:outline-none border-2 border-gray-200 bg-white focus:shadow-inner"
                         id="cus_email"
                         v-model="pb2"
-                        placeholder="SIU"
+                        v-int
+                        type="text"
                         aria-label="Email"
                       />
                       <input type="hidden" name="input_by" v-model="input_by" />
@@ -644,7 +679,7 @@
                   >
                 </div>
 
-                <div class="mt-6">
+                <div class="mt-6 flex justify-end">
                   <button
                     @click="addData"
                     class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded-lg"
@@ -673,26 +708,25 @@ export default {
       nama_pemilik: "",
       nik: "",
       jenis_kelamin: "",
-      disabilitas: "",
-      siu: "",
-      npwp: "",
-      tmu: "",
+      disabilitas: 0,
+      siu: 0,
+      npwp: 0,
+      tmu: 0,
       alamat: "",
       desa: "",
       tlp: "",
       email: "",
-      // rincian_usaha: "",
-      up1: "",
-      up2: "",
-      up3: "",
-      up4: "",
-      up5: "",
-      up6: "",
-      up7: "",
-      up8: "",
-      up9: "",
-      up10: "",
-      up11: "",
+      up1: "0",
+      up2: "0",
+      up3: "0",
+      up4: "0",
+      up5: "0",
+      up6: "0",
+      up7: "0",
+      up8: "0",
+      up9: "0",
+      up10: "0",
+      up11: "0",
       isUP1: "up1",
       isUP2: "up2",
       isUP3: "up3",
@@ -705,24 +739,24 @@ export default {
       isUP10: "up10",
       isUP11: "up11",
       bahan_baku: "",
-      tk1_l: "",
-      tk1_p: "",
-      tk2_l: "",
-      tk2_p: "",
-      kp1: "",
-      kp2: "",
-      omset1: "",
-      omset2: "",
-      ms1: "",
-      ms2: "",
-      bp1: "",
-      bp2: "",
-      pk1: "",
-      pk2: "",
-      pp1: "",
-      pp2: "",
-      pb1: "",
-      pb2: "",
+      tk1_l: 0,
+      tk1_p: 0,
+      tk2_l: 0,
+      tk2_p: 0,
+      kp1: 0,
+      kp2: 0,
+      omset1: 0,
+      omset2: 0,
+      ms1: 0,
+      ms2: 0,
+      bp1: 0,
+      bp2: 0,
+      pk1: 0,
+      pk2: 0,
+      pp1: 0,
+      pp2: 0,
+      pb1: 0,
+      pb2: 0,
       input_by: "",
       dfkecamatan_id: "",
       dfdesa_id: "",
@@ -731,6 +765,11 @@ export default {
       desas: [],
       usahas: [],
       lembagas: [],
+      genders: {
+        1: 'Laki-laki',
+        2: 'Perempuan',
+      },
+      select_gender: "",
       select_lembaga: "",
       select_kecamatan: "",
       select_desa: "",
@@ -762,7 +801,7 @@ export default {
     this.role = localStorage.getItem("role");
     this.isAdmin = localStorage.getItem("isAdmin");
 
-    if (this.isLoggedIn == "false") {
+    if (this.role !== "desa" || this.role !=='admin') {
       this.$router.push("/public");
     }
 
@@ -777,16 +816,16 @@ export default {
         this.showNotification("nama_usaha tidak boleh kosong");
         return false;
       }
-      if (!this.dfkecamatan_id) {
-        this.status = false;
-        this.showNotification("kecamatan tidak boleh kosong");
-        return false;
-      }
-      if (!this.dfdesa_id) {
-        this.status = false;
-        this.showNotification("desa tidak boleh kosong");
-        return false;
-      }
+      // if (!this.dfkecamatan_id) {
+      //   this.status = false;
+      //   this.showNotification("kecamatan tidak boleh kosong");
+      //   return false;
+      // }
+      // if (!this.dfdesa_id) {
+      //   this.status = false;
+      //   this.showNotification("desa tidak boleh kosong");
+      //   return false;
+      // }
       return true;
     },
     showNotification(message) {
@@ -798,11 +837,19 @@ export default {
     addData(e) {
       e.preventDefault();
 
-      let param1, param2;
+      let param1;
+      let param2;
+
       if (this.role == "desa") {
         param1 = this.kecamatan_id;
         param2 = this.desa_id;
-      } else if (this.role == "admin") {
+      } 
+      else if (this.role == "admin") {
+        if(!this.select_kecamatan || !this.select_desa){
+          this.status = false;
+          this.showNotification("kecamatan atau desa tidak boleh kosong");
+          return false;
+        }
         param1 = this.select_kecamatan;
         param2 = this.select_desa;
       }
@@ -818,7 +865,7 @@ export default {
       formData.append("nama_usaha", this.nama_usaha);
       formData.append("nama_pemilik", this.nama_pemilik);
       formData.append("nik", this.nik);
-      formData.append("jenis_kelamin", this.jenis_kelamin);
+      formData.append("jenis_kelamin", this.select_gender);
       formData.append("disabilitas", this.disabilitas);
       formData.append("siu", this.siu);
       formData.append("npwp", this.npwp);
@@ -880,6 +927,7 @@ export default {
           this.$router.go(-1);
         })
         .catch((error) => {
+          this.status_msg = error;
           console.log(error);
         });
     },

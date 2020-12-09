@@ -25,6 +25,8 @@ import dataStore from './store/index'
 Vue.use(Vuex);
 const store = new Vuex.Store(dataStore);
 
+import onlyInt from 'vue-input-only-number'
+Vue.use(onlyInt);
 
 const router = new VueRouter(routes);
 

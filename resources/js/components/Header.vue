@@ -29,7 +29,11 @@
     <!-- Mobile Header & Nav -->
     <header :data="isOpen" class="w-full bg-sidebar py-5 px-6 sm:hidden">
       <div class="flex items-center justify-between">
-        <a href="/public" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">UMKM GK</a>
+        <a
+          href="/public"
+          class="text-white text-3xl font-semibold uppercase hover:text-gray-300"
+          >UMKM GK</a
+        >
         <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
           <i v-show="!isOpen" class="fas fa-bars"></i>
           <i v-show="isOpen" class="fas fa-times"></i>
@@ -78,36 +82,71 @@
           <i class="fas fa-tachometer-alt mr-3"></i>
           Home
         </router-link>-->
-        <router-link :to="{ name: 'desa', params: { id: desa_id } }" v-if="role === 'desa' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link
+          :to="{ name: 'desa', params: { id: desa_id } }"
+          v-if="role === 'desa' && isLoggedIn == 'true'"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
           <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
 
-        <router-link :to="{ name: 'kecamatan', params: { id: kecamatan_id } }" v-if="role === 'kecamatan' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link
+          :to="{ name: 'kecamatan', params: { id: kecamatan_id } }"
+          v-if="role === 'kecamatan' && isLoggedIn == 'true'"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
           <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
 
-        <router-link :to="{ name: 'global' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link
+          :to="{ name: 'global' }"
+          v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
           <i class="fas fa-home mr-3"></i>
           Home
         </router-link>
 
-        <router-link :to="{ name: 'input', params: { id: 1 } }" v-if="role === 'desa' || role === 'admin'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"> <i class="fas fa-plus mr-3"></i> Add Data</router-link>
+        <router-link
+          :to="{ name: 'input', params: { id: 1 } }"
+          v-if="role === 'desa' || role === 'admin'"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-plus mr-3"></i> Add Data</router-link
+        >
 
-        <router-link :to="{ name: 'upload-produk' }" v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"> <i class="fas fa-arrow-circle-up mr-3"></i> Upload Produk </router-link>
+        <router-link
+          :to="{ name: 'upload-produk' }"
+          v-if="isAdmin === 'true' && role === 'admin' && isLoggedIn == 'true'"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-arrow-circle-up mr-3"></i> Upload Produk
+        </router-link>
 
-        <router-link :to="{ name: 'download' }" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <router-link
+          :to="{ name: 'download' }"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
           <i class="fas fa-arrow-circle-down mr-3"></i>
           Download Data
         </router-link>
 
-        <router-link :to="{ name: 'login' }" class="absolute w-full upgrade-btn bottom-0 text-white flex items-center justify-center py-4" v-if="isLoggedIn == 'false'">
+        <router-link
+          :to="{ name: 'login' }"
+          class="absolute w-full upgrade-btn bottom-0 text-white flex items-center justify-center py-4"
+          v-if="isLoggedIn == 'false'"
+        >
           <i class="fas fa-sign-in-alt mr-3"></i>
           Login
         </router-link>
 
-        <button @click="logout" class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center" v-if="isLoggedIn == 'true'">
+        <button
+          @click="logout"
+          class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
+          v-if="isLoggedIn == 'true'"
+        >
           <i class="fas fa-sign-out-alt mr-3"></i>
           Logout
         </button>
@@ -173,9 +212,10 @@ export default {
               console.log(err);
             });
           // this.$swal("Success!", "Anda berhasil logout", "success");
-        } else if (result.isDismissed) {
-          this.$swal("Canceled!", "Logout Dibatalkan!", "info");
         }
+        // else if (result.isDismissed) {
+        //   this.$swal("Canceled!", "Logout Dibatalkan!", "info");
+        // }
       });
     },
   },

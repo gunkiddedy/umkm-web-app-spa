@@ -670,6 +670,13 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 700);
+
+    if (
+      localStorage.getItem("isLoggedIn") === "false" ||
+      localStorage.getItem("role") !== "admin"
+    ) {
+      this.$router.push("/public");
+    }
   },
   methods: {
     exportExcelKecamatanKriteria(param1, param2) {
