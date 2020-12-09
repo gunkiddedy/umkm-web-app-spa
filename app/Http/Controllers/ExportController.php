@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\AdminExport;
-use Illuminate\Http\Request;
+use App\Exports\ExportKK;
+use App\Exports\ExportKDK;
 use App\Exports\DesaExport;
+use Illuminate\Http\Request;
+use App\Exports\ExportKecamatan;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
@@ -13,24 +15,21 @@ class ExportController extends Controller
     {
         return Excel::download(new DesaExport($id), 'umkm-desa-'.$id.'.xlsx');
     }
-
-    /*
-    private $kecamatan_id;
-    private $desa_id;
-    private $kriteria;
-    */
-    public function exportAdminKriteria(Request $request, $kecamatan_id, $desa_id, $kriteria)
+     
+    // kecamatan + desa + kriteria (all required)  //clear
+    public function exportKDK(Request $request, $kecamatan_id, $desa_id, $kriteria)
     {
-        return Excel::download(new AdminExportKriteria($kecamatan_id, $desa_id, $kriteria), 'umkm-'.$kecamatan_id.'.xlsx');
+        return Excel::download(new ExportKDK($kecamatan_id, $desa_id, $kriteria), 'umkm-'.$kecamatan_id.'.xlsx');
     }
 
-    public function exportAdminKecamatan(Request $request, $kecamatan_id)
+    // kecamatan //clear
+    public function exportKecamatan(Request $request, $kecamatan_id)
     {
-        return Excel::download(new AdminExportKecamatan($kecamatan_id), 'umkm-'.$kecamatan_id.'.xlsx');
+        return Excel::download(new ExportKecamatan($kecamatan_id), 'umkm-'.$kecamatan_id.'.xlsx');
     }
 
-    public function exportAdminUsahaPokok(Request $request, $usahaPokok)
+    public function exportKK(Request $request, $kecamatan_id, $kriteria)
     {
-        return Excel::download(new AdminExportUsahaPokok($usahaPokok), 'umkm-'.$usahaPokok.'.xlsx');
+        return Excel::download(new ExportKK($kecamatan_id, $kriteria), 'umkm-'.$kriteria.'.xlsx');
     }
 }
