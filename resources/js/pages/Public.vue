@@ -12,28 +12,28 @@
         >
           <!-- SEARCH PRODUCTS-->
           <div class="w-full relative mx-auto">
-            <form @submit.prevent="searchProducts">
-              <button type="submit" class="absolute right-0 mt-2 mr-2 text-gray-500">
-                <svg
-                  class="w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-              </button>
-              <input
-                v-model="selected.keywords"
-                class="shadow appearance-none rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-inner focus:bg-gray-100"
-                id="search"
-                type="search"
-                placeholder="Search products"
-              />
-            </form>
+            <!--<form @submit.prevent="searchProducts">-->
+            <button type="submit" class="absolute right-0 mt-2 mr-2 text-gray-500">
+              <svg
+                class="w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </button>
+            <input
+              v-model="selected.keywords"
+              class="shadow appearance-none rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-inner focus:bg-blue-100"
+              id="search"
+              type="search"
+              placeholder="Search products"
+            />
+            <!--</form>-->
           </div>
           <div class="w-full flex items-center justify-end py-6">
             <span>Filter berdasarkan : </span>
@@ -76,6 +76,12 @@
                 </option>
               </select>
             </div>
+          </div>
+          <div
+            v-if="loading"
+            class="z-30 flex justify-around relative opacity-25 bg-black inset-0"
+          >
+            <loader />
           </div>
           <!-- PRODUCTS  -->
           <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -141,12 +147,7 @@
           </div>
 
           <!-- loader spin-->
-          <div
-            v-if="loading"
-            class="z-30 flex justify-around relative opacity-25 bg-black inset-0"
-          >
-            <loader />
-          </div>
+
           <div
             v-if="loadingPage"
             class="z-30 flex justify-around relative opacity-25 bg-black inset-0"
@@ -176,7 +177,7 @@ export default {
   data() {
     return {
       isLoggedIn: "",
-      loading: true,
+      loading: false,
       loadingPage: true,
       products: {},
       product_not_found: "",
@@ -205,11 +206,11 @@ export default {
       this.loadingPage = false;
     }, 300);
   },
-  computed: {
-    getKeyword: function () {
-      this.selected.keywords = this.$store.getters["searchProducts/get_keyword"];
-    },
-  },
+  // computed: {
+  //   getKeyword: function () {
+  //     this.selected.keywords = this.$store.getters["searchProducts/get_keyword"];
+  //   },
+  // },
   watch: {
     selected: {
       handler: function () {
@@ -245,9 +246,9 @@ export default {
           console.log(error);
         });
     },
-    searchProducts() {
-      this.$store.dispatch("searchProducts/handleSearchProducts", this.selected.keywords);
-    },
+    // searchProducts() {
+    //   this.$store.dispatch("searchProducts/handleSearchProducts", this.selected.keywords);
+    // },
     getTotalProducts() {
       axios
         .get("/api/total-products")
@@ -271,11 +272,10 @@ export default {
           this.loading = false;
           this.products = response.data;
           this.pagination = response.data.meta;
-          // console.log(response.data);
           this.currentProducts = response.data.data.length;
           if (!response.data.data.length) this.product_not_found = "product not found";
           else this.product_not_found = "";
-          // console.log(`data product sekarang: ${response.data.data.length}`);
+
           console.log(response.data);
         })
         .catch(function (error) {
