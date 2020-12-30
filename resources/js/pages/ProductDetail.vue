@@ -170,9 +170,9 @@ export default {
   mounted() {
     this.isLoggedIn = localStorage.getItem("isLoggedIn");
     this.role = localStorage.getItem("role");
-    if (this.isLoggedIn === "false" || this.role === "") {
-      this.$router.push("/public");
-    }
+    // if (this.isLoggedIn === "false" || this.role === "") {
+    //   this.$router.push("/public");
+    // }
   },
   methods: {
     switchImage(param) {

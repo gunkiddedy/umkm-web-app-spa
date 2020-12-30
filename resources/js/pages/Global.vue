@@ -183,11 +183,11 @@ export default {
     this.isAdmin = localStorage.getItem("isAdmin");
   },
 
-  beforeMount() {
-    if (this.role !== "admin") {
-      this.$router.push("/public");
-    }
-  },
+  // beforeMount() {
+  //   if (this.role !== "admin") {
+  //     this.$router.push("/public");
+  //   }
+  // },
 
   methods: {
     viewData(param) {

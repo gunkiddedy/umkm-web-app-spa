@@ -801,9 +801,9 @@ export default {
     this.role = localStorage.getItem("role");
     this.isAdmin = localStorage.getItem("isAdmin");
 
-    if (this.role !== "desa" || this.role !== "admin") {
-      this.$router.push("/public");
-    }
+    // if (this.role !== "desa" || this.role !== "admin") {
+    //   this.$router.push("/public");
+    // }
 
     setTimeout(() => {
       this.loading = false;

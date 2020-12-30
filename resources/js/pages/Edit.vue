@@ -621,9 +621,9 @@ export default {
   mounted() {
     this.desa_id = localStorage.getItem("desa_id");
 
-    if (this.role !== "admin" || this.isLoggedIn === "false") {
-      this.$router.push("/public");
-    }
+    // if (this.role !== "admin" || this.isLoggedIn === "false") {
+    //   this.$router.push("/public");
+    // }
   },
   methods: {
     getDataDesaById(param) {
